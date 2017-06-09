@@ -64,8 +64,8 @@ public abstract class AGetConfig extends AValueObject {
         return maxParallelDownloads;
     }
 
-    public AGetConfig withFilterVisitedUris(final boolean ignoriereVisitedUris) {
-        this.filterVisitedUris = ignoriereVisitedUris;
+    public AGetConfig withFilterVisitedUris(final boolean filterVisitedUris) {
+        this.filterVisitedUris = filterVisitedUris;
         return this;
     }
 
