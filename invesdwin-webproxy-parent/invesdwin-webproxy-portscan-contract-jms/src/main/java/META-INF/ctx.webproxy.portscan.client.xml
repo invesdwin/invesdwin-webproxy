@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:si-jms="http://www.springframework.org/schema/integration/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/integration/jms
+			http://www.springframework.org/schema/integration/jms/spring-integration-jms.xsd">
+
+	<import resource="classpath*:/META-INF/actx.webproxy.portscan.client.xml" />
+
+	<!-- service out -->
+	<!-- sync -->
+	<si-jms:outbound-gateway request-channel="portscanSyncRequestOut"
+		request-destination-name="portscanSyncRequest" connection-factory="jmsConnectionFactory"
+		message-converter="jaxbJmsMessageConverter" />
+	<!-- async -->
+	<si-jms:outbound-channel-adapter
+		channel="portscanAsyncRequestOut" destination-name="portscanAsyncRequest"
+		connection-factory="jmsConnectionFactory" />
+
+	<!-- client in -->
+	<!-- async -->
+	<si-jms:message-driven-channel-adapter
+		channel="portscanAsyncResponseIn" destination-name="portscanAsyncResponse"
+		connection-factory="jmsConnectionFactory" />
+
+</beans>

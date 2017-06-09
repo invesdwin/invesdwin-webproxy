@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://invesdwin.de/webproxy/portscan/contract/schema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:portscan="http://invesdwin.de/webproxy/portscan/contract/schema">
+
+	<!--
+		************ Elements for requests and responses ***********
+	-->
+
+	<xsd:simpleType name="Host">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern
+				value="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)">
+			</xsd:pattern>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Port">
+		<xsd:annotation>
+			<xsd:documentation>A TCP port from 1 to 65535.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:int">
+			<xsd:maxInclusive value="65535"></xsd:maxInclusive>
+			<xsd:minInclusive value="1"></xsd:minInclusive>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="RandomScan">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="start"></xsd:enumeration>
+			<xsd:enumeration value="stop"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<!--
+		Asynchronous messages: requests go from client to server, responses go from server to client
+	-->
+
+	<xsd:element name="PortscanAsyncRequest">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="PingRequest">
+					<xsd:complexType>
+						<xsd:attribute name="toBePingedHost" type="portscan:Host" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ScanRequest">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="toBeScannedPorts" type="portscan:Port" minOccurs="0" maxOccurs="unbounded" />
+						</xsd:sequence>
+						<xsd:attribute name="toBeScannedHost" type="portscan:Host" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="RandomScanRequest">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="toBeScannedPorts" type="portscan:Port" minOccurs="0" maxOccurs="unbounded" />
+						</xsd:sequence>
+						<xsd:attribute name="startOrStop" type="portscan:RandomScan" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="PortscanAsyncResponse">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="PingResponse">
+					<xsd:complexType>
+						<xsd:attribute name="respondingHost" type="portscan:Host" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ScanResponse">
+					<xsd:complexType>
+						<xsd:attribute name="scannedHost" type="portscan:Host" use="required" />
+						<xsd:attribute name="respondingPort" type="portscan:Port" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="PortscanSyncRequest">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="StatusRequest">
+					<xsd:complexType>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="PortscanSyncResponse">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="StatusResponse">
+					<xsd:complexType>
+						<xsd:attribute name="requestProcessingActive" type="xsd:boolean" use="required" />
+						<xsd:attribute name="randomScanActive" type="xsd:boolean" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	
+
+</xsd:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:si="http://www.springframework.org/schema/integration"
+	xmlns:si-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:si-stream="http://www.springframework.org/schema/integration/stream"
+	xmlns:si-ws="http://www.springframework.org/schema/integration/ws"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+		http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/ws http://www.springframework.org/schema/integration/ws/spring-integration-ws.xsd">
+
+	<bean
+		class="de.invesdwin.webproxy.geolocation.contract.internal.service.RemoteGeolocationService" />
+	<si:gateway id="webproxyGeolocationService"
+		default-request-channel="webproxyGeolocationRequestOut"
+		service-interface="de.invesdwin.webproxy.geolocation.contract.internal.service.IGeolocationServiceEndpoint" />
+
+	<si:channel id="webproxyGeolocationRequestOut" />
+
+	<si-ws:outbound-gateway
+		interceptor="wssInterceptor" request-channel="webproxyGeolocationRequestOut"
+		destination-provider="webproxyGeolocationDestinationProvider"
+		marshaller="jaxbMarshaller" unmarshaller="jaxbUnmarshaller" />
+
+	<bean id="webproxyGeolocationDestinationProvider"
+		class="de.invesdwin.context.integration.ws.registry.RegistryDestinationProvider">
+		<property name="serviceName" value="webproxy.geolocation" />
+	</bean>
+
+</beans>

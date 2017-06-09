@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:si-amqp="http://www.springframework.org/schema/integration/amqp"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/integration/amqp http://www.springframework.org/schema/integration/amqp/spring-integration-amqp.xsd">
+
+	<import resource="classpath*:/META-INF/actx.webproxy.portscan.client.xml" />
+	<import resource="classpath*:/META-INF/actx.webproxy.portscan.amqp.xml" />
+
+	<!-- service out -->
+	<!-- sync -->
+	<si-amqp:outbound-gateway request-channel="portscanSyncRequestOut"
+		exchange-name="portscanSyncRequestExchange" amqp-template="jaxbAmqpTemplate" />
+	<!-- async -->
+	<si-amqp:outbound-channel-adapter
+		channel="portscanAsyncRequestOut" exchange-name="portscanAsyncRequestExchange"
+		amqp-template="amqpTemplate" />
+
+	<!-- client in -->
+	<!-- async -->
+	<si-amqp:inbound-channel-adapter
+		channel="portscanAsyncResponseIn" queue-names="portscanAsyncResponse"
+		connection-factory="amqpConnectionFactory" error-handler="amqpErrorHandler" />
+
+</beans>

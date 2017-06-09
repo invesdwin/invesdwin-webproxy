@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://invesdwin.de/webproxy/broker/contract/schema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:broker="http://invesdwin.de/webproxy/broker/contract/schema">
+
+	<!-- ************ Elements for Requests and Responses *********** -->
+
+	<xsd:complexType name="RawProxy">
+		<xsd:annotation>
+			<xsd:documentation>Information that identify a possible Proxy.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="host" type="broker:Host" use="required" />
+		<xsd:attribute name="port" type="broker:Port" use="optional" />
+	</xsd:complexType>
+
+	<xsd:complexType name="Proxy">
+		<xsd:annotation>
+			<xsd:documentation>Information that identify a working Proxy.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="host" type="broker:Host" use="required" />
+		<xsd:attribute name="port" type="broker:Port" use="required" />
+		<xsd:attribute name="type" type="broker:ProxyType" use="required" />
+		<xsd:attribute name="quality" type="broker:ProxyQuality"
+			use="required" />
+		<xsd:attribute name="countryCode" type="xsd:string" use="required" />
+		<xsd:attribute name="timeZoneId" type="xsd:string" use="required" />
+	</xsd:complexType>
+
+	<xsd:simpleType name="Host">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern
+				value="(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)">
+			</xsd:pattern>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Port">
+		<xsd:annotation>
+			<xsd:documentation>A TCP port from 1 to 65535.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:int">
+			<xsd:maxInclusive value="65535"></xsd:maxInclusive>
+			<xsd:minInclusive value="1"></xsd:minInclusive>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ProxyType">
+		<xsd:annotation>
+			<xsd:documentation>These enum constants are the same as
+				java.net.Proxy.Type to make conversion easier. DIRECT is explicitly
+				not supported.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="HTTP"></xsd:enumeration>
+			<xsd:enumeration value="SOCKS"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ProxyQuality">
+		<xsd:annotation>
+			<xsd:documentation>
+				<li>
+					Transparent proxy servers do not hide your IP address. They do
+					provide anyone with your real IP address and do not hide any
+					information about you and your reading interests. Actually they
+					just retransmit
+					information between your computer and server without
+					modyfying it
+					in any way to keep your privacy. Besides that, they let
+					anyone know
+					that you are surfing through a proxy server.
+				</li>
+				<li>
+					Anonymous proxy servers hide your IP address or modify it in
+					some way to prevent target server know about it. They may provide
+					or may hide information about you and your reading interests.
+					Besides that, they let anyone know that you are surfing through a
+					proxy server.
+				</li>
+				<li>
+					Invisible proxy servers hide your IP address and thereby prevent
+					your from unauthorized access to your computer through the
+					Internet. They do not provide anyone with your IP address and
+					effectively hide any information about you and your reading
+					interests. Besides that, they don't even let anyone know that you
+					are surfing through a proxy server.
+				</li>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="TRANSPARENT"></xsd:enumeration>
+			<xsd:enumeration value="ANONYMOUS"></xsd:enumeration>
+			<xsd:enumeration value="INVISIBLE"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="BrokerRequest">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="GetWorkingProxiesRequest">
+					<xsd:complexType></xsd:complexType>
+				</xsd:element>
+				<xsd:element name="AddToBeVerifiedProxiesRequest">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="toBeVerifiedProxies" type="broker:RawProxy"
+								minOccurs="1" maxOccurs="unbounded" />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="GetTaskForCrawlerRequest">
+					<xsd:complexType></xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ProcessResultFromCrawlerRequest">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="successfullyVerifiedProxies" type="broker:Proxy"
+								minOccurs="0" maxOccurs="unbounded" />
+							<xsd:element name="unsuccessfullyVerifiedProxies" type="broker:RawProxy"
+								minOccurs="0" maxOccurs="unbounded" />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="BrokerResponse">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="RetryLaterExceptionResponse">
+					<xsd:complexType>
+						<xsd:attribute name="message" type="xsd:string" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="GetWorkingProxiesResponse">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="workingProxies" type="broker:Proxy"
+								minOccurs="0" maxOccurs="unbounded" />
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="AddToBeVerifiedProxiesResponse">
+					<xsd:complexType></xsd:complexType>
+				</xsd:element>
+				<xsd:element name="GetTaskForCrawlerResponse">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="toBeVerifiedProxies" type="broker:RawProxy"
+								minOccurs="0" maxOccurs="unbounded" />
+							<xsd:element name="toBeScannedPorts" type="broker:Port"
+								minOccurs="0" maxOccurs="unbounded" />
+						</xsd:sequence>
+						<xsd:attribute name="crawlForProxies" type="xsd:boolean"
+							use="required" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ProcessResultFromCrawlerResponse">
+					<xsd:complexType></xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- service out -->
+	<!-- sync -->
+	<rabbit:direct-exchange name="portscanSyncRequestExchange">
+		<rabbit:bindings>
+			<rabbit:binding queue="portscanSyncRequest" />
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+	<rabbit:queue name="portscanSyncRequest" />
+	<!-- async -->
+	<rabbit:direct-exchange name="portscanAsyncRequestExchange">
+		<rabbit:bindings>
+			<rabbit:binding queue="portscanAsyncRequest" />
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+	<rabbit:queue name="portscanAsyncRequest" />
+
+	<!-- client out -->
+	<!-- async -->
+	<rabbit:direct-exchange name="portscanAsyncResponseExchange">
+		<rabbit:bindings>
+			<rabbit:binding queue="portscanAsyncResponse" />
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+	<rabbit:queue name="portscanAsyncResponse" />
+</beans>

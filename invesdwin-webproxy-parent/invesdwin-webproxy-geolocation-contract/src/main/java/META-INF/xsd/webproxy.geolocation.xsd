@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://invesdwin.de/webproxy/geolocation/contract/schema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:geolocation="http://invesdwin.de/webproxy/geolocation/contract/schema">
+
+	<!-- ************ Elements for requests and responses *********** -->
+
+	<xsd:element name="GeolocationRequest">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="GetGeolocationByHostRequest">
+					<xsd:complexType>
+						<xsd:attribute name="host" type="xsd:string" use="required" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="GetGeolocationByCoordinatesRequest">
+					<xsd:complexType>
+						<xsd:attribute name="longitude" type="xsd:float"
+							use="required" />
+						<xsd:attribute name="latitude" type="xsd:float"
+							use="required" />
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="GeolocationResponse">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element name="RetryLaterExceptionResponse">
+					<xsd:complexType>
+						<xsd:attribute name="message" type="xsd:string" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="GetGeolocationResponse">
+					<xsd:complexType>
+						<xsd:attribute name="longitude" type="xsd:float"
+							use="required" />
+						<xsd:attribute name="latitude" type="xsd:float"
+							use="required" />
+						<xsd:attribute name="locationName" type="xsd:string" use="required" />
+						<xsd:attribute name="countryCode" type="xsd:string"
+							use="required" />
+						<xsd:attribute name="timeZoneId" type="xsd:string"
+							use="required" />
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

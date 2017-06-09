@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:si="http://www.springframework.org/schema/integration"
+	xmlns:si-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:si-stream="http://www.springframework.org/schema/integration/stream"
+	xmlns:si-ws="http://www.springframework.org/schema/integration/ws"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+		http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/ws http://www.springframework.org/schema/integration/ws/spring-integration-ws.xsd">
+
+	<import resource="classpath*:/META-INF/actx.webproxy.broker.xml" />
+
+	<bean id="webproxy.broker"
+		class="de.invesdwin.context.integration.ws.registry.publication.XsdWebServicePublication" />
+
+	<bean class="de.invesdwin.context.integration.ws.XsdWebServiceEndpointMapping">
+		<property name="mappings">
+			<props>
+				<prop key="webproxy.broker">webproxyBrokerGateway</prop>
+			</props>
+		</property>
+		<property name="interceptors">
+			<list>
+				<ref bean="wssInterceptor" />
+			</list>
+		</property>
+	</bean>
+
+	<si-ws:inbound-gateway id="webproxyBrokerGateway"
+		request-channel="webproxyBrokerRequestIn" marshaller="jaxbMarshaller"
+		unmarshaller="jaxbUnmarshaller" />
+
+	<si:channel id="webproxyBrokerRequestIn" />
+
+	<si:service-activator input-channel="webproxyBrokerRequestIn"
+		ref="webproxyBrokerServiceActivator" />
+	<bean id="webproxyBrokerServiceActivator"
+		class="de.invesdwin.webproxy.broker.contract.internal.service.BrokerServiceActivator" />
+
+	<!-- disable basic authentication for proxy check uris -->
+	<security:http pattern="/spring-web/check/**" security="none" />
+
+</beans>

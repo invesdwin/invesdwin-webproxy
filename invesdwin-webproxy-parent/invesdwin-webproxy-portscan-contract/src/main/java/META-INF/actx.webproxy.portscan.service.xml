@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:si="http://www.springframework.org/schema/integration"
+	xmlns:si-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:si-stream="http://www.springframework.org/schema/integration/stream"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/integration
+            http://www.springframework.org/schema/integration/spring-integration.xsd
+            http://www.springframework.org/schema/integration/stream
+            http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+            http://www.springframework.org/schema/integration/xml
+			http://www.springframework.org/schema/integration/xml/spring-integration-xml.xsd">
+
+	<!-- service in -->
+	<bean id="portscanServiceActivator"
+		class="de.invesdwin.webproxy.portscan.contract.internal.service.PortscanServiceActivator" />
+	<!-- sync -->
+	<si:service-activator
+		input-channel="portscanSyncRequestIn" ref="portscanServiceActivator" />
+	<si:channel id="portscanSyncRequestIn" />
+	<!-- async -->
+	<si:service-activator
+		input-channel="portscanAsyncRequestIn" ref="portscanServiceActivator" />
+	<si:channel id="portscanAsyncRequestIn">
+		<si:interceptors>
+			<si:ref bean="jaxbUnmarshallingTransformerInterceptor" />
+		</si:interceptors>
+	</si:channel>
+
+	<!-- client out -->
+	<bean
+		class="de.invesdwin.webproxy.portscan.contract.internal.client.RemotePortscanClient" />
+	<si:gateway id="portscanAsyncClientGateway"
+		default-request-channel="portscanAsyncResponseOut"
+		service-interface="de.invesdwin.webproxy.portscan.contract.internal.client.IPortscanAsyncClientEndpoint" />
+	<si:channel id="portscanAsyncResponseOut">
+		<si:interceptors>
+			<si:ref bean="jaxbMarshallingTransformerInterceptor" />
+		</si:interceptors>
+	</si:channel>
+
+</beans>

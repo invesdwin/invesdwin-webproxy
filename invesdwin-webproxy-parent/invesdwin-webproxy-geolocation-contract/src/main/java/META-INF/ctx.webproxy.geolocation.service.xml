@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:si="http://www.springframework.org/schema/integration"
+	xmlns:si-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:si-stream="http://www.springframework.org/schema/integration/stream"
+	xmlns:si-ws="http://www.springframework.org/schema/integration/ws"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+		http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/ws http://www.springframework.org/schema/integration/ws/spring-integration-ws.xsd">
+
+	<bean id="webproxy.geolocation"
+		class="de.invesdwin.context.integration.ws.registry.publication.XsdWebServicePublication" />
+
+	<bean
+		class="de.invesdwin.context.integration.ws.XsdWebServiceEndpointMapping">
+		<property name="mappings">
+			<props>
+				<prop key="webproxy.geolocation">webproxyGeolocationGateway</prop>
+			</props>
+		</property>
+		<property name="interceptors">
+			<list>
+				<ref bean="wssInterceptor" />
+			</list>
+		</property>
+	</bean>
+
+	<si-ws:inbound-gateway id="webproxyGeolocationGateway"
+		request-channel="webproxyGeolocationRequestIn" marshaller="jaxbMarshaller"
+		unmarshaller="jaxbUnmarshaller" />
+
+	<si:channel id="webproxyGeolocationRequestIn" />
+
+	<si:service-activator
+		input-channel="webproxyGeolocationRequestIn" ref="webproxyGeolocationServiceActivator" />
+	<bean id="webproxyGeolocationServiceActivator"
+		class="de.invesdwin.webproxy.geolocation.contract.internal.service.GeolocationServiceActivator" />
+
+</beans>

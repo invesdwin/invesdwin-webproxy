@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd" 
+       xmlns:m="http://ant.apache.org/ivy/maven">
+    <info
+        organisation="de.invesdwin"
+        module="de.invesdwin.webproxy.portscan.contract.amqp"
+        status="release" 
+        revision="0.3.0">
+    </info>
+    <configurations>
+	   <conf name="compile" />
+       <conf name="default"/>
+       <conf name="tests" />
+       <conf name="sources" />
+    </configurations>
+    <publications defaultconf="default">
+        <artifact conf="default" type="jar" ext="jar"/>
+        <artifact conf="tests" type="jar" ext="jar" m:classifier="tests"/>
+        <artifact conf="sources" type="source" ext="jar" m:classifier="sources"/>
+    </publications>
+    <dependencies>
+    	<dependency org="de.invesdwin" name="de.invesdwin.webproxy.portscan.contract" rev="0.3.0" conf="default;tests;sources" />
+        <dependency org="de.invesdwin" name="de.invesdwin.common.integration.amqp" rev="0.3.0" conf="default;tests;sources" />
+    </dependencies>
+</ivy-module>
