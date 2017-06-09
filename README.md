@@ -19,6 +19,4 @@ Dependency declaration:
 
 ## Architecture
 
-![alt text]( "")
-
-<img src="https://github.com/subes/invesdwin-webproxy/raw/master/invesdwin-webproxy-parent/invesdwin-webproxy/doc/webproxy_context.png" alt="Context Diagram" width="50%" style="text-align: center" />
+<span style="text-align:center"><img src="https://github.com/subes/invesdwin-webproxy/raw/master/invesdwin-webproxy-parent/invesdwin-webproxy/doc/webproxy_context.png" alt="Context Diagram" width="50%" /></span>
