@@ -38,7 +38,7 @@ Legitimate use cases for port scanning might be:
 - Finding backdoors and unexpectedly open services or computers in your local network to check if it matches your security standards.
 - Mapping a network for available services and including them in a service registry if accepted by the service provider or to tell the provider about him mistakenly exposing a service he should rather close off.
 
-## Architecture
+## Overview
 
 The following context diagram shows what components this project consists of:
 
