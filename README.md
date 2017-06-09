@@ -64,5 +64,17 @@ de.invesdwin.webproxy.WebproxyProperties.AUTO_NOTIFY_ABOUT_NOT_WORKING_POOLED_PR
 	- TRANSPARENT: the proxy tells via request headers about what the original client ip is
 	- ANONYMOUS: the proxy tells via request headers that is a proxy server, but does not tell what the original client ip is
 	- INVISIBLE: the proxy does not tell anything about being a proxy and acts as the actual client
-- **portscan**: The `invesdwin-webproxy-portscan` module needs to be deployed next to your crawler instance on any given installation. It is separated from the crawler process (which should be running with restricted permission on the operating system) because it requires root permission on the operating system to send TCP packets for the SYN stealth scan (as described by the [Nmap documentation](https://nmap.org/book/man-port-scanning-techniques.html)). Internally the [pcap](https://en.wikipedia.org/wiki/Pcap) library is used via the java binding of [jpcapng](https://sourceforge.net/projects/jpcapng/).
+- **portscan**: The `invesdwin-webproxy-portscan` module needs to be deployed next to your crawler instance on any given installation. It is separated from the crawler process (which should be running with restricted permission on the operating system) because it requires root permission on the operating system to send TCP packets for the SYN stealth scan (as described by the [Nmap documentation](https://nmap.org/book/man-port-scanning-techniques.html)). So to be a bit safer regarding security we decided to split this into a separate process and provide local communication via JMS (via an embedded local network of brokers as provided by `invesdwin-context-integration-jms`) or AMQP (via an installation of RabbitMQ that is connected to via `invesdwin-context-integration-amqp`). Internally the [pcap](https://en.wikipedia.org/wiki/Pcap) library is used via the java binding of [jpcapng](https://sourceforge.net/projects/jpcapng/). During startup it will automatically identify which network interface to use. The following system properties are available for advanced configuration:
+```properties
+#On the host port 80 must be open and a service has to be running on it. The host also has to answer pings so that the checks are successful
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.CHECK_HOST=google.de
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.LOCAL_BIND_PORT=44125
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.ICMP_RESPONSE_TIMEOUT=3 SECONDS
+#For timings see: http://www.networkuptime.com/nmap/page09-09.shtml
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.UPLOAD_PAUSE_BETWEEN_PACKETS=0 MILLISECONDS
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.UPLOAD_PAUSE_BETWEEN_PACKETS_PER_HOST=0 MILLISECONDS
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.RESPONSE_TIMEOUT_BETWEEN_SYN_PACKETS_PER_HOST=500 MILLISECONDS
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.MAX_OPEN_ICMP_REQUESTS=25
+de.invesdwin.webproxy.portscan.internal.PortscanProperties.MAX_OPEN_SYN_REQUESTS=10
+```
 - **geolocation**: This `invesdwin-webproxy-geolocation` module is not included in the context diagram but provides a web service that is used by the crawler instances to resolve metadata about the proxy servers. It uses the [GeoIP](https://github.com/maxmind/geoip-api-java) and [GeoNames](http://www.geonames.org/) databases to determine the location, country and timezone for a given proxy IP. You can also use this service to check any other IP (e.g. for customers in your web shop) to determine where it comes from. You could also buy a premium GeoIP subscription to increase the accuracy of the resulting coordinates that are measured against locations provided by GeoNames.
