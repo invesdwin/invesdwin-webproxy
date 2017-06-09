@@ -120,4 +120,4 @@ This is the process of how proxies are being discovered:
 8. If a proxy was determined to be working, metadata is added via the geolocation service.
 9. Discovered proxies are reported back to the broker as working to be added/updated in the database.
 10. Client applications request proxies for a download and report back to the broker if a specific one did not work for it to be scheduled for reverification by a crawler instance.
-11. Client will cycle through proxies and keep them on a cooldown to not overuse them on a given host.
+11. Client applications will cycle through proxies and keep them on a cooldown to not overuse them on a given host.
