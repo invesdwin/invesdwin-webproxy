@@ -1,5 +1,5 @@
 # invesdwin-webproxy
-A massively parallel download manager for web scraping that supports proxy servers. Developed as modules for the [invesdwin-context](https://github.com/subes/invesdwin-context) module system. 
+A parallel download manager for web scraping that supports proxy servers. Developed as modules for the [invesdwin-context](https://github.com/subes/invesdwin-context) module system. 
 
 ## Maven
 
