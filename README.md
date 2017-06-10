@@ -109,7 +109,7 @@ de.invesdwin.webproxy.portscan.internal.PortscanProperties.MAX_OPEN_SYN_REQUESTS
 
 ## Proxy Lifecycle
 
-This is the process of how proxies are being discovered:
+This is the process of how proxies are being discovered, managed and used:
 1. Crawler asks broker for new tasks, broker answers with a discovery request and/or a few proxies that should be reverified (it rechecks its database entries regularly to keep an up to date list of proxies, it also tasks proxies to be rechecked if they were reported to not be working by one of the clients). The list of most common ports to be scanned is also provided by the broker since they are derived from the actual database or a few hardcoded ports if the database is empty.
 2. Crawler downloads raw proxies (either IP:port combinations or just IP) from the available `IProxyCrawlerSource` implementations and reports them back to the broker as raw proxies to be added to the database. Alternatively it tells its portscanner instance to do random scanning if that is enabled. Any potential raw proxy is reported back to the broker and will be received as scan requests on the next task request that the crawler does. By adding this round trip we can filter duplicate proxies on the broker before they are being scanned by potentially multiple crawler instances. Also we can distribute the load of scanning the raw proxies in the database over multiple crawlers, even if only one crawler discovered them.
 3. Any scan requests for specific proxies the crawler received from the broker are passed to the portscanner. The first step is to do a ping request via ICMP.
