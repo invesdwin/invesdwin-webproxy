@@ -29,6 +29,6 @@ public abstract class ASocksProxySocketFactory implements ConnectionSocketFactor
     /**
      * proxy may also be null if no socks proxy is needed for this socket.
      */
-    protected abstract Socket createSocket(final HttpContext context, Proxy proxy) throws IOException;
+    protected abstract Socket createSocket(HttpContext context, Proxy proxy) throws IOException;
 
 }
