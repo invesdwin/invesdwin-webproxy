@@ -17,9 +17,10 @@ import de.invesdwin.util.concurrent.WrappedExecutorService;
 @ThreadSafe
 public final class SingleJavaScriptExecutorHandler {
 
-    private static final Set<SingleJavaScriptExecutor> JOBS = Collections.newSetFromMap(new ConcurrentHashMap<SingleJavaScriptExecutor, Boolean>());
+    private static final Set<SingleJavaScriptExecutor> JOBS = Collections
+            .newSetFromMap(new ConcurrentHashMap<SingleJavaScriptExecutor, Boolean>());
 
-    @GuardedBy("this.class")
+    @GuardedBy("SingleJavaScriptExecutorHandler.class")
     private static WrappedExecutorService executor;
 
     private SingleJavaScriptExecutorHandler() {}

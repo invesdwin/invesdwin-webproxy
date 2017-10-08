@@ -23,7 +23,7 @@ import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 @Named
 public final class BrokerProxyPoolableObjectFactory implements IPoolableObjectFactory<PooledProxy> {
 
-    @GuardedBy("self")
+    @GuardedBy("PROXY_CACHE")
     private static final Queue<Proxy> PROXY_CACHE = new ArrayDeque<Proxy>();
 
     @Inject

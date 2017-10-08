@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
 
 import org.assertj.core.api.Fail;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import de.invesdwin.context.integration.network.RandomIpGenerator;
 import de.invesdwin.context.persistence.jpa.test.APersistenceTest;

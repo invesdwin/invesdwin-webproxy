@@ -4,7 +4,7 @@ import java.net.URI;
 
 import javax.annotation.concurrent.Immutable;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.ws.client.support.destination.DestinationProvider;
 
 import de.invesdwin.context.integration.IntegrationProperties;

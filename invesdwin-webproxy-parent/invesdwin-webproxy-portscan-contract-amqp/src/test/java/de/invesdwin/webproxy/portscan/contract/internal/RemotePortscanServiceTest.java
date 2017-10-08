@@ -3,7 +3,8 @@ package de.invesdwin.webproxy.portscan.contract.internal;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -12,6 +13,8 @@ import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.lang.uri.Addresses;
+import de.invesdwin.util.time.duration.Duration;
+import de.invesdwin.util.time.fdate.FTimeUnit;
 import de.invesdwin.webproxy.portscan.contract.IPortscanClient;
 import de.invesdwin.webproxy.portscan.contract.IPortscanService;
 import de.invesdwin.webproxy.portscan.contract.PortscanServiceStub;
@@ -71,9 +74,14 @@ public class RemotePortscanServiceTest extends ATest {
         Mockito.verifyNoMoreInteractions(clientMock);
     }
 
-    @Test(timeout = 3000)
+    @Test
     public void testStatus() {
-        Assertions.assertThat(service.status()).isNotNull();
+        Assertions.assertTimeout(new Duration(3, FTimeUnit.SECONDS), new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                Assertions.assertThat(service.status()).isNotNull();
+            }
+        });
     }
 
 }

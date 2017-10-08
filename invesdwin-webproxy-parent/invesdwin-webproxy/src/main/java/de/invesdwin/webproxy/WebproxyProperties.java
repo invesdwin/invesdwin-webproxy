@@ -12,7 +12,7 @@ import de.invesdwin.util.time.fdate.FTimeUnit;
 @Immutable
 public final class WebproxyProperties {
 
-    public static final BrowserVersion DEFAULT_BROWSER_VERION = BrowserVersion.FIREFOX_24;
+    public static final BrowserVersion DEFAULT_BROWSER_VERION = BrowserVersion.FIREFOX_52;
     public static final int MAX_PARALLEL_DOWNLOADS;
 
     public static final boolean PROXY_VERIFICATION_RETRY_ON_ALL_EXCEPTIONS;

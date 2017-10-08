@@ -63,7 +63,7 @@ public class ProxyVerifier {
     private class Worker implements Runnable {
 
         private final RawProxy rawProxy;
-        @GuardedBy("self")
+        @GuardedBy("request")
         private final ProcessResultFromCrawlerRequest request;
 
         Worker(final RawProxy rawProxy, final ProcessResultFromCrawlerRequest request) {

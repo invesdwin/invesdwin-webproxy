@@ -13,9 +13,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
-
-import org.apache.http.annotation.ThreadSafe;
 
 import de.invesdwin.context.integration.network.NetworkUtil;
 import de.invesdwin.context.log.Log;
@@ -178,13 +177,13 @@ public abstract class AGet<E, C extends AGetConfig> {
             try {
                 //If the URI has been filtered, we don't do anything with this element
                 if (uri == null) {
-                    return (T) null;
+                    return null;
                 }
 
                 //Choose the first proxy
                 proxy = pool.getProxy(config, session);
 
-                T response = (T) null;
+                T response = null;
                 do {
                     response = workerDownloadTry();
                     if (response == null) {

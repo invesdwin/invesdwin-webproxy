@@ -3,7 +3,8 @@ package de.invesdwin.webproxy.broker.contract;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.messaging.MessageHandlingException;
 
 import de.invesdwin.context.integration.IntegrationProperties;
@@ -48,11 +49,16 @@ public class BrokerServiceTest extends ATest {
         Assertions.assertThat(emptyTaskResponse.getToBeScannedPorts().size()).isGreaterThan(20);
     }
 
-    @Test(expected = MessageHandlingException.class)
+    @Test
     public void testEmptyToBeVerifiedProxies() {
-        final AddToBeVerifiedProxiesRequest addRequest = new AddToBeVerifiedProxiesRequest();
-        addRequest.getToBeVerifiedProxies().clear();
-        broker.addToBeVerifiedProxies(addRequest);
+        Assertions.assertThrows(MessageHandlingException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                final AddToBeVerifiedProxiesRequest addRequest = new AddToBeVerifiedProxiesRequest();
+                addRequest.getToBeVerifiedProxies().clear();
+                broker.addToBeVerifiedProxies(addRequest);
+            }
+        });
     }
 
 }

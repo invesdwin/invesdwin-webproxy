@@ -48,7 +48,7 @@ public class PortscanBootstrap implements IStartupHook, IShutdownHook {
     private static final NativeLibrary JPCAP = new NativeLibrary("jpcap", "/jpcap/", PortscanService.class);
     private final Log log = new Log(this);
 
-    @GuardedBy("this.class")
+    @GuardedBy("PortscanBootstrap.class")
     private boolean initializing;
 
     @Inject

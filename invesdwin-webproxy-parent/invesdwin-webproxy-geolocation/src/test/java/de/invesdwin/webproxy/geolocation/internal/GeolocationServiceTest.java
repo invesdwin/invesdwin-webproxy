@@ -5,7 +5,8 @@ import java.util.Locale;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.persistence.jpa.test.APersistenceTest;
@@ -32,10 +33,15 @@ public class GeolocationServiceTest extends APersistenceTest {
                 toponymRepo.newActiveToponymEntity().getClass().getSimpleName());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testGetGeolocationByHostWithEmptyHost() throws RetryLaterException {
-        final GetGeolocationByHostRequest request = new GetGeolocationByHostRequest();
-        geolocation.getGeolocation(request);
+        Assertions.assertThrows(NullPointerException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                final GetGeolocationByHostRequest request = new GetGeolocationByHostRequest();
+                geolocation.getGeolocation(request);
+            }
+        });
     }
 
     @Test

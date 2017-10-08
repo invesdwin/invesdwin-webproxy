@@ -71,7 +71,7 @@ public class WebClientWorker extends ADownloadWorker<Page, GetPageConfig> {
 
     @Override
     protected void internalClose() {
-        client.closeAllWindows();
+        client.close();
     }
 
 }

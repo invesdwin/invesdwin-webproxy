@@ -8,8 +8,8 @@ import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
-import de.invesdwin.webproxy.callbacks.JavascriptWaitCallback;
 import de.invesdwin.webproxy.callbacks.AProxyResponseCallback;
+import de.invesdwin.webproxy.callbacks.JavascriptWaitCallback;
 import de.invesdwin.webproxy.callbacks.statistics.basis.AStatisticsCallback;
 
 @NotThreadSafe

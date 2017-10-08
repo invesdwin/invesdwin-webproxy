@@ -6,7 +6,7 @@ import java.io.StringWriter;
 import javax.annotation.concurrent.ThreadSafe;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.util.assertions.Assertions;
