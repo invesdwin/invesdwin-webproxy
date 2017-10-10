@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 
 import javax.annotation.concurrent.ThreadSafe;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.util.assertions.Assertions;

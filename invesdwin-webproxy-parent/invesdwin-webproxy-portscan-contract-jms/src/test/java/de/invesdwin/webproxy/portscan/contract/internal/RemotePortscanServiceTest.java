@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.portscan.contract.internal;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

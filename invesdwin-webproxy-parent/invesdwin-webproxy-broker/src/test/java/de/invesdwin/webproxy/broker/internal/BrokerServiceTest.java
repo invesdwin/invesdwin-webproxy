@@ -6,7 +6,7 @@ import java.util.TimeZone;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.persistence.jpa.api.query.QueryConfig;

@@ -10,7 +10,7 @@ import javax.annotation.concurrent.NotThreadSafe;
 import javax.inject.Inject;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.gargoylesoftware.htmlunit.html.DomElement;
 import com.gargoylesoftware.htmlunit.html.DomNode;

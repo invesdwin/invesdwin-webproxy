@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.crawler.verification;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.test.ATest;

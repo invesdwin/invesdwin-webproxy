@@ -2,7 +2,7 @@ package de.invesdwin.webproxy.geolocation;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import de.invesdwin.context.integration.IntegrationProperties;
 import de.invesdwin.context.persistence.jpa.test.APersistenceTest;

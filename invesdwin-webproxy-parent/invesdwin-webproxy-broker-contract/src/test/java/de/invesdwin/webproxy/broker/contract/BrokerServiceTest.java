@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.broker.contract;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.function.Executable;
 import org.springframework.messaging.MessageHandlingException;
 
