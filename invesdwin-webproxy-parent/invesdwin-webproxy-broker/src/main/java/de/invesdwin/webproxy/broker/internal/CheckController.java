@@ -20,6 +20,7 @@ import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 
 @Immutable
 @Controller
+@RequestMapping("/check")
 public class CheckController {
 
     /**
