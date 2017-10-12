@@ -16,12 +16,12 @@
 	<!-- async -->
 	<si-jms:outbound-channel-adapter
 		channel="portscanAsyncRequestOut" destination-name="portscanAsyncRequest"
-		connection-factory="jmsConnectionFactory" />
+		connection-factory="jmsConnectionFactory" message-converter="jaxbJmsMessageConverter" />
 
 	<!-- client in -->
 	<!-- async -->
 	<si-jms:message-driven-channel-adapter
 		channel="portscanAsyncResponseIn" destination-name="portscanAsyncResponse"
-		connection-factory="jmsConnectionFactory" />
+		connection-factory="jmsConnectionFactory" message-converter="jaxbJmsMessageConverter" />
 
 </beans>

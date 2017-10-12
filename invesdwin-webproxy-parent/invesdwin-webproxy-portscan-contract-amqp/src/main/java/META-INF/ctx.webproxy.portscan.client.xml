@@ -14,12 +14,13 @@
 	<!-- async -->
 	<si-amqp:outbound-channel-adapter
 		channel="portscanAsyncRequestOut" exchange-name="portscanAsyncRequestExchange"
-		amqp-template="amqpTemplate" />
+		amqp-template="jaxbAmqpTemplate" />
 
 	<!-- client in -->
 	<!-- async -->
 	<si-amqp:inbound-channel-adapter
 		channel="portscanAsyncResponseIn" queue-names="portscanAsyncResponse"
-		connection-factory="amqpConnectionFactory" error-handler="amqpErrorHandler" />
+		connection-factory="amqpConnectionFactory" error-handler="amqpErrorHandler"
+		message-converter="jaxbAmqpMessageConverter" />
 
 </beans>

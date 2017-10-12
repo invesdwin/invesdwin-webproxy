@@ -9,18 +9,19 @@
 
 	<!-- service in -->
 	<!-- sync -->
-	<!-- messageConverter cannot be set here! https://jira.springsource.org/browse/INT-2170 -->
 	<si-amqp:inbound-gateway request-channel="portscanSyncRequestIn"
-		queue-names="portscanSyncRequest" connection-factory="amqpConnectionFactory" message-converter="jaxbAmqpMessageConverter" error-handler="amqpErrorHandler" />
+		queue-names="portscanSyncRequest" connection-factory="amqpConnectionFactory"
+		error-handler="amqpErrorHandler" message-converter="jaxbAmqpMessageConverter" />
 	<!-- async -->
 	<si-amqp:inbound-channel-adapter
 		channel="portscanAsyncRequestIn" queue-names="portscanAsyncRequest"
-		connection-factory="amqpConnectionFactory" error-handler="amqpErrorHandler" />
+		connection-factory="amqpConnectionFactory" error-handler="amqpErrorHandler"
+		message-converter="jaxbAmqpMessageConverter" />
 
 	<!-- client out -->
 	<!-- async -->
 	<si-amqp:outbound-channel-adapter
 		channel="portscanAsyncResponseOut" exchange-name="portscanAsyncResponseExchange"
-		amqp-template="amqpTemplate" />
+		amqp-template="jaxbAmqpTemplate" />
 
 </beans>

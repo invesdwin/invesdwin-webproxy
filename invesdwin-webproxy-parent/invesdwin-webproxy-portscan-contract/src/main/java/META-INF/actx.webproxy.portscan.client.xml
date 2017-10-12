@@ -24,21 +24,13 @@
 	<si:gateway id="portscanAsyncServiceGateway"
 		default-request-channel="portscanAsyncRequestOut"
 		service-interface="de.invesdwin.webproxy.portscan.contract.internal.service.IPortscanAsyncServiceEndpoint" />
-	<si:channel id="portscanAsyncRequestOut">
-		<si:interceptors>
-			<si:ref bean="jaxbMarshallingTransformerInterceptor" />
-		</si:interceptors>
-	</si:channel>
+	<si:channel id="portscanAsyncRequestOut" />
 
 	<!-- client in -->
 	<bean id="portscanClientActivator"
 		class="de.invesdwin.webproxy.portscan.contract.internal.client.PortscanClientActivator" />
 	<si:service-activator
 		input-channel="portscanAsyncResponseIn" ref="portscanClientActivator" />
-	<si:channel id="portscanAsyncResponseIn">
-		<si:interceptors>
-			<si:ref bean="jaxbUnmarshallingTransformerInterceptor" />
-		</si:interceptors>
-	</si:channel>
+	<si:channel id="portscanAsyncResponseIn" />
 
 </beans>
