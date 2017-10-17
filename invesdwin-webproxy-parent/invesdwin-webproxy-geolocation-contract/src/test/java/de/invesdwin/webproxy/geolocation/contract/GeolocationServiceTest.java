@@ -13,6 +13,7 @@ import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.time.TimeZones;
 import de.invesdwin.webproxy.geolocation.contract.schema.GeolocationRequest.GetGeolocationByCoordinatesRequest;
 import de.invesdwin.webproxy.geolocation.contract.schema.GeolocationRequest.GetGeolocationByHostRequest;
@@ -29,7 +30,7 @@ public class GeolocationServiceTest extends ATest {
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
         RegistryServiceStub.override("webproxy.geolocation",
-                IntegrationProperties.WEBSERVER_BIND_URI + "/spring-ws/webproxy.geolocation.wsdl");
+                URIs.asUri(IntegrationProperties.WEBSERVER_BIND_URI + "/spring-ws/webproxy.geolocation.wsdl"));
     }
 
     @Test

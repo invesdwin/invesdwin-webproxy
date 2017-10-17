@@ -10,6 +10,7 @@ import de.invesdwin.context.integration.network.RandomIpGenerator;
 import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
+import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.AddToBeVerifiedProxiesRequest;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
 
@@ -24,7 +25,7 @@ public class BrokerServiceLastTest extends ATest {
         super.setUpContext(ctx);
         ctx.deactivate(BrokerServiceStub.class);
         RegistryServiceStub.override("webproxy.broker",
-                IntegrationProperties.WEBSERVER_BIND_URI + "/spring-ws/webproxy.broker.wsdl");
+                URIs.asUri(IntegrationProperties.WEBSERVER_BIND_URI + "/spring-ws/webproxy.broker.wsdl"));
     }
 
     @Test
