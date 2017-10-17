@@ -6,11 +6,11 @@ import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
 import org.junit.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.persistence.jpa.test.APersistenceTest;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.assertions.Executable;
 import de.invesdwin.util.time.TimeZones;
 import de.invesdwin.webproxy.geolocation.contract.IGeolocationService;
 import de.invesdwin.webproxy.geolocation.contract.schema.GeolocationRequest.GetGeolocationByCoordinatesRequest;
