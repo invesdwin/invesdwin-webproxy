@@ -6,7 +6,6 @@ import javax.inject.Named;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 
-import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.webproxy.GetPageConfig;
 import de.invesdwin.webproxy.GetStringConfig;
 import de.invesdwin.webproxy.ProxyVerification;
@@ -41,9 +40,14 @@ public class WebproxyServiceHelper {
     }
 
     public WebClient newWebClient(final GetPageConfig config) {
-        Assertions.assertThat(config.isUseProxyPool())
-        .as("newWebClient() can only be called with fixed proxies. For proxy pooling you have to use getPage() instead!")
-        .isFalse();
+        Proxy proxy = config.getFixedProxy();
+        if (proxy == null && config.isUseProxyPool()) {
+            try {
+                proxy = newProxy(config);
+            } catch (final InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return WebClientFactory.initWebClient(config, config.getFixedProxy());
     }
 

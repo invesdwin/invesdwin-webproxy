@@ -3,7 +3,6 @@ package de.invesdwin.webproxy;
 import java.net.URI;
 import java.util.concurrent.ExecutionException;
 
-import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -123,7 +122,7 @@ public class ProxyVerification {
         return false;
     }
 
-    public boolean isOfMinProxyQuality(@Nonnull final Proxy proxy, @Nonnull final ProxyQuality minQuality) {
+    public boolean isOfMinProxyQuality(final Proxy proxy, final ProxyQuality minQuality) {
         Assertions.assertThat(proxy).isNotNull();
         Assertions.assertThat(minQuality).isNotNull();
         if (proxy.getQuality() == null) {
