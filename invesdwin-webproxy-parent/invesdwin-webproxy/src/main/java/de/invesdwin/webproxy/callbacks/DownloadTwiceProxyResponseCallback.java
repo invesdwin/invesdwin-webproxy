@@ -7,7 +7,7 @@ import java.util.Collection;
 import javax.annotation.concurrent.ThreadSafe;
 
 import de.invesdwin.util.assertions.Assertions;
-import de.invesdwin.util.collections.ADelegateCollection;
+import de.invesdwin.util.collections.delegate.ADelegateCollection;
 import de.invesdwin.util.collections.loadingcache.ALoadingCache;
 
 /**
