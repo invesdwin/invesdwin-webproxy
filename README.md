@@ -128,5 +128,5 @@ If you need further assistance or have some ideas for improvements and don't wan
 
 ## Similar Projects
 
-- [Python ProxyBroker](https://github.com/constverum/ProxyBroker)
+- [ProxyBroker](https://github.com/constverum/ProxyBroker) (Python)
 
