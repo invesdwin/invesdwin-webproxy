@@ -128,5 +128,5 @@ If you need further assistance or have some ideas for improvements and don't wan
 
 ## Similar Projects
 
-- [ProxyBroker](https://github.com/constverum/ProxyBroker): Implemented in Python and crawls many free proxy sites, one could integrate this as an `IProxyCrawlerSource` via the command line interface.
+- [ProxyBroker](https://github.com/constverum/ProxyBroker): Implemented in Python and crawls many free proxy sites, one could integrate this as an `IProxyCrawlerSource` via the command line interface it has.
 
