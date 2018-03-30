@@ -11,7 +11,7 @@ import javax.inject.Inject;
 
 import com.gargoylesoftware.htmlunit.Page;
 
-import de.invesdwin.util.concurrent.Futures;
+import de.invesdwin.util.concurrent.future.Futures;
 import de.invesdwin.webproxy.GetPageConfig;
 import de.invesdwin.webproxy.IWebproxyService;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;

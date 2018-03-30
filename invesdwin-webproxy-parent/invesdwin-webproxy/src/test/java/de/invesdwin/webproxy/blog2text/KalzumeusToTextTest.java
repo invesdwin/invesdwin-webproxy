@@ -20,7 +20,7 @@ import de.invesdwin.context.ContextProperties;
 import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
-import de.invesdwin.util.concurrent.Futures;
+import de.invesdwin.util.concurrent.future.Futures;
 import de.invesdwin.util.lang.Strings;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.GetPageConfig;

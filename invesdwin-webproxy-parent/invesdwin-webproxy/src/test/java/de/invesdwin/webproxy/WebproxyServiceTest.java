@@ -15,7 +15,7 @@ import org.junit.Test;
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
 import de.invesdwin.util.assertions.Assertions;
-import de.invesdwin.util.concurrent.Futures;
+import de.invesdwin.util.concurrent.future.Futures;
 import de.invesdwin.util.error.Throwables;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.callbacks.statistics.ConsoleReportStatisticsCallback;

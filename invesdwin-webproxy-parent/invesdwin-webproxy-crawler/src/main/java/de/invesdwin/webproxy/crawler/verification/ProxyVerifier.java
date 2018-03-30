@@ -12,7 +12,7 @@ import javax.inject.Named;
 
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.concurrent.Executors;
-import de.invesdwin.util.concurrent.Futures;
+import de.invesdwin.util.concurrent.future.Futures;
 import de.invesdwin.webproxy.ProxyVerification;
 import de.invesdwin.webproxy.WebproxyProperties;
 import de.invesdwin.webproxy.broker.contract.IBrokerService;
