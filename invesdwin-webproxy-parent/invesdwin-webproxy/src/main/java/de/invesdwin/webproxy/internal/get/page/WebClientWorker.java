@@ -98,7 +98,7 @@ public class WebClientWorker extends ADownloadWorker<Page, GetPageConfig> {
                         .invoke(cPage);
                 if (domListeners.size() > MAX_DOM_LISTENERS) {
                     log.warn(
-                            "%s max dom listeners of %s exceeded on %s [%s]. Aborting because otherwise a memory overflow will happen.",
+                            "%s max dom listeners [%s] exceeded on %s [%s]. Aborting because otherwise a memory overflow will happen.",
                             callback.getClass().getName(), MAX_DOM_LISTENERS,
                             page.getWebResponse().getWebRequest().getUrl(), domListeners.size());
                     return true;
