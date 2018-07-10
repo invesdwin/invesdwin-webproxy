@@ -61,7 +61,7 @@ public class SynScanScheduler implements Runnable {
                     }
                 }
                 //Wait if there are not enough tasks to make me busy
-                lastIteration.sleepRelativeTo(PortscanProperties.UPLOAD_PAUSE_BETWEEN_PACKETS_PER_HOST);
+                lastIteration.sleepRelative(PortscanProperties.UPLOAD_PAUSE_BETWEEN_PACKETS_PER_HOST);
                 lastIteration = new Instant();
             }
         } catch (final InterruptedException e) {
