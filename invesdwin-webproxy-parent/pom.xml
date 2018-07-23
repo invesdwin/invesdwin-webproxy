@@ -34,7 +34,6 @@
 		<version.htmlunit>2.30</version.htmlunit>
 		<version.jpcapng>1.0</version.jpcapng>
 		<version.geoip-api>1.2.11</version.geoip-api>
-		<version.jetty-websocket>8.2.0.v20160908</version.jetty-websocket>
 		<version.xml-apis>1.4.01</version.xml-apis>
 	</properties>
 
@@ -126,26 +125,6 @@
 				<groupId>xml-apis</groupId>
 				<artifactId>xml-apis</artifactId>
 				<version>${version.xml-apis}</version>
-			</dependency>
-			<dependency>
-				<!-- htmlunit still requires old jetty-websocket -->
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-websocket</artifactId>
-				<version>${version.jetty-websocket}</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>jetty-http</artifactId>
-						<groupId>org.eclipse.jetty</groupId>
-					</exclusion>
-					<exclusion>
-						<artifactId>jetty-io</artifactId>
-						<groupId>org.eclipse.jetty</groupId>
-					</exclusion>
-					<exclusion>
-						<artifactId>jetty-util</artifactId>
-						<groupId>org.eclipse.jetty</groupId>
-					</exclusion>
-				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>net.sf.jpcapng</groupId>
