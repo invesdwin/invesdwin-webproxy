@@ -18,7 +18,6 @@ public class DirectGetPageTest extends ATest {
 
     @Test
     public void test() throws InterruptedException {
-        Assertions.assertThat(get.get(new GetPageConfig(), URIs.asUri("https://subes.dyndns.org/index.php")))
-        .isNotNull();
+        Assertions.assertThat(get.get(new GetPageConfig(), URIs.asUri("https://google.com"))).isNotNull();
     }
 }

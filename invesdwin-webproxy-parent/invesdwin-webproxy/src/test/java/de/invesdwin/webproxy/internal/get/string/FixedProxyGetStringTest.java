@@ -21,7 +21,7 @@ import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
 @ThreadSafe
 public class FixedProxyGetStringTest extends ATest {
 
-    private final URI uri = URIs.asUri("https://subes.dyndns.org/index.php");
+    private final URI uri = URIs.asUri("https://google.com");
 
     @Test
     public void testCodeenBot() throws InterruptedException, ExecutionException {

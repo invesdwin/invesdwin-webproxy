@@ -18,7 +18,6 @@ public class DirectGetStringTest extends ATest {
 
     @Test
     public void test() throws InterruptedException {
-        Assertions.assertThat(get.get(new GetStringConfig(), URIs.asUri("https://subes.dyndns.org/index.php")))
-        .isNotNull();
+        Assertions.assertThat(get.get(new GetStringConfig(), URIs.asUri("https://google.com"))).isNotNull();
     }
 }
