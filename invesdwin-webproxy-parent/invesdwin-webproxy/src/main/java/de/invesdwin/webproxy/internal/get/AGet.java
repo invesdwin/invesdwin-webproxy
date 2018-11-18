@@ -56,8 +56,7 @@ public abstract class AGet<E, C extends AGetConfig> {
      */
     private static final WrappedExecutorService CANCELLABLE_INNERER_EXECUTOR = Executors
             .newFixedThreadPool(AGet.class.getSimpleName() + "_Cancellable",
-                    GET_EXECUTOR.getWrappedInstance().getMaximumPoolSize()
-                            + VERIFICATION_EXECUTOR.getWrappedInstance().getMaximumPoolSize())
+                    GET_EXECUTOR.getMaximumPoolSize() + VERIFICATION_EXECUTOR.getMaximumPoolSize())
             .withWaitOnFullPendingCount(true);
 
     @Inject
