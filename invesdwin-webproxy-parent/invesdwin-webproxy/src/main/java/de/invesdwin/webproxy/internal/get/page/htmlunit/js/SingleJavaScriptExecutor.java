@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.internal.get.page.htmlunit.js;
 import javax.annotation.concurrent.ThreadSafe;
 
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.javascript.background.GAEJavaScriptExecutor;
+import com.gargoylesoftware.htmlunit.javascript.background.DefaultJavaScriptExecutor;
 import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptJob;
 import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptJobManager;
 
@@ -11,7 +11,7 @@ import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.concurrent.Threads;
 
 @ThreadSafe
-public class SingleJavaScriptExecutor extends GAEJavaScriptExecutor {
+public class SingleJavaScriptExecutor extends DefaultJavaScriptExecutor {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,8 +21,7 @@ public class SingleJavaScriptExecutor extends GAEJavaScriptExecutor {
         super(webClient);
     }
 
-    @Override
-    public int pumpEventLoop(final long timeoutMillis) {
+    public int pumpEventLoop() {
         final JavaScriptJobManager jobManager = getJobManagerWithEarliestJob();
         if (jobManager == null) {
             return 0;

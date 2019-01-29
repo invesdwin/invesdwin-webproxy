@@ -61,7 +61,7 @@ public final class SingleJavaScriptExecutorHandler {
             while (!Threads.isInterrupted()) {
                 int runCount = 0;
                 for (final SingleJavaScriptExecutor job : JOBS) {
-                    runCount += job.pumpEventLoop(1);
+                    runCount += job.pumpEventLoop();
                     if (Threads.isInterrupted()) {
                         return;
                     }
