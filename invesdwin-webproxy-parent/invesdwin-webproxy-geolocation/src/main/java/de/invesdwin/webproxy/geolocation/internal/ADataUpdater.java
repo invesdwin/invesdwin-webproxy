@@ -15,6 +15,7 @@ import org.apache.commons.io.IOUtils;
 
 import de.invesdwin.context.integration.streams.ADecompressingInputStream;
 import de.invesdwin.context.log.Log;
+import de.invesdwin.util.lang.Closeables;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.fdate.FDate;
@@ -106,8 +107,8 @@ public abstract class ADataUpdater {
                 throw t;
             }
         } finally {
-            IOUtils.closeQuietly(in);
-            IOUtils.closeQuietly(out);
+            Closeables.closeQuietly(in);
+            Closeables.closeQuietly(out);
         }
     }
 
