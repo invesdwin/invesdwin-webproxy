@@ -39,8 +39,8 @@ public class GeoNamesServiceTest extends APersistenceTest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.deactivate(GeoIPServiceStub.class);
-        ctx.deactivate(GeoNamesServiceStub.class);
+        ctx.deactivateBean(GeoIPServiceStub.class);
+        ctx.deactivateBean(GeoNamesServiceStub.class);
     }
 
     @Test

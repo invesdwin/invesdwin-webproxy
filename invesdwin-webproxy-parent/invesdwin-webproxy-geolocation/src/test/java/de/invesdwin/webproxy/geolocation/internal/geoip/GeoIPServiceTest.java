@@ -22,7 +22,7 @@ public class GeoIPServiceTest extends APersistenceTest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.deactivate(GeoIPServiceStub.class);
+        ctx.deactivateBean(GeoIPServiceStub.class);
     }
 
     @Test

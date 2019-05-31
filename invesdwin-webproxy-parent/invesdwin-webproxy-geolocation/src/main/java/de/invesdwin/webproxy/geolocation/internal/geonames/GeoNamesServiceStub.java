@@ -15,7 +15,7 @@ public class GeoNamesServiceStub extends StubSupport implements IGeoNamesService
 
     @Override
     public void setUpContext(final ATest test, final TestContext ctx) {
-        ctx.replace(IGeoNamesService.class, this.getClass());
+        ctx.replaceBean(IGeoNamesService.class, this.getClass());
     }
 
     @Override

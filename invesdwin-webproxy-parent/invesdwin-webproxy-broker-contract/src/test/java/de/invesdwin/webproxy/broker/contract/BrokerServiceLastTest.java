@@ -23,7 +23,7 @@ public class BrokerServiceLastTest extends ATest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.deactivate(BrokerServiceStub.class);
+        ctx.deactivateBean(BrokerServiceStub.class);
         RegistryServiceStub.override("webproxy.broker",
                 URIs.asUri(IntegrationProperties.WEBSERVER_BIND_URI + "/spring-ws/webproxy.broker.wsdl"));
     }

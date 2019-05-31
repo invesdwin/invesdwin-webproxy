@@ -14,7 +14,7 @@ public class TaskAcquirerStub extends StubSupport {
     @Override
     public void setUpContext(final ATest test, final TestContext ctx) throws Exception {
         super.setUpContext(test, ctx);
-        ctx.deactivate(TaskAcquirer.class);
+        ctx.deactivateBean(TaskAcquirer.class);
     }
 
 }

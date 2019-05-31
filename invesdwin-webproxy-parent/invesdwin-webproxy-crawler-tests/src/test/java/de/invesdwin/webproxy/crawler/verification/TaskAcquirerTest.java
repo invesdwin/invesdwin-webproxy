@@ -19,10 +19,10 @@ public class TaskAcquirerTest extends ATest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.replace(IPortscanClient.class, TaskAcquirerCache.class);
-        ctx.deactivate(RegistryServiceStub.class);
-        ctx.replace(IProxyCrawlerSource.class, SpeedtestAtCrawlerSource.class);
-        ctx.deactivate(TaskAcquirerStub.class);
+        ctx.replaceBean(IPortscanClient.class, TaskAcquirerCache.class);
+        ctx.deactivateBean(RegistryServiceStub.class);
+        ctx.replaceBean(IProxyCrawlerSource.class, SpeedtestAtCrawlerSource.class);
+        ctx.deactivateBean(TaskAcquirerStub.class);
     }
 
     @Test

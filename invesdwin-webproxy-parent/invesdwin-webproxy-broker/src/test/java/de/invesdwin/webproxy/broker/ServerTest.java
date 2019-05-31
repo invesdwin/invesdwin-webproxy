@@ -24,7 +24,7 @@ public class ServerTest extends APersistenceTest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.deactivate(BrokerServiceStub.class);
+        ctx.deactivateBean(BrokerServiceStub.class);
         //        ctx.deactivate(RegistryServiceMock.class);
     }
 

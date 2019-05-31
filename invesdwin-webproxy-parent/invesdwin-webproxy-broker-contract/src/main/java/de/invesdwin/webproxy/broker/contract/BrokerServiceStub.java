@@ -51,9 +51,9 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
     @Override
     public void setUpContext(final ATest test, final TestContext ctx) {
         if (enabled) {
-            ctx.replace(IBrokerService.class, this.getClass());
+            ctx.replaceBean(IBrokerService.class, this.getClass());
         } else {
-            ctx.deactivate(this.getClass());
+            ctx.deactivateBean(this.getClass());
         }
     }
 

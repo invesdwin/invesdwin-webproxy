@@ -27,8 +27,8 @@ public class ProxyVerificationTest extends ATest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.deactivate(RegistryServiceStub.class);
-        ctx.deactivate(BrokerServiceStub.class);
+        ctx.deactivateBean(RegistryServiceStub.class);
+        ctx.deactivateBean(BrokerServiceStub.class);
     }
 
     @Test

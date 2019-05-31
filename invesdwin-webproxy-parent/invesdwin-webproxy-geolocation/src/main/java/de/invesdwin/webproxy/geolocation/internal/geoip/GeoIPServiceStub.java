@@ -17,7 +17,7 @@ public class GeoIPServiceStub extends StubSupport implements IGeoIPService {
 
     @Override
     public void setUpContext(final ATest test, final TestContext ctx) {
-        ctx.replace(IGeoIPService.class, this.getClass());
+        ctx.replaceBean(IGeoIPService.class, this.getClass());
     }
 
     @Override

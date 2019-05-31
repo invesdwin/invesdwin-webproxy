@@ -24,7 +24,7 @@ public class TestServer extends APersistenceTest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.deactivate(GeoNamesServiceStub.class);
+        ctx.deactivateBean(GeoNamesServiceStub.class);
         //        ctx.deactivate(RegistryServiceMock.class);
     }
 

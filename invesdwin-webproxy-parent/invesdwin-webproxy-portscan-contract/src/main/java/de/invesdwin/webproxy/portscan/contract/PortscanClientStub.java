@@ -15,7 +15,7 @@ public class PortscanClientStub extends StubSupport implements IPortscanClient {
 
     @Override
     public void setUpContext(final ATest test, final TestContext ctx) {
-        ctx.replace(IPortscanClient.class, PortscanClientStub.class);
+        ctx.replaceBean(IPortscanClient.class, PortscanClientStub.class);
     }
 
     @Override

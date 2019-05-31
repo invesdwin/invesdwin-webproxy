@@ -42,7 +42,7 @@ public class RemotePortscanServiceTest extends ATest {
     @Override
     public void setUpContext(final TestContext ctx) throws Exception {
         super.setUpContext(ctx);
-        ctx.deactivate(PortscanServiceStub.class);
+        ctx.deactivateBean(PortscanServiceStub.class);
     }
 
     @Test

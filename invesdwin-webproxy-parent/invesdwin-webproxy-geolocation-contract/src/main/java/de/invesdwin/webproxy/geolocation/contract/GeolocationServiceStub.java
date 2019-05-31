@@ -21,7 +21,7 @@ public class GeolocationServiceStub extends StubSupport implements IGeolocationS
     @Override
     public void setUpContext(final ATest test, final TestContext ctx) throws Exception {
         super.setUpContext(test, ctx);
-        ctx.replace(IGeolocationService.class, this.getClass());
+        ctx.replaceBean(IGeolocationService.class, this.getClass());
     }
 
     @Override

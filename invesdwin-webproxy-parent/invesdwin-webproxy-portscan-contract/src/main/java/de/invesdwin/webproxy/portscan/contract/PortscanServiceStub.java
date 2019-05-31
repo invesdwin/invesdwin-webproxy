@@ -31,7 +31,7 @@ public class PortscanServiceStub extends StubSupport implements IPortscanService
     @Override
     public void setUpContext(final ATest test, final TestContext ctx) throws Exception {
         super.setUpContext(test, ctx);
-        ctx.replace(IPortscanService.class, this.getClass());
+        ctx.replaceBean(IPortscanService.class, this.getClass());
     }
 
     @Override
