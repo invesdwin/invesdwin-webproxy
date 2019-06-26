@@ -13,7 +13,7 @@ Dependency declaration:
 <dependency>
 	<groupId>de.invesdwin</groupId>
 	<artifactId>invesdwin-webproxy</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version><!---version.invesdwin-webproxy-parent-->
 </dependency>
 ```
 ## Legal Discussion
