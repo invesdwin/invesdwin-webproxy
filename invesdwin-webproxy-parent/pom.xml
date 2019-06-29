@@ -28,9 +28,10 @@
 	</modules>
 
 	<properties>
+		<version.invesdwin-context>1.0.0-SNAPSHOT</version.invesdwin-context>
 		<version.invesdwin-context-persistence>1.0.0-SNAPSHOT</version.invesdwin-context-persistence>
 		<version.invesdwin-context-integration>1.0.0-SNAPSHOT</version.invesdwin-context-integration>
-		<version.invesdwin-webproxy>${version.invesdwin-context}</version.invesdwin-webproxy>
+		<version.invesdwin-webproxy>${project.version}</version.invesdwin-webproxy>
 		<version.htmlunit>2.33</version.htmlunit>
 		<version.jpcapng>1.0</version.jpcapng>
 		<version.geoip-api>1.2.11</version.geoip-api>
