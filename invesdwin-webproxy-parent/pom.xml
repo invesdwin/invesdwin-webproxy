@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -12,23 +13,23 @@
 	<packaging>pom</packaging>
 
 	<modules>
-        <module>invesdwin-webproxy</module>
+		<module>invesdwin-webproxy</module>
 		<module>invesdwin-webproxy-broker</module>
 		<module>invesdwin-webproxy-broker-dist</module>
 		<module>invesdwin-webproxy-broker-contract</module>
-        <module>invesdwin-webproxy-crawler</module>
-        <module>invesdwin-webproxy-crawler-tests</module>
-        <module>invesdwin-webproxy-geolocation</module>
-        <module>invesdwin-webproxy-geolocation-contract</module>
-        <module>invesdwin-webproxy-portscan</module>
-        <module>invesdwin-webproxy-portscan-dist</module>
-        <module>invesdwin-webproxy-portscan-contract</module>
-        <module>invesdwin-webproxy-portscan-contract-amqp</module>
-        <module>invesdwin-webproxy-portscan-contract-jms</module>
+		<module>invesdwin-webproxy-crawler</module>
+		<module>invesdwin-webproxy-crawler-tests</module>
+		<module>invesdwin-webproxy-geolocation</module>
+		<module>invesdwin-webproxy-geolocation-contract</module>
+		<module>invesdwin-webproxy-portscan</module>
+		<module>invesdwin-webproxy-portscan-dist</module>
+		<module>invesdwin-webproxy-portscan-contract</module>
+		<module>invesdwin-webproxy-portscan-contract-amqp</module>
+		<module>invesdwin-webproxy-portscan-contract-jms</module>
 	</modules>
 
 	<properties>
-		<project.version.invesdwin-context>1.0.0-SNAPSHOT</project.version.invesdwin-context>
+		<project.version.invesdwin-context>1.0.0</project.version.invesdwin-context>
 		<project.version.invesdwin-context-persistence>1.0.0-SNAPSHOT</project.version.invesdwin-context-persistence>
 		<project.version.invesdwin-context-integration>1.0.0-SNAPSHOT</project.version.invesdwin-context-integration>
 		<project.version.invesdwin-webproxy>${project.version}</project.version.invesdwin-webproxy>
@@ -40,6 +41,12 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>de.invesdwin</groupId>
+				<artifactId>invesdwin-context-parent</artifactId>
+				<version>${project.version.invesdwin-context}</version>
+				<type>pom</type>
+			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-context-persistence-parent</artifactId>
@@ -139,7 +146,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>central</id>
@@ -165,13 +172,13 @@
 			<url>http://invesdwin.de/artifactory/invesdwin-oss-remote</url>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<scm>
 		<url>https://github.com/subes/invesdwin-webproxy</url>
 		<connection>scm:git:https://github.com/subes/invesdwin-webproxy.git</connection>
 		<tag>HEAD</tag>
 	</scm>
-	
+
 	<ciManagement>
 		<system>jenkins</system>
 		<url>https://invesdwin.de/jenkins/job/dgr-deploy-invesdwin-webproxy/</url>
