@@ -28,10 +28,10 @@
 	</modules>
 
 	<properties>
-		<version.invesdwin-context>1.0.0-SNAPSHOT</version.invesdwin-context>
-		<version.invesdwin-context-persistence>1.0.0-SNAPSHOT</version.invesdwin-context-persistence>
-		<version.invesdwin-context-integration>1.0.0-SNAPSHOT</version.invesdwin-context-integration>
-		<version.invesdwin-webproxy>${project.version}</version.invesdwin-webproxy>
+		<project.version.invesdwin-context>1.0.0-SNAPSHOT</project.version.invesdwin-context>
+		<project.version.invesdwin-context-persistence>1.0.0-SNAPSHOT</project.version.invesdwin-context-persistence>
+		<project.version.invesdwin-context-integration>1.0.0-SNAPSHOT</project.version.invesdwin-context-integration>
+		<project.version.invesdwin-webproxy>${project.version}</project.version.invesdwin-webproxy>
 		<version.htmlunit>2.33</version.htmlunit>
 		<version.jpcapng>1.0</version.jpcapng>
 		<version.geoip-api>1.2.11</version.geoip-api>
@@ -43,14 +43,14 @@
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-context-persistence-parent</artifactId>
-				<version>${version.invesdwin-context-persistence}</version>
+				<version>${project.version.invesdwin-context-persistence}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-context-integration-parent</artifactId>
-				<version>${version.invesdwin-context-integration}</version>
+				<version>${project.version.invesdwin-context-integration}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -58,57 +58,57 @@
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-broker</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-broker-contract</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-crawler</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-crawler-tests</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-geolocation</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-geolocation-contract</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-portscan</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-portscan-contract</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-portscan-contract-amqp</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 			<dependency>
 				<groupId>de.invesdwin</groupId>
 				<artifactId>invesdwin-webproxy-portscan-contract-jms</artifactId>
-				<version>${version.invesdwin-webproxy}</version>
+				<version>${project.version.invesdwin-webproxy}</version>
 			</dependency>
 
 			<dependency>
