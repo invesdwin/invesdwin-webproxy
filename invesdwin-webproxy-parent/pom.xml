@@ -31,7 +31,7 @@
 	<properties>
 		<project.version.invesdwin-context>1.0.0</project.version.invesdwin-context>
 		<project.version.invesdwin-context-persistence>1.0.0</project.version.invesdwin-context-persistence>
-		<project.version.invesdwin-context-integration>1.0.0-SNAPSHOT</project.version.invesdwin-context-integration>
+		<project.version.invesdwin-context-integration>1.0.0</project.version.invesdwin-context-integration>
 		<project.version.invesdwin-webproxy>${project.version}</project.version.invesdwin-webproxy>
 		<version.htmlunit>2.33</version.htmlunit>
 		<version.jpcapng>1.0</version.jpcapng>
