@@ -25,8 +25,8 @@ import de.invesdwin.webproxy.WebproxyProperties;
 @Named
 public class BrokerProxyObjectPool extends AObjectPool<PooledProxy> implements InitializingBean {
 
-    private final WrappedExecutorService proxyCooldownMonitorExecutor = Executors.newFixedCallerRunsThreadPool(
-            getClass().getSimpleName() + "_ProxyCooldown", 1);
+    private final WrappedExecutorService proxyCooldownMonitorExecutor = Executors
+            .newFixedCallerRunsThreadPool(getClass().getSimpleName() + "_ProxyCooldown", 1);
     private final BlockingQueue<PooledProxy> proxyRotation = new LinkedBlockingQueue<PooledProxy>();
     /**
      * To make a bot detection less likely, the proxies get a cooldown time before they are used again. Working proxies
@@ -45,7 +45,7 @@ public class BrokerProxyObjectPool extends AObjectPool<PooledProxy> implements I
     }
 
     @Override
-    protected PooledProxy internalBorrowObject() throws Exception {
+    protected PooledProxy internalBorrowObject() {
         PooledProxy proxy = proxyRotation.poll();
         if (proxy == null) {
             proxy = factory.makeObject();
@@ -59,7 +59,7 @@ public class BrokerProxyObjectPool extends AObjectPool<PooledProxy> implements I
     }
 
     @Override
-    public Collection<PooledProxy> internalClear() throws Exception {
+    public Collection<PooledProxy> internalClear() {
         final Collection<PooledProxy> removed = new ArrayList<PooledProxy>();
         while (proxyRotation.size() > 0) {
             removed.add(proxyRotation.remove());
@@ -68,14 +68,14 @@ public class BrokerProxyObjectPool extends AObjectPool<PooledProxy> implements I
     }
 
     @Override
-    protected PooledProxy internalAddObject() throws Exception {
+    protected PooledProxy internalAddObject() {
         final PooledProxy pooled = factory.makeObject();
         proxyRotation.add(factory.makeObject());
         return pooled;
     }
 
     @Override
-    protected void internalReturnObject(final PooledProxy obj) throws Exception {
+    protected void internalReturnObject(final PooledProxy obj) {
         if (WebproxyProperties.PROXY_POOL_COOLDOWN_ALLOWED) {
             obj.startCoolingDown();
             proxyCooldown.add(obj);
@@ -85,12 +85,12 @@ public class BrokerProxyObjectPool extends AObjectPool<PooledProxy> implements I
     }
 
     @Override
-    protected void internalInvalidateObject(final PooledProxy obj) throws Exception {
+    protected void internalInvalidateObject(final PooledProxy obj) {
         //Nothing happens
     }
 
     @Override
-    protected void internalRemoveObject(final PooledProxy obj) throws Exception {
+    protected void internalRemoveObject(final PooledProxy obj) {
         proxyRotation.remove(obj);
     }
 
@@ -116,7 +116,7 @@ public class BrokerProxyObjectPool extends AObjectPool<PooledProxy> implements I
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         setFactory(brokerProxyPoolableObjectFactory);
     }
 

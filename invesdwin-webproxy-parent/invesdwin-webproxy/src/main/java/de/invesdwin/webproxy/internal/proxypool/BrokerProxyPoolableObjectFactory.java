@@ -86,12 +86,12 @@ public final class BrokerProxyPoolableObjectFactory implements IPoolableObjectFa
     }
 
     @Override
-    public void destroyObject(final PooledProxy obj) throws Exception {}
+    public void destroyObject(final PooledProxy obj) {}
 
     @Override
-    public void activateObject(final PooledProxy obj) throws Exception {}
+    public void activateObject(final PooledProxy obj) {}
 
     @Override
-    public void passivateObject(final PooledProxy obj) throws Exception {}
+    public void passivateObject(final PooledProxy obj) {}
 
 }
