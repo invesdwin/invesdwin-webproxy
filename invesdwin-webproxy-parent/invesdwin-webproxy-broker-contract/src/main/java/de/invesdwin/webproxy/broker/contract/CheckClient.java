@@ -15,7 +15,7 @@ public final class CheckClient {
     public static final String CHECK = "check";
     public static final String CLIENT_IP = "clientip";
     public static final String CLIENT_IP_PARAM = "{" + CLIENT_IP + "}";
-    public static final String PROXY_QUALITY = "proxyquality_" + CLIENT_IP_PARAM + "_check";
+    public static final String PROXY_QUALITY = "proxyquality+" + CLIENT_IP_PARAM + "+check";
 
     private DestinationProvider destinationProvider;
 
