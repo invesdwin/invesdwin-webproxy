@@ -9,7 +9,6 @@ import java.util.List;
 import javax.annotation.concurrent.NotThreadSafe;
 import javax.inject.Inject;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import com.gargoylesoftware.htmlunit.html.DomElement;
@@ -21,6 +20,7 @@ import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
 import de.invesdwin.util.concurrent.future.Futures;
+import de.invesdwin.util.lang.Files;
 import de.invesdwin.util.lang.Strings;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.GetPageConfig;
@@ -63,7 +63,7 @@ public class KalzumeusToTextTest extends ATest {
                     }
                 }
                 for (final String text : list) {
-                    FileUtils.writeStringToFile(
+                    Files.writeStringToFile(
                             new File(ContextProperties.getCacheDirectory(), "kalzumeus_" + curPost + ".txt"), text);
                     curPost++;
                 }

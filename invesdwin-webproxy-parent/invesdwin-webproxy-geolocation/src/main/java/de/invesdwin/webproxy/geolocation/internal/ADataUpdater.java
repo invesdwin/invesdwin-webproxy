@@ -10,12 +10,12 @@ import java.net.URL;
 
 import javax.annotation.concurrent.Immutable;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import de.invesdwin.context.integration.streams.ADecompressingInputStream;
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.lang.Closeables;
+import de.invesdwin.util.lang.Files;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.fdate.FDate;
@@ -46,43 +46,43 @@ public abstract class ADataUpdater {
     }
 
     protected boolean targetFileAlreadyExists(final File targetFile) {
-        return targetFile.exists() && FileUtils.sizeOf(targetFile) > 0;
+        return targetFile.exists() && Files.sizeOf(targetFile) > 0;
     }
 
     protected void updateFile(final URL sourceUrl, final File targetFile) throws IOException {
         final File tempTargetFile = new File(targetFile.getAbsolutePath() + ".part");
         try {
             final Instant start = new Instant();
-            FileUtils.deleteQuietly(tempTargetFile);
+            Files.deleteQuietly(tempTargetFile);
             downloadNewFile(sourceUrl, tempTargetFile);
             replaceFile(targetFile, tempTargetFile);
             log.info("%s successfully updated after %s", targetFile, start);
         } catch (final FileNotFoundException e) {
-            FileUtils.deleteQuietly(tempTargetFile);
+            Files.deleteQuietly(tempTargetFile);
             throw e;
         } catch (final IOException e) {
-            FileUtils.deleteQuietly(tempTargetFile);
+            Files.deleteQuietly(tempTargetFile);
             throw e;
         }
     }
 
     protected void replaceFile(final File targetFile, final File tempTargetFile) throws IOException {
         log.info("%s successfully downloaded, now replacing %s with the new version", tempTargetFile, targetFile);
-        FileUtils.deleteQuietly(targetFile);
-        FileUtils.moveFile(tempTargetFile, targetFile);
+        Files.deleteQuietly(targetFile);
+        Files.moveFile(tempTargetFile, targetFile);
 
     }
 
     protected boolean shouldNewFileBeDownloaded(final URL sourceUrl, final File targetFile) throws IOException {
         final long sourceLastModified = URIs.connect(sourceUrl).lastModified();
-        final boolean thereIsANewSourceFile = FileUtils.isFileOlder(targetFile, sourceLastModified);
+        final boolean thereIsANewSourceFile = Files.isFileOlder(targetFile, sourceLastModified);
         final boolean currentFileIsFromLastMonth = !FDates.isSameMonth(new FDate(targetFile.lastModified()),
                 new FDate());
         return thereIsANewSourceFile && currentFileIsFromLastMonth;
     }
 
     protected void downloadNewFile(final URL sourceUrl, final File targetFile) throws IOException {
-        FileUtils.forceMkdir(targetFile.getParentFile());
+        Files.forceMkdir(targetFile.getParentFile());
         log.info("Downloading %s to %s", sourceUrl, targetFile);
         InputStream in = null;
         OutputStream out = null;
