@@ -16,6 +16,7 @@ import de.invesdwin.context.integration.streams.ADecompressingInputStream;
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.lang.Closeables;
 import de.invesdwin.util.lang.Files;
+import de.invesdwin.util.lang.description.TextDescription;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.fdate.FDate;
@@ -87,7 +88,8 @@ public abstract class ADataUpdater {
         InputStream in = null;
         OutputStream out = null;
         try {
-            in = new ADecompressingInputStream() {
+            in = new ADecompressingInputStream(new TextDescription("%s: downloadNewFile(%s, %s)",
+                    ADataUpdater.class.getSimpleName(), sourceUrl, targetFile)) {
                 @Override
                 protected InputStream innerNewDelegate() {
                     try {
