@@ -16,7 +16,7 @@ import javax.inject.Named;
 import com.google.common.collect.Iterables;
 
 import de.invesdwin.context.log.Log;
-import de.invesdwin.util.collections.Lists;
+import de.invesdwin.util.collections.list.Lists;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
 import de.invesdwin.webproxy.broker.contract.ProxyUtil;
