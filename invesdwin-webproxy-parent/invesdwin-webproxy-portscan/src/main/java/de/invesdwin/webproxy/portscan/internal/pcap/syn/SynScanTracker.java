@@ -50,7 +50,8 @@ public class SynScanTracker extends AScanTracker {
     SynScanTracker(final ISynListener listener, final InetAddress host, final List<Integer> toBeScannedPorts,
             final boolean randomScan) {
         super(host, LOCK, OPEN_REQUESTS_COUNTER, PortscanProperties.MAX_OPEN_SYN_REQUESTS, RESPONSE_TIMEOUT);
-        this.listener_interestedPorts.put(listener, Collections.unmodifiableSet(new HashSet<Integer>(toBeScannedPorts)));
+        this.listener_interestedPorts.put(listener,
+                Collections.unmodifiableSet(new HashSet<Integer>(toBeScannedPorts)));
         this.toBeScannedPorts = new ArrayList<Integer>(toBeScannedPorts);
         this.randomScan = randomScan;
     }
@@ -122,7 +123,7 @@ public class SynScanTracker extends AScanTracker {
     }
 
     boolean isReadyForRemoval() {
-        return markedForRemoval != null && new Duration(markedForRemoval).isGreaterThan(REMOVAL_TIMEOUT);
+        return markedForRemoval != null && markedForRemoval.isGreaterThan(REMOVAL_TIMEOUT);
     }
 
     boolean hostRespondedPositiveOnPort(final Integer port) {

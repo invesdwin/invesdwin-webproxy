@@ -61,11 +61,11 @@ public final class PooledProxy extends Proxy {
     }
 
     public boolean isCooledDown() {
-        return new Instant().after(cooledDown);
+        return new Instant().isAfter(cooledDown);
     }
 
     public boolean isWarmupTimeoutExpired() {
-        return !isWarmedUp() || new Duration(warmedUp).isGreaterThan(WebproxyProperties.PROXY_POOL_WARMUP_TIMEOUT);
+        return !isWarmedUp() || warmedUp.isGreaterThan(WebproxyProperties.PROXY_POOL_WARMUP_TIMEOUT);
     }
 
     public synchronized ProxyStatistics toStatistics(final int proxiesImPool, final Throwable reason) {

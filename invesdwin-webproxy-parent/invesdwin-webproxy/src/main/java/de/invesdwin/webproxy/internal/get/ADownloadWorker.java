@@ -17,6 +17,7 @@ import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 @ThreadSafe
 public abstract class ADownloadWorker<E, C extends AGetConfig> implements Callable<E> {
 
+    private static final Duration CLOSE_TIMEOUT = new Duration(2, FTimeUnit.MINUTES);
     private final Log log = new Log(this);
     private final C config;
     private final URI uri;
@@ -48,7 +49,7 @@ public abstract class ADownloadWorker<E, C extends AGetConfig> implements Callab
         final Instant waitBegin = new Instant();
         while (!closed) {
             Threads.throwIfInterrupted();
-            if (new Duration(waitBegin).isGreaterThan(2, FTimeUnit.MINUTES)) {
+            if (waitBegin.isGreaterThan(CLOSE_TIMEOUT)) {
                 if (log.isWarnEnabled()) {
                     String warning = "The download cannot be closed for [" + uri + "] !";
                     if (proxy != null) {

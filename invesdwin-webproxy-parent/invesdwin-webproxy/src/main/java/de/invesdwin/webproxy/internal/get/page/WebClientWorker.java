@@ -21,7 +21,6 @@ import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.lang.Reflections;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.time.Instant;
-import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.GetPageConfig;
 import de.invesdwin.webproxy.WebClientFactory;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
@@ -75,7 +74,7 @@ public class WebClientWorker extends ADownloadWorker<Page, GetPageConfig> {
             final Instant start = new Instant();
             boolean timeExpired;
             do {
-                timeExpired = new Duration(start).isGreaterThan(callback.getMaxDelay());
+                timeExpired = start.isGreaterThan(callback.getMaxDelay());
                 if (timeExpired || callback.isDownloadFinished(client, page)
                         || abortOnTooManyDomListeners(callback, page)) {
                     if (timeExpired) {

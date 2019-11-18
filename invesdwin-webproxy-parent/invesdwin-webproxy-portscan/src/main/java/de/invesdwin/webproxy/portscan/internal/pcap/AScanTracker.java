@@ -66,8 +66,7 @@ public abstract class AScanTracker extends AValueObject {
 
     public boolean isResponseTimeoutExpired() {
         synchronized (lock) {
-            if (status == ScanStatus.WAIT_FOR_RESPONSE
-                    && new Duration(lastSentRequest).isGreaterThan(responseTimeout)) {
+            if (status == ScanStatus.WAIT_FOR_RESPONSE && lastSentRequest.isGreaterThan(responseTimeout)) {
                 setStatus(ScanStatus.WAIT_FOR_REQUEST);
                 return true;
             } else {

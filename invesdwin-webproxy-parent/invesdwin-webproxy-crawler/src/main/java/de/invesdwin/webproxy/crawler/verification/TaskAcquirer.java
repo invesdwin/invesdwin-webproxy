@@ -161,7 +161,7 @@ public class TaskAcquirer implements IStartupHook, IShutdownHook {
             if (delay != null) {
                 final Instant delayStart = new Instant();
                 boolean logOnce = true;
-                while (new Duration(delayStart).isLessThan(CrawlerProperties.MAX_RANDOM_SCAN_DURATION)
+                while (delayStart.isLessThan(CrawlerProperties.MAX_RANDOM_SCAN_DURATION)
                         && !cache.isCacheReadyForProcessing(restProcessingAllowed)) {
                     Threads.throwIfInterrupted();
                     if (logOnce) {
