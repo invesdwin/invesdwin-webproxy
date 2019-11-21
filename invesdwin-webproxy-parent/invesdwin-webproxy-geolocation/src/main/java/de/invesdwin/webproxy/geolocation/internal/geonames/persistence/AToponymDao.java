@@ -30,7 +30,7 @@ public abstract class AToponymDao<E extends AToponymEntity> extends ADao<E> impl
      * Calculating the Euclidian distances and after that determining the 1-nearest-neighbour.
      * 
      * <pre>
-     * d(lat, long) = sqrt( ( lat1 - lat1 ) ^2 + ( long2 - long2 ) ^2 )
+     * d(lat, long) = sqrt( ( lat1 - lat2 ) ^2 + ( long1 - long2 ) ^2 )
      * </pre>
      * 
      * We spare us the sqrt because it does not change the order. It just decreases performance.
