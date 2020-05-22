@@ -12,7 +12,7 @@ import de.invesdwin.util.time.fdate.FTimeUnit;
 @Immutable
 public final class WebproxyProperties {
 
-    public static final BrowserVersion DEFAULT_BROWSER_VERION = BrowserVersion.FIREFOX_52;
+    public static final BrowserVersion DEFAULT_BROWSER_VERION = BrowserVersion.FIREFOX_68;
     public static final int MAX_PARALLEL_DOWNLOADS;
 
     public static final boolean PROXY_VERIFICATION_RETRY_ON_ALL_EXCEPTIONS;
@@ -50,7 +50,8 @@ public final class WebproxyProperties {
                 .getBoolean("AUTO_NOTIFY_ABOUT_NOT_WORKING_POOLED_PROXIES");
     }
 
-    private WebproxyProperties() {}
+    private WebproxyProperties() {
+    }
 
     private static int leseDefaultMaxRetries() {
         final String key = "DEFAULT_MAX_DOWNLOAD_RETRIES";

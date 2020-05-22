@@ -2,7 +2,7 @@ package de.invesdwin.webproxy;
 
 import javax.annotation.concurrent.Immutable;
 
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.gargoylesoftware.htmlunit.HttpWebConnection;
@@ -29,7 +29,8 @@ public final class WebClientFactory {
         BackgroundJavaScriptFactory.setFactory(new HackedBackgroundJavaScriptFactory());
     }
 
-    private WebClientFactory() {}
+    private WebClientFactory() {
+    }
 
     /**
      * Webclients are not thread safe, thus each download needs to have its own.
@@ -42,12 +43,12 @@ public final class WebClientFactory {
         client.setAjaxController(new NicelyResynchronizingAjaxController());
         client.setWebConnection(new HttpWebConnection(client) {
             @Override
-            protected HttpClientBuilder createHttpClient() {
-                final HttpClientBuilder builder = super.createHttpClient();
-                builder.setHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+            protected HttpClientBuilder createHttpClientBuilder() {
+                final HttpClientBuilder builder = super.createHttpClientBuilder();
+                builder.setSSLHostnameVerifier(new NoopHostnameVerifier());
                 builder.setMaxConnTotal(WebproxyProperties.MAX_PARALLEL_DOWNLOADS);
                 builder.setMaxConnPerRoute(WebproxyProperties.MAX_PARALLEL_DOWNLOADS);
-                builder.setSslcontext(SslSocksProxySocketFactory.createTrustAnythingSslContext());
+                builder.setSSLContext(SslSocksProxySocketFactory.createTrustAnythingSslContext());
                 return builder;
             }
         });
@@ -61,8 +62,9 @@ public final class WebClientFactory {
         client.getOptions().setCssEnabled(config.isCssEnabled());
         client.getOptions().setTimeout(ContextProperties.DEFAULT_NETWORK_TIMEOUT.intValue(FTimeUnit.MILLISECONDS));
         if (proxy != null) {
-            client.getOptions().setProxyConfig(
-                    new ProxyConfig(proxy.getHost(), proxy.getPort(), proxy.getType() == ProxyType.SOCKS));
+            client.getOptions()
+                    .setProxyConfig(
+                            new ProxyConfig(proxy.getHost(), proxy.getPort(), proxy.getType() == ProxyType.SOCKS));
         } else {
             client.getOptions().setProxyConfig(new ProxyConfig());
         }
