@@ -30,7 +30,7 @@
 		<project.version.invesdwin-context-persistence>1.0.3-SNAPSHOT</project.version.invesdwin-context-persistence>
 		<project.version.invesdwin-context-integration>1.0.2-SNAPSHOT</project.version.invesdwin-context-integration>
 		<project.version.invesdwin-webproxy>${project.version}</project.version.invesdwin-webproxy>
-		<version.htmlunit>2.33</version.htmlunit>
+		<version.htmlunit>2.37.0</version.htmlunit>
 		<version.jpcapng>1.0</version.jpcapng>
 		<version.geoip-api>1.2.11</version.geoip-api>
 		<version.xml-apis>1.4.01</version.xml-apis>
