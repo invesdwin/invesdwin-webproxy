@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Configurable;
 
-import de.invesdwin.context.integration.IntegrationProperties;
+import de.invesdwin.context.ContextProperties;
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.bean.AValueObject;
@@ -111,7 +111,7 @@ public abstract class AGetConfig extends AValueObject {
     }
 
     public AGetConfig withSystemProxyAsFixedProxy() {
-        final java.net.Proxy systemProxyJava = IntegrationProperties.getSystemProxy();
+        final java.net.Proxy systemProxyJava = ContextProperties.getSystemProxy();
         if (systemProxyJava != null) {
             final Proxy systemProxy = ProxyUtil.valueOf(systemProxyJava);
             withFixedProxy(systemProxy);
