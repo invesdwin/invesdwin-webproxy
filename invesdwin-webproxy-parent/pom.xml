@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>de.invesdwin</groupId>
@@ -30,7 +32,7 @@
 		<project.version.invesdwin-context-persistence>1.0.3-SNAPSHOT</project.version.invesdwin-context-persistence>
 		<project.version.invesdwin-context-integration>1.0.2-SNAPSHOT</project.version.invesdwin-context-integration>
 		<project.version.invesdwin-webproxy>${project.version}</project.version.invesdwin-webproxy>
-		<version.htmlunit>2.37.0</version.htmlunit>
+		<version.htmlunit>2.40.0</version.htmlunit>
 		<version.jpcapng>1.0</version.jpcapng>
 		<version.geoip-api>1.2.11</version.geoip-api>
 		<version.xml-apis>1.4.01</version.xml-apis>
@@ -126,6 +128,7 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+
 			<dependency>
 				<groupId>xml-apis</groupId>
 				<artifactId>xml-apis</artifactId>
