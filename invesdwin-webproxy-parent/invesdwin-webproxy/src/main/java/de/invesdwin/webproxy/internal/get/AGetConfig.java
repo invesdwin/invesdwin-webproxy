@@ -12,10 +12,10 @@ import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Configurable;
 
-import de.invesdwin.context.ContextProperties;
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.bean.AValueObject;
+import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.ProxyVerification;
 import de.invesdwin.webproxy.WebproxyProperties;
@@ -111,7 +111,7 @@ public abstract class AGetConfig extends AValueObject {
     }
 
     public AGetConfig withSystemProxyAsFixedProxy() {
-        final java.net.Proxy systemProxyJava = ContextProperties.getSystemProxy();
+        final java.net.Proxy systemProxyJava = URIs.getSystemProxy();
         if (systemProxyJava != null) {
             final Proxy systemProxy = ProxyUtil.valueOf(systemProxyJava);
             withFixedProxy(systemProxy);
