@@ -1,5 +1,7 @@
 package de.invesdwin.webproxy.internal.get.page;
 
+import java.util.concurrent.ExecutionException;
+
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
@@ -17,7 +19,10 @@ public class DirectGetPageTest extends ATest {
     private DirectGetPage get;
 
     @Test
-    public void test() throws InterruptedException {
-        Assertions.assertThat(get.get(new GetPageConfig(), URIs.asUri("https://google.com"))).isNotNull();
+    public void test() throws InterruptedException, ExecutionException {
+        Assertions.assertThat(get.get(new GetPageConfig(), URIs.asUri("https://google.com")).get()).isNotNull();
+        Assertions.assertThat(get.get(new GetPageConfig(), URIs.asUri(
+                "https://www.ariva.de/dax-index/historische_kurse?boerse_id=12&month=&clean_split=1&clean_payout=1&clean_bezug=1&currency=EUR"))
+                .get()).isNotNull();
     }
 }

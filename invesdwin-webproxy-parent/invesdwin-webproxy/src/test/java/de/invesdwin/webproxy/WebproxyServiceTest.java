@@ -12,6 +12,10 @@ import javax.inject.Inject;
 import org.assertj.core.api.Fail;
 import org.junit.Test;
 
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
 import de.invesdwin.util.assertions.Assertions;
@@ -63,6 +67,14 @@ public class WebproxyServiceTest extends ATest {
     public void testGetPage() throws IOException, InterruptedException {
         final GetPageConfig config = new GetPageConfig();
         Assertions.assertThat(service.getPage(config, URIs.asUri("http://google.com"))).isNotNull();
+    }
+
+    @Test
+    public void testClientGetPage() throws FailingHttpStatusCodeException, IOException {
+        final WebClient client = service.newWebClient(new GetPageConfig());
+        final HtmlPage overviewPage = client.getPage(URIs.asUrl(
+                "https://www.ariva.de/dax-index/historische_kurse?boerse_id=12&month=&clean_split=1&clean_payout=1&clean_bezug=1&currency=EUR"));
+        Assertions.checkNotNull(overviewPage);
     }
 
     @Test
