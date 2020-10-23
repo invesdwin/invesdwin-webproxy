@@ -1,6 +1,6 @@
 package de.invesdwin.webproxy.portscan.contract;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.annotation.concurrent.ThreadSafe;
@@ -45,13 +45,13 @@ public class PortscanServiceStub extends StubSupport implements IPortscanService
      */
     @Override
     public void scan(final ScanRequest request) {
-        final Set<Integer> respondingPorts = new HashSet<Integer>();
+        final Set<Integer> respondingPorts = new LinkedHashSet<Integer>();
         if (request.getToBeScannedPorts().size() > 0) {
             respondingPorts.addAll(request.getToBeScannedPorts());
         } else {
             respondingPorts.addAll(Addresses.ALL_PORTS);
         }
-        for (final Integer port : Iterables.limit(request.getToBeScannedPorts(), 10)) {
+        for (final Integer port : Iterables.limit(respondingPorts, 10)) {
             final ScanResponse response = new ScanResponse();
             response.setScannedHost(request.getToBeScannedHost());
             response.setRespondingPort(port);

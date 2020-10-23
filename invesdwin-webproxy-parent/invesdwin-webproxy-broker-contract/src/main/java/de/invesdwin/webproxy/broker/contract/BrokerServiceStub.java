@@ -74,7 +74,7 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
         final GetTaskForCrawlerResponse response = new GetTaskForCrawlerResponse();
         response.setCrawlForProxies(crawlForProxies);
         if (response.isCrawlForProxies()) {
-            crawlForProxies = false;
+            BrokerServiceStub.crawlForProxies = false;
         } else {
             for (final RawProxy rawProxy : Iterables.limit(rawProxies, BrokerContractProperties.MAX_PROXIES_PER_TASK)) {
                 response.getToBeVerifiedProxies().add(rawProxy);
