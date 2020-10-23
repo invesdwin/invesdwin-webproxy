@@ -37,9 +37,9 @@ public class FreeProxyListsComCrawlerSource extends AUrisProxyCrawlerSourceTempl
         @Override
         public boolean isDownloadFinished(final WebClient client, final Page page) {
             final HtmlPage p = (HtmlPage) page;
-            String table = HtmlPages.extractTableRows((HtmlPage) page, CSV_VERIFICATION_2);
+            String table = HtmlPages.extractTableRows(p, CSV_VERIFICATION_2);
             if (Strings.isBlank(table)) {
-                table = HtmlPages.extractTableRows((HtmlPage) page, CSV_VERIFICATION_4);
+                table = HtmlPages.extractTableRows(p, CSV_VERIFICATION_4);
             }
             return !Strings.isBlank(table);
         }

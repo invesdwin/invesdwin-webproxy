@@ -33,7 +33,7 @@ public class HideMyAssComCrawlerSource extends AUrisProxyCrawlerSourceTemplate {
             final String href = l.getHrefAttribute();
             final String linkPath = href.replace("/", "");
             try {
-                final int s = Integer.valueOf(linkPath);
+                final int s = Integer.parseInt(linkPath);
                 if (s > lastPage) {
                     lastPage = s;
                 }

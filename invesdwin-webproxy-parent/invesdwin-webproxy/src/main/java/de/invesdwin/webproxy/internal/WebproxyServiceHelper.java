@@ -48,7 +48,7 @@ public class WebproxyServiceHelper {
                 throw new RuntimeException(e);
             }
         }
-        return WebClientFactory.initWebClient(config, config.getFixedProxy());
+        return WebClientFactory.initWebClient(config, proxy);
     }
 
 }
