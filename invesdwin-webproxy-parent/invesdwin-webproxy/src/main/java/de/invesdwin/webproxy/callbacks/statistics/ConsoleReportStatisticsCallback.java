@@ -105,7 +105,7 @@ public class ConsoleReportStatisticsCallback extends AStatisticsCallback {
     /**
      * May be called after all DownloadSessions are finished.
      */
-    public void logFinalReport() {
+    public synchronized void logFinalReport() {
         logReport(allSessions);
     }
 
