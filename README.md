@@ -5,7 +5,7 @@ A parallel download manager for web scraping that supports proxy servers. Develo
 
 Releases and snapshots are deployed to this maven repository:
 ```
-https://invesdwin.de/artifactory/invesdwin-oss-remote
+https://invesdwin.de/repo/invesdwin-oss-remote
 ```
 
 Dependency declaration:
