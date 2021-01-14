@@ -174,8 +174,8 @@
 	</pluginRepositories>
 
 	<scm>
-		<url>https://github.com/subes/invesdwin-webproxy</url>
-		<connection>scm:git:https://github.com/subes/invesdwin-webproxy.git</connection>
+		<url>https://github.com/invesdwin/invesdwin-webproxy</url>
+		<connection>scm:git:https://github.com/invesdwin/invesdwin-webproxy.git</connection>
 		<tag>HEAD</tag>
 	</scm>
 
