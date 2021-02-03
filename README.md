@@ -31,6 +31,8 @@ nested exception is java.lang.UnsatisfiedLinkError: /tmp/xyz.tmp:
 libpcap.so.0.8: cannot open shared object file: No such file or directory
 ```
 
+If you have other issues with the native library loading, you might have to compile jpcapng yourself: https://github.com/subes/jpcapng
+
 ## Legal Discussion
 
 Please be aware that web scraping is a bit of a grey area in a legal sense. For personal use it is normally not a problem to do web scraping and data extraction as long as the terms of use given by the specific website allow automated processing as a use case. Though you might still not be allowed to do whatever you want with the acquired information as there are database laws in many countries that prohibit redistribution of such acquired data. Also commercial use of such data is often not allowed. On the other hand it is mostly allowed to do web scraping in a manner like google or other search/index companies do. It is often tolerated to redistribute parts of the data as long as e.g. not more than 25% of the original data is exposed (which again is a grey area definition and nothing to be counted on). Or it might be allowed to redistribute an aggregated form of the data like statistics or other kinds of measurements. In any case you should consult a lawyer for your specific case if you are in doubt about the legality of what you are doing.
