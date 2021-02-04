@@ -31,6 +31,13 @@ nested exception is java.lang.UnsatisfiedLinkError: /tmp/xyz.tmp:
 libpcap.so.0.8: cannot open shared object file: No such file or directory
 ```
 
+On CentOS you might also need to create a symbolic link for the file: https://github.com/mehrdadrad/mylg/issues/74
+
+```
+cd /usr/lib64/
+ln -s libpcap.so.1.5.3 libpcap.so.0.8
+```
+
 If you have other issues with the native library loading, you might have to compile jpcapng yourself: https://github.com/subes/jpcapng
 
 ## Legal Discussion
