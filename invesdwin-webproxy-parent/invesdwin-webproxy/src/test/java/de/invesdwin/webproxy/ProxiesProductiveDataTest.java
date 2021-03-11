@@ -101,7 +101,7 @@ public class ProxiesProductiveDataTest extends ATest {
                 }
             };
         }.start();
-        executor.awaitPendingCount(0);
+        executor.awaitPendingCountZero();
         executor.shutdown();
         callback.logFinalReport();
         Assertions.assertThat(notWorkingProxies.get()).isZero();
