@@ -6,7 +6,7 @@
 		<version>1.0.3</version>
 	</parent>
 	<artifactId>invesdwin-webproxy-parent</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -174,7 +174,7 @@
 	<scm>
 		<url>https://github.com/invesdwin/invesdwin-webproxy</url>
 		<connection>scm:git:https://github.com/invesdwin/invesdwin-webproxy.git</connection>
-		<tag>invesdwin-webproxy-parent-1.0.2</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<ciManagement>
