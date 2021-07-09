@@ -6,8 +6,8 @@ import org.apache.commons.math3.random.RandomDataGenerator;
 
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.time.Instant;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
-import de.invesdwin.util.time.fdate.FTimeUnit;
 import de.invesdwin.webproxy.WebproxyProperties;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.callbacks.statistics.basis.ProxyStatistics;

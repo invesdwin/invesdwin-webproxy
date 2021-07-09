@@ -6,8 +6,8 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import de.invesdwin.context.system.properties.SystemProperties;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
-import de.invesdwin.util.time.fdate.FTimeUnit;
 
 @Immutable
 public final class WebproxyProperties {

@@ -12,7 +12,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.javascript.background.BackgroundJavaScriptFactory;
 
 import de.invesdwin.context.ContextProperties;
-import de.invesdwin.util.time.fdate.FTimeUnit;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
 import de.invesdwin.webproxy.internal.get.page.htmlunit.CountingRefreshHandler;

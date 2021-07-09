@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import de.invesdwin.context.integration.network.RandomIpGenerator;
 import de.invesdwin.context.persistence.jpa.test.APersistenceTestPreparer;
-import de.invesdwin.util.time.fdate.FDate;
-import de.invesdwin.util.time.fdate.FTimeUnit;
+import de.invesdwin.util.time.date.FDate;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;

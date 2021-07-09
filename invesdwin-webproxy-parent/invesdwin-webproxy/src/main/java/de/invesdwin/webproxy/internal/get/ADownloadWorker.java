@@ -10,8 +10,8 @@ import javax.annotation.concurrent.ThreadSafe;
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.concurrent.Threads;
 import de.invesdwin.util.time.Instant;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
-import de.invesdwin.util.time.fdate.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 
 @ThreadSafe

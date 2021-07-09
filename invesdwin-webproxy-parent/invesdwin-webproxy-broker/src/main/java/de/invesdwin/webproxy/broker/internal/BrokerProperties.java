@@ -3,9 +3,9 @@ package de.invesdwin.webproxy.broker.internal;
 import javax.annotation.concurrent.Immutable;
 
 import de.invesdwin.context.system.properties.SystemProperties;
+import de.invesdwin.util.time.date.FDate;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
-import de.invesdwin.util.time.fdate.FDate;
-import de.invesdwin.util.time.fdate.FTimeUnit;
 
 @Immutable
 public final class BrokerProperties {

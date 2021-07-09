@@ -16,7 +16,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 
 import de.invesdwin.context.ContextProperties;
 import de.invesdwin.util.error.UnknownArgumentException;
-import de.invesdwin.util.time.fdate.FTimeUnit;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
 import de.invesdwin.webproxy.internal.get.string.httpclient.socketfactory.ASocksProxySocketFactory;

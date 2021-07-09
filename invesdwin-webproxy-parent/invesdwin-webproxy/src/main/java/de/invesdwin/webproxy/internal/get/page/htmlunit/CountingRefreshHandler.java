@@ -10,7 +10,7 @@ import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WaitingRefreshHandler;
 
 import de.invesdwin.context.ContextProperties;
-import de.invesdwin.util.time.fdate.FTimeUnit;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.GetPageConfig;
 
 /**

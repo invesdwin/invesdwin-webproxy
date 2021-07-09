@@ -10,7 +10,7 @@ import javax.persistence.TemporalType;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.invesdwin.context.persistence.jpa.api.dao.ADao;
-import de.invesdwin.util.time.fdate.FDate;
+import de.invesdwin.util.time.date.FDate;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
 import de.invesdwin.webproxy.broker.internal.BrokerProperties;
 

@@ -15,8 +15,8 @@ import javax.validation.constraints.Min;
 
 import de.invesdwin.context.persistence.jpa.api.dao.entity.identity.AEntityWithIdentity;
 import de.invesdwin.util.lang.uri.Addresses;
-import de.invesdwin.util.time.fdate.FDate;
-import de.invesdwin.util.time.fdate.FDates;
+import de.invesdwin.util.time.date.FDate;
+import de.invesdwin.util.time.date.FDates;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;

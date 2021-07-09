@@ -7,8 +7,8 @@ import javax.annotation.concurrent.Immutable;
 import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
 
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
-import de.invesdwin.util.time.fdate.FTimeUnit;
 
 /**
  * With this class you can delay the closing of the virtual browser window and thus delay the stopping of the javascript

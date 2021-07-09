@@ -7,8 +7,8 @@ import javax.annotation.concurrent.Immutable;
 import de.invesdwin.context.system.properties.SystemProperties;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.lang.uri.Addresses;
+import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
-import de.invesdwin.util.time.fdate.FTimeUnit;
 
 /**
  * @see <a href="http://www.networkuptime.com/nmap/page09-09.shtml">Timings</a>
