@@ -14,11 +14,11 @@ import javax.inject.Named;
 
 import org.springframework.beans.factory.InitializingBean;
 
-import de.invesdwin.context.pool.AObjectPool;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.concurrent.Threads;
 import de.invesdwin.util.concurrent.WrappedExecutorService;
+import de.invesdwin.util.concurrent.pool.AObjectPool;
 import de.invesdwin.webproxy.WebproxyProperties;
 
 @ThreadSafe

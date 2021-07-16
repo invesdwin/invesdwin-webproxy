@@ -11,7 +11,7 @@ import javax.inject.Named;
 import de.invesdwin.context.integration.retry.Retry;
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.integration.retry.RetryLaterRuntimeException;
-import de.invesdwin.context.pool.IPoolableObjectFactory;
+import de.invesdwin.util.concurrent.pool.IPoolableObjectFactory;
 import de.invesdwin.webproxy.ProxyVerification;
 import de.invesdwin.webproxy.WebproxyProperties;
 import de.invesdwin.webproxy.broker.contract.IBrokerService;
