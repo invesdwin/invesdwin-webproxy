@@ -18,12 +18,12 @@ import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.concurrent.Threads;
 import de.invesdwin.util.concurrent.WrappedExecutorService;
-import de.invesdwin.util.concurrent.pool.AObjectPool;
+import de.invesdwin.util.concurrent.pool.commons.ACommonsObjectPool;
 import de.invesdwin.webproxy.WebproxyProperties;
 
 @ThreadSafe
 @Named
-public class BrokerProxyObjectPool extends AObjectPool<PooledProxy> implements InitializingBean {
+public class BrokerProxyObjectPool extends ACommonsObjectPool<PooledProxy> implements InitializingBean {
 
     private final WrappedExecutorService proxyCooldownMonitorExecutor = Executors
             .newFixedCallerRunsThreadPool(getClass().getSimpleName() + "_ProxyCooldown", 1);

@@ -11,7 +11,7 @@ import javax.inject.Named;
 import de.invesdwin.context.integration.retry.Retry;
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.integration.retry.RetryLaterRuntimeException;
-import de.invesdwin.util.concurrent.pool.IPoolableObjectFactory;
+import de.invesdwin.util.concurrent.pool.commons.ICommonsPoolableObjectFactory;
 import de.invesdwin.webproxy.ProxyVerification;
 import de.invesdwin.webproxy.WebproxyProperties;
 import de.invesdwin.webproxy.broker.contract.IBrokerService;
@@ -21,7 +21,7 @@ import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 
 @ThreadSafe
 @Named
-public final class BrokerProxyPoolableObjectFactory implements IPoolableObjectFactory<PooledProxy> {
+public final class BrokerProxyPoolableObjectFactory implements ICommonsPoolableObjectFactory<PooledProxy> {
 
     @GuardedBy("PROXY_CACHE")
     private static final Queue<Proxy> PROXY_CACHE = new ArrayDeque<Proxy>();
