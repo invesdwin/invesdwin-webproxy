@@ -51,7 +51,7 @@ public class KalzumeusToTextTest extends ATest {
         while (index > 0) {
             final URI request = URIs.asUri(baseUri + index + "/");
             final HtmlPage page = (HtmlPage) Futures
-                    .get(webproxy.getPage(new GetPageConfig().withSystemProxyAsFixedProxy(), request));
+                    .get(webproxy.getPage(new GetPageConfig().setSystemProxyAsFixedProxy(), request));
             final DomElement elementById = page.getElementById("main");
             final List<String> list = new ArrayList<String>();
             final Iterable<DomNode> children = elementById.getChildren();

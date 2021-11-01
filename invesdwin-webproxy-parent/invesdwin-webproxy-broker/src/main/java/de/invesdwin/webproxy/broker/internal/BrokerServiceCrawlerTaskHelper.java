@@ -85,7 +85,7 @@ public class BrokerServiceCrawlerTaskHelper implements IStartupHook {
         final Set<RawProxy> ret = new HashSet<RawProxy>();
         List<RawProxyEntity> rawProxyEnts;
         do {
-            rawProxyEnts = rawProxyDao.findAll(new QueryConfig().withMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK));
+            rawProxyEnts = rawProxyDao.findAll(new QueryConfig().setMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK));
             for (final RawProxyEntity rawProxyEnt : rawProxyEnts) {
                 if (ret.size() >= BrokerContractProperties.MAX_PROXIES_PER_TASK) {
                     break;

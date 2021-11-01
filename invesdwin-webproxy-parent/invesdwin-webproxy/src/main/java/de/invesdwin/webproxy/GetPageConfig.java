@@ -28,7 +28,7 @@ public class GetPageConfig extends GetStringConfig {
         return javascriptWaitCallback;
     }
 
-    public GetPageConfig withJavascriptWaitCallback(final JavascriptWaitCallback javascriptWaitCallback) {
+    public GetPageConfig setJavascriptWaitCallback(final JavascriptWaitCallback javascriptWaitCallback) {
         this.javascriptWaitCallback = javascriptWaitCallback;
         return this;
     }
@@ -37,7 +37,7 @@ public class GetPageConfig extends GetStringConfig {
         return javascriptEnabled;
     }
 
-    public GetPageConfig withJavascriptEnabled(final boolean javascriptEnabled) {
+    public GetPageConfig setJavascriptEnabled(final boolean javascriptEnabled) {
         this.javascriptEnabled = javascriptEnabled;
         return this;
     }
@@ -46,13 +46,13 @@ public class GetPageConfig extends GetStringConfig {
         return maxPageRefreshCount;
     }
 
-    public GetPageConfig withMaxPageRefreshCount(final int maxPageRefreshCount) {
+    public GetPageConfig setMaxPageRefreshCount(final int maxPageRefreshCount) {
         Assertions.assertThat(maxPageRefreshCount).isGreaterThanOrEqualTo(0);
         this.maxPageRefreshCount = maxPageRefreshCount;
         return this;
     }
 
-    public GetPageConfig withCssEnabled(final boolean cssEnabled) {
+    public GetPageConfig setCssEnabled(final boolean cssEnabled) {
         this.cssEnabled = cssEnabled;
         return this;
     }
@@ -64,26 +64,26 @@ public class GetPageConfig extends GetStringConfig {
     /**************** overrides ******************/
 
     @Override
-    public GetPageConfig withMaxParallelDownloads(final Integer maxParallelDownloads) {
-        super.withMaxParallelDownloads(maxParallelDownloads);
+    public GetPageConfig setMaxParallelDownloads(final Integer maxParallelDownloads) {
+        super.setMaxParallelDownloads(maxParallelDownloads);
         return this;
     }
 
     @Override
-    public GetPageConfig withProxyResponseCallback(final AProxyResponseCallback proxyResponseCallback) {
-        super.withProxyResponseCallback(proxyResponseCallback);
+    public GetPageConfig setProxyResponseCallback(final AProxyResponseCallback proxyResponseCallback) {
+        super.setProxyResponseCallback(proxyResponseCallback);
         return this;
     }
 
     @Override
-    public GetPageConfig withBrowserVersion(final BrowserVersion browserVersion) {
-        super.withBrowserVersion(browserVersion);
+    public GetPageConfig setBrowserVersion(final BrowserVersion browserVersion) {
+        super.setBrowserVersion(browserVersion);
         return this;
     }
 
     @Override
-    public GetPageConfig withStatisticsCallback(final AStatisticsCallback statisticsCallback) {
-        super.withStatisticsCallback(statisticsCallback);
+    public GetPageConfig setStatisticsCallback(final AStatisticsCallback statisticsCallback) {
+        super.setStatisticsCallback(statisticsCallback);
         return this;
     }
 
@@ -94,50 +94,50 @@ public class GetPageConfig extends GetStringConfig {
     }
 
     @Override
-    public GetPageConfig withFilterVisitedUris(final boolean filterVisitedUris) {
-        super.withFilterVisitedUris(filterVisitedUris);
+    public GetPageConfig setFilterVisitedUris(final boolean filterVisitedUris) {
+        super.setFilterVisitedUris(filterVisitedUris);
         return this;
     }
 
     @Override
-    public GetPageConfig withUseProxyPool(final boolean useProxy) {
-        super.withUseProxyPool(useProxy);
+    public GetPageConfig setUseProxyPool(final boolean useProxy) {
+        super.setUseProxyPool(useProxy);
         return this;
     }
 
     @Override
-    public GetPageConfig withFixedProxy(final Proxy fixedProxy) {
-        super.withFixedProxy(fixedProxy);
+    public GetPageConfig setFixedProxy(final Proxy fixedProxy) {
+        super.setFixedProxy(fixedProxy);
         return this;
     }
 
     @Override
-    public GetPageConfig withSystemProxyAsFixedProxy() {
-        super.withSystemProxyAsFixedProxy();
+    public GetPageConfig setSystemProxyAsFixedProxy() {
+        super.setSystemProxyAsFixedProxy();
         return this;
     }
 
     @Override
-    public GetPageConfig withMinProxyQuality(final ProxyQuality minProxyQuality) {
-        super.withMinProxyQuality(minProxyQuality);
+    public GetPageConfig setMinProxyQuality(final ProxyQuality minProxyQuality) {
+        super.setMinProxyQuality(minProxyQuality);
         return this;
     }
 
     @Override
-    public GetPageConfig withMaxDownloadTryDuration(final Duration maxDownloadTryDuration) {
-        super.withMaxDownloadTryDuration(maxDownloadTryDuration);
+    public GetPageConfig setMaxDownloadTryDuration(final Duration maxDownloadTryDuration) {
+        super.setMaxDownloadTryDuration(maxDownloadTryDuration);
         return this;
     }
 
     @Override
-    public GetPageConfig withMaxDownloadRetries(final int maxDownloadRetries) {
-        super.withMaxDownloadRetries(maxDownloadRetries);
+    public GetPageConfig setMaxDownloadRetries(final int maxDownloadRetries) {
+        super.setMaxDownloadRetries(maxDownloadRetries);
         return this;
     }
 
     @Override
-    public GetPageConfig withMaxDownloadRetriesWarningOnly(final boolean maxDownloadRetriesWarningOnly) {
-        super.withMaxDownloadRetriesWarningOnly(maxDownloadRetriesWarningOnly);
+    public GetPageConfig setMaxDownloadRetriesWarningOnly(final boolean maxDownloadRetriesWarningOnly) {
+        super.setMaxDownloadRetriesWarningOnly(maxDownloadRetriesWarningOnly);
         return this;
     }
 

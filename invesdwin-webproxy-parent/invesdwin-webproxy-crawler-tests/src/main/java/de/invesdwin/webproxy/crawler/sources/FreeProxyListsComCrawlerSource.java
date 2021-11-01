@@ -52,9 +52,9 @@ public class FreeProxyListsComCrawlerSource extends AUrisProxyCrawlerSourceTempl
     @Override
     protected GetPageConfig getInternalPageConfig() {
         //Zu viele parallele Anfragen verursachen massig Last, daher begrenzt
-        return super.getInternalPageConfig().withJavascriptEnabled(true)
-                .withJavascriptWaitCallback(AJAX_DELAY_CALLBACK)
-                .withMaxParallelDownloads(10);
+        return super.getInternalPageConfig().setJavascriptEnabled(true)
+                .setJavascriptWaitCallback(AJAX_DELAY_CALLBACK)
+                .setMaxParallelDownloads(10);
     }
 
     @Override

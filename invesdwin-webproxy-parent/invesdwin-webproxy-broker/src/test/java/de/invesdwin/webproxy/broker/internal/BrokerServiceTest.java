@@ -81,14 +81,14 @@ public class BrokerServiceTest extends APersistenceTest {
     public void testProcessResultFromCrawler() {
         final ProcessResultFromCrawlerRequest request = new ProcessResultFromCrawlerRequest();
         for (final RawProxyEntity rawProxyEnt : rawProxyDao
-                .findAll(new QueryConfig().withMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK / 2))) {
+                .findAll(new QueryConfig().setMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK / 2))) {
             final RawProxy rawProxy = rawProxyEnt.toRawProxy();
             final Proxy proxy = ProxyUtil.valueOf(rawProxy, ProxyType.HTTP, ProxyQuality.TRANSPARENT,
                     Locale.getDefault().getCountry(), TimeZone.getDefault().getID());
             request.getSuccessfullyVerifiedProxies().add(proxy);
         }
         for (final RawProxyEntity rawProxyEnt : rawProxyDao
-                .findAll(new QueryConfig().withMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK / 2))) {
+                .findAll(new QueryConfig().setMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK / 2))) {
             request.getUnsuccessfullyVerifiedProxies().add(rawProxyEnt.toRawProxy());
         }
         broker.processResultFromCrawler(request);

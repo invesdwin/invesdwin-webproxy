@@ -73,10 +73,10 @@ public class ProxyVerification {
 
         final FixedProxyGetString get = new FixedProxyGetString(proxy, true);
         final GetStringConfig config = new GetStringConfig();
-        config.withStatisticsCallback(statisticsCallback);
-        config.withProxyResponseCallback(proxyResponseCallback);
+        config.setStatisticsCallback(statisticsCallback);
+        config.setProxyResponseCallback(proxyResponseCallback);
         //Retries get handled here outside
-        config.withMaxDownloadRetries(0);
+        config.setMaxDownloadRetries(0);
         final URI checkUri = checkClient.getCheckProxyQualityUri();
         for (int i = 0; i < WebproxyProperties.DEFAULT_MAX_DOWNLOAD_RETRIES; i++) {
             Threads.throwIfInterrupted();

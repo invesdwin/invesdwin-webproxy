@@ -53,7 +53,7 @@ public class HideMyAssComCrawlerSource extends AUrisProxyCrawlerSourceTemplate {
 
     @Override
     protected GetPageConfig getInternalPageConfig() {
-        return super.getInternalPageConfig().withCssEnabled(true);
+        return super.getInternalPageConfig().setCssEnabled(true);
     }
 
     @Override

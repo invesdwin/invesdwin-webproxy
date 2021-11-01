@@ -18,7 +18,7 @@ public class GetStringConfig extends AGetConfig {
 
     private BrowserVersion browserVersion = WebproxyProperties.DEFAULT_BROWSER_VERION;
 
-    public GetStringConfig withBrowserVersion(final BrowserVersion browserVersion) {
+    public GetStringConfig setBrowserVersion(final BrowserVersion browserVersion) {
         this.browserVersion = browserVersion;
         return this;
     }
@@ -28,26 +28,26 @@ public class GetStringConfig extends AGetConfig {
     }
 
     @Override
-    public GetStringConfig withMaxParallelDownloads(final Integer maxParallelDownloads) {
-        super.withMaxParallelDownloads(maxParallelDownloads);
+    public GetStringConfig setMaxParallelDownloads(final Integer maxParallelDownloads) {
+        super.setMaxParallelDownloads(maxParallelDownloads);
         return this;
     }
 
     @Override
-    public GetStringConfig withProxyResponseCallback(final AProxyResponseCallback proxyResponseCallback) {
-        super.withProxyResponseCallback(proxyResponseCallback);
+    public GetStringConfig setProxyResponseCallback(final AProxyResponseCallback proxyResponseCallback) {
+        super.setProxyResponseCallback(proxyResponseCallback);
         return this;
     }
 
     @Override
-    public GetStringConfig withUseProxyPool(final boolean useProxyPool) {
-        super.withUseProxyPool(useProxyPool);
+    public GetStringConfig setUseProxyPool(final boolean useProxyPool) {
+        super.setUseProxyPool(useProxyPool);
         return this;
     }
 
     @Override
-    public GetStringConfig withStatisticsCallback(final AStatisticsCallback statisticsCallback) {
-        super.withStatisticsCallback(statisticsCallback);
+    public GetStringConfig setStatisticsCallback(final AStatisticsCallback statisticsCallback) {
+        super.setStatisticsCallback(statisticsCallback);
         return this;
     }
 
@@ -58,44 +58,44 @@ public class GetStringConfig extends AGetConfig {
     }
 
     @Override
-    public GetStringConfig withFilterVisitedUris(final boolean filterVisitedUris) {
-        super.withFilterVisitedUris(filterVisitedUris);
+    public GetStringConfig setFilterVisitedUris(final boolean filterVisitedUris) {
+        super.setFilterVisitedUris(filterVisitedUris);
         return this;
     }
 
     @Override
-    public GetStringConfig withFixedProxy(final Proxy fixedProxy) {
-        super.withFixedProxy(fixedProxy);
+    public GetStringConfig setFixedProxy(final Proxy fixedProxy) {
+        super.setFixedProxy(fixedProxy);
         return this;
     }
 
     @Override
-    public GetStringConfig withSystemProxyAsFixedProxy() {
-        super.withSystemProxyAsFixedProxy();
+    public GetStringConfig setSystemProxyAsFixedProxy() {
+        super.setSystemProxyAsFixedProxy();
         return this;
     }
 
     @Override
-    public GetStringConfig withMinProxyQuality(final ProxyQuality minProxyQuality) {
-        super.withMinProxyQuality(minProxyQuality);
+    public GetStringConfig setMinProxyQuality(final ProxyQuality minProxyQuality) {
+        super.setMinProxyQuality(minProxyQuality);
         return this;
     }
 
     @Override
-    public GetStringConfig withMaxDownloadTryDuration(final Duration maxDownloadTryDuration) {
-        super.withMaxDownloadTryDuration(maxDownloadTryDuration);
+    public GetStringConfig setMaxDownloadTryDuration(final Duration maxDownloadTryDuration) {
+        super.setMaxDownloadTryDuration(maxDownloadTryDuration);
         return this;
     }
 
     @Override
-    public GetStringConfig withMaxDownloadRetries(final int maxDownloadRetries) {
-        super.withMaxDownloadRetries(maxDownloadRetries);
+    public GetStringConfig setMaxDownloadRetries(final int maxDownloadRetries) {
+        super.setMaxDownloadRetries(maxDownloadRetries);
         return this;
     }
 
     @Override
-    public GetStringConfig withMaxDownloadRetriesWarningOnly(final boolean maxDownloadRetriesWarningOnly) {
-        super.withMaxDownloadRetriesWarningOnly(maxDownloadRetriesWarningOnly);
+    public GetStringConfig setMaxDownloadRetriesWarningOnly(final boolean maxDownloadRetriesWarningOnly) {
+        super.setMaxDownloadRetriesWarningOnly(maxDownloadRetriesWarningOnly);
         return this;
     }
 

@@ -57,8 +57,8 @@ public class ProxiesProductiveDataTest extends ATest {
                 @Override
                 public void run() {
                     final GetStringConfig c = new GetStringConfig();
-                    c.withFixedProxy(p);
-                    c.withStatisticsCallback(callback);
+                    c.setFixedProxy(p);
+                    c.setStatisticsCallback(callback);
                     String ret;
                     try {
                         ret = webproxy.getString(c, IntegrationProperties.INTERNET_CHECK_URIS.get(0)).get();

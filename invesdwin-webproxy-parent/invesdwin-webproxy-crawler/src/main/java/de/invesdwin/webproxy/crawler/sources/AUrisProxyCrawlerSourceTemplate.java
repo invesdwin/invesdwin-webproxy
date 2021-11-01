@@ -39,7 +39,7 @@ public abstract class AUrisProxyCrawlerSourceTemplate extends AProxyCrawlerSourc
         final GetPageConfig config = new GetPageConfig();
         final int workingProxiesCount = webproxy.getWorkingProxiesCount();
         if (workingProxiesCount >= CrawlerProperties.CRAWL_WITH_PROXIES_THRESHOLD) {
-            config.withUseProxyPool(true);
+            config.setUseProxyPool(true);
         }
         return config;
     }

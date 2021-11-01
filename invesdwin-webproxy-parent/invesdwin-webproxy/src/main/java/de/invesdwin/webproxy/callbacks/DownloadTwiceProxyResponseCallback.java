@@ -63,7 +63,7 @@ public class DownloadTwiceProxyResponseCallback extends AProxyResponseCallback {
      * Default is 3. This only counts as the number of previous responses that should be kept in memory. It will still
      * count a response as valid, if it matches one of those.
      */
-    public void withMaxLastResponsesToConsider(final int maxLastResponsesToConsider) {
+    public void setMaxLastResponsesToConsider(final int maxLastResponsesToConsider) {
         Assertions.assertThat(maxLastResponsesToConsider).isGreaterThan(0);
         this.maxLastResponsesToConsider = maxLastResponsesToConsider;
     }

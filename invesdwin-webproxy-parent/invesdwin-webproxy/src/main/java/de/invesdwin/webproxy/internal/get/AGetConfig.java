@@ -52,7 +52,7 @@ public abstract class AGetConfig extends AValueObject {
         return filterVisitedUris;
     }
 
-    public AGetConfig withMaxParallelDownloads(final Integer maxParallelDownloads) {
+    public AGetConfig setMaxParallelDownloads(final Integer maxParallelDownloads) {
         Assertions.assertThat(maxParallelDownloads == null || maxParallelDownloads > 0)
                 .as("Must be at least 1 if not null")
                 .isTrue();
@@ -64,7 +64,7 @@ public abstract class AGetConfig extends AValueObject {
         return maxParallelDownloads;
     }
 
-    public AGetConfig withFilterVisitedUris(final boolean filterVisitedUris) {
+    public AGetConfig setFilterVisitedUris(final boolean filterVisitedUris) {
         this.filterVisitedUris = filterVisitedUris;
         return this;
     }
@@ -78,7 +78,7 @@ public abstract class AGetConfig extends AValueObject {
         return statisticsCallback;
     }
 
-    public AGetConfig withStatisticsCallback(final AStatisticsCallback statisticsCallback) {
+    public AGetConfig setStatisticsCallback(final AStatisticsCallback statisticsCallback) {
         this.statisticsCallback = statisticsCallback;
         return this;
     }
@@ -87,7 +87,7 @@ public abstract class AGetConfig extends AValueObject {
         return proxyResponseCallback;
     }
 
-    public AGetConfig withProxyResponseCallback(final AProxyResponseCallback proxyResponseCallback) {
+    public AGetConfig setProxyResponseCallback(final AProxyResponseCallback proxyResponseCallback) {
         this.proxyResponseCallback = proxyResponseCallback;
         return this;
     }
@@ -96,7 +96,7 @@ public abstract class AGetConfig extends AValueObject {
         return useProxyPool;
     }
 
-    public AGetConfig withUseProxyPool(final boolean useProxyPool) {
+    public AGetConfig setUseProxyPool(final boolean useProxyPool) {
         this.useProxyPool = useProxyPool;
         return this;
     }
@@ -105,16 +105,16 @@ public abstract class AGetConfig extends AValueObject {
         return fixedProxy;
     }
 
-    public AGetConfig withFixedProxy(final Proxy fixedProxy) {
+    public AGetConfig setFixedProxy(final Proxy fixedProxy) {
         this.fixedProxy = fixedProxy;
         return this;
     }
 
-    public AGetConfig withSystemProxyAsFixedProxy() {
+    public AGetConfig setSystemProxyAsFixedProxy() {
         final java.net.Proxy systemProxyJava = URIs.getSystemProxy();
         if (systemProxyJava != null) {
             final Proxy systemProxy = ProxyUtil.valueOf(systemProxyJava);
-            withFixedProxy(systemProxy);
+            setFixedProxy(systemProxy);
         }
         return this;
     }
@@ -123,13 +123,13 @@ public abstract class AGetConfig extends AValueObject {
         return minProxyQuality;
     }
 
-    public AGetConfig withMinProxyQuality(final ProxyQuality minProxyQuality) {
+    public AGetConfig setMinProxyQuality(final ProxyQuality minProxyQuality) {
         Assertions.assertThat(minProxyQuality).isNotNull();
         this.minProxyQuality = minProxyQuality;
         return this;
     }
 
-    public AGetConfig withMaxDownloadTryDuration(final Duration maxDownloadTryDuration) {
+    public AGetConfig setMaxDownloadTryDuration(final Duration maxDownloadTryDuration) {
         this.maxDownloadTryDuration = maxDownloadTryDuration;
         return this;
     }
@@ -138,7 +138,7 @@ public abstract class AGetConfig extends AValueObject {
         return maxDownloadTryDuration;
     }
 
-    public AGetConfig withMaxDownloadRetries(final int maxDownloadRetries) {
+    public AGetConfig setMaxDownloadRetries(final int maxDownloadRetries) {
         this.maxDownloadRetries = maxDownloadRetries;
         return this;
     }
@@ -147,7 +147,7 @@ public abstract class AGetConfig extends AValueObject {
         return maxDownloadRetries;
     }
 
-    public AGetConfig withMaxDownloadRetriesWarningOnly(final boolean maxDownloadRetriesWarningOnly) {
+    public AGetConfig setMaxDownloadRetriesWarningOnly(final boolean maxDownloadRetriesWarningOnly) {
         this.maxDownloadRetriesWarningOnly = maxDownloadRetriesWarningOnly;
         return this;
     }

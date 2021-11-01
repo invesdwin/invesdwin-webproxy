@@ -50,8 +50,8 @@ public class WebproxyServiceTest extends ATest {
 
     @Test
     public void testDownloadBusy() throws InterruptedException {
-        final GetStringConfig config = new GetStringConfig().withStatisticsCallback(
-                new ConsoleReportStatisticsCallback().withLogSessionProgress(true).withLogSessionSummary(true));
+        final GetStringConfig config = new GetStringConfig().setStatisticsCallback(
+                new ConsoleReportStatisticsCallback().setLogSessionProgress(true).setLogSessionSummary(true));
 
         final List<URI> download_uris = new ArrayList<URI>();
         for (int i = 0; i < WebproxyProperties.MAX_PARALLEL_DOWNLOADS + 10; i++) {
@@ -80,10 +80,10 @@ public class WebproxyServiceTest extends ATest {
     @Test
     public void testGetPageInvalidPage() throws InterruptedException, ExecutionException {
         final ConsoleReportStatisticsCallback callback = new ConsoleReportStatisticsCallback()
-                .withLogSessionProgress(true)
-                .withLogSessionSummary(true);
+                .setLogSessionProgress(true)
+                .setLogSessionSummary(true);
         final GetPageConfig config = new GetPageConfig();
-        config.withStatisticsCallback(callback);
+        config.setStatisticsCallback(callback);
         try {
             log.warn(service.getString(config, URIs.asUri("http://subess")).get());
             Fail.fail("Exception expected");

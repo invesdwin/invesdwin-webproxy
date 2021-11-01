@@ -32,23 +32,23 @@ public class ConsoleReportStatisticsCallback extends AStatisticsCallback {
     protected int logSessionProgressInterval = 1;
     protected boolean logSessionSummary;
 
-    public ConsoleReportStatisticsCallback withSessionInfo(final String sessionInfo) {
+    public ConsoleReportStatisticsCallback setSessionInfo(final String sessionInfo) {
         this.sessionInfo = sessionInfo;
         return this;
     }
 
-    public ConsoleReportStatisticsCallback withLogSessionProgress(final boolean logSessionProgress) {
+    public ConsoleReportStatisticsCallback setLogSessionProgress(final boolean logSessionProgress) {
         this.logSessionProgress = logSessionProgress;
         return this;
     }
 
-    public ConsoleReportStatisticsCallback withLogSessionProgressInterval(final int logSessionProgressInterval) {
+    public ConsoleReportStatisticsCallback setLogSessionProgressInterval(final int logSessionProgressInterval) {
         Assertions.assertThat(logSessionProgressInterval).isGreaterThan(0);
         this.logSessionProgressInterval = logSessionProgressInterval;
         return this;
     }
 
-    public ConsoleReportStatisticsCallback withLogSessionSummary(final boolean logSessionSummary) {
+    public ConsoleReportStatisticsCallback setLogSessionSummary(final boolean logSessionSummary) {
         this.logSessionSummary = logSessionSummary;
         return this;
     }

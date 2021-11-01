@@ -43,13 +43,13 @@ public abstract class AGet<E, C extends AGetConfig> {
      */
     private static final WrappedExecutorService GET_EXECUTOR = Executors
             .newFixedThreadPool(AGet.class.getSimpleName() + "_Get", WebproxyProperties.MAX_PARALLEL_DOWNLOADS)
-            .withWaitOnFullPendingCount(false);
+            .setWaitOnFullPendingCount(false);
     /**
      * This Executor is used to ensure the maximum number of proxy verifications regardless of normal downloads.
      */
     private static final WrappedExecutorService VERIFICATION_EXECUTOR = Executors
             .newFixedThreadPool(AGet.class.getSimpleName() + "_Verification", WebproxyProperties.MAX_PARALLEL_DOWNLOADS)
-            .withWaitOnFullPendingCount(true);
+            .setWaitOnFullPendingCount(true);
     /**
      * This Executor does not have any limit. Though it is used inside the other executors, so that the downloads
      * themself can run seperately and be monitored by the outer thread to maybe cancel the download.
@@ -57,7 +57,7 @@ public abstract class AGet<E, C extends AGetConfig> {
     private static final WrappedExecutorService CANCELLABLE_INNERER_EXECUTOR = Executors
             .newFixedThreadPool(AGet.class.getSimpleName() + "_Cancellable",
                     GET_EXECUTOR.getMaximumPoolSize() + VERIFICATION_EXECUTOR.getMaximumPoolSize())
-            .withWaitOnFullPendingCount(true);
+            .setWaitOnFullPendingCount(true);
 
     @Inject
     private ProxyVerification proxyVeri;
