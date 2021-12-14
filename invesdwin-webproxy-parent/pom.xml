@@ -33,7 +33,6 @@
 		<version.htmlunit>2.40.0</version.htmlunit>
 		<version.jpcapng>1.0</version.jpcapng>
 		<version.geoip-api>1.2.11</version.geoip-api>
-		<version.xml-apis>1.4.01</version.xml-apis>
 	</properties>
 
 	<dependencyManagement>
@@ -127,11 +126,6 @@
 				</exclusions>
 			</dependency>
 
-			<dependency>
-				<groupId>xml-apis</groupId>
-				<artifactId>xml-apis</artifactId>
-				<version>${version.xml-apis}</version>
-			</dependency>
 			<dependency>
 				<groupId>net.sf.jpcapng</groupId>
 				<artifactId>jpcapng</artifactId>
