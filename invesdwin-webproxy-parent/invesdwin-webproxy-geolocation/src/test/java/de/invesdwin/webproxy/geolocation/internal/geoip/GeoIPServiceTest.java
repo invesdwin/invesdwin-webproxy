@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.geolocation.internal.geoip;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.maxmind.geoip.Location;
 

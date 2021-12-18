@@ -4,8 +4,8 @@ import java.net.URI;
 
 import javax.annotation.concurrent.Immutable;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.ws.client.support.destination.DestinationProvider;
 
 import de.invesdwin.context.integration.IntegrationProperties;
@@ -54,7 +54,7 @@ public class ServerTest extends APersistenceTest {
         return checkClient;
     }
 
-    @Ignore("somehow does not work in jenkins")
+    @Disabled("somehow does not work in jenkins")
     @Test
     public void testCheckProxyQuality() {
         final CheckClient checkClient = new CheckClient();
