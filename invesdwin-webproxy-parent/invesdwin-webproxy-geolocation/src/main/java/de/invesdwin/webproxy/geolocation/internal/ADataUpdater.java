@@ -93,7 +93,7 @@ public abstract class ADataUpdater {
                 @Override
                 protected InputStream innerNewDelegate() {
                     try {
-                        return URIs.connect(sourceUrl).getInputStream();
+                        return URIs.connect(sourceUrl).downloadInputStream();
                     } catch (final IOException e) {
                         throw new TransparentRuntimeIOExeption(e);
                     }
