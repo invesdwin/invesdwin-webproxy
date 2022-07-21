@@ -12,7 +12,7 @@ import javax.annotation.concurrent.Immutable;
 
 import org.apache.commons.io.IOUtils;
 
-import de.invesdwin.context.integration.streams.ADecompressingInputStream;
+import de.invesdwin.context.integration.compression.ADecompressingInputStream;
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.lang.Closeables;
 import de.invesdwin.util.lang.Files;
