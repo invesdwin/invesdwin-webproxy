@@ -6,11 +6,10 @@ import java.util.Set;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Named;
 
-import com.google.common.collect.Iterables;
-
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
 import de.invesdwin.context.test.stub.StubSupport;
+import de.invesdwin.util.collections.Iterables;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.PingRequest;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.RandomScanRequest;

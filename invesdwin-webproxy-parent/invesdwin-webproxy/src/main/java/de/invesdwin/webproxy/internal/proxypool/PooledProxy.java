@@ -2,9 +2,8 @@ package de.invesdwin.webproxy.internal.proxypool;
 
 import javax.annotation.concurrent.NotThreadSafe;
 
-import org.apache.commons.math3.random.RandomDataGenerator;
-
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.math.random.PseudoRandomGenerators;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
@@ -53,8 +52,8 @@ public final class PooledProxy extends Proxy {
      */
     public void startCoolingDown() {
         final FTimeUnit ns = FTimeUnit.NANOSECONDS;
-        final Duration waitTime = new Duration(
-                new RandomDataGenerator().nextLong(WebproxyProperties.PROXY_POOL_COOLDOWN_MIN_TIMEOUT.longValue(ns),
+        final Duration waitTime = new Duration(PseudoRandomGenerators.getThreadLocalPseudoRandom()
+                .nextLong(WebproxyProperties.PROXY_POOL_COOLDOWN_MIN_TIMEOUT.longValue(ns),
                         WebproxyProperties.PROXY_POOL_COOLDOWN_MAX_TIMEOUT.longValue(ns)),
                 ns);
         cooledDown = new Instant(new Instant().longValue(ns) + waitTime.longValue(ns), ns);

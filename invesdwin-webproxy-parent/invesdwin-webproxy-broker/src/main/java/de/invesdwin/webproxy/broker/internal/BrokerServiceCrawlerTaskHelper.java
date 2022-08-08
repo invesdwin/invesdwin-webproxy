@@ -12,13 +12,14 @@ import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.commons.math3.random.RandomDataGenerator;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import de.invesdwin.context.beans.hook.IStartupHook;
 import de.invesdwin.context.persistence.jpa.api.query.QueryConfig;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.lang.uri.Addresses;
+import de.invesdwin.util.math.random.IRandomGenerator;
+import de.invesdwin.util.math.random.PseudoRandomGenerators;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetTaskForCrawlerResponse;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
@@ -71,7 +72,7 @@ public class BrokerServiceCrawlerTaskHelper implements IStartupHook {
         Assertions.assertThat(randomScannablePorts.removeAll(ports)).isTrue();
         //random ports are being calculated before hand, this saves time by preventing unneeded iterations
         int randomPorts = BrokerProperties.calculateAdditionalRandomToBeScannedPorts(ports.size());
-        final RandomDataGenerator randomData = new RandomDataGenerator();
+        final IRandomGenerator randomData = PseudoRandomGenerators.getThreadLocalPseudoRandom();
         while (randomPorts > 0 && randomScannablePorts.size() > 0) {
             final int randomIndex = randomData.nextInt(0, randomScannablePorts.size() - 1);
             final int selectedPort = randomScannablePorts.remove(randomIndex);
@@ -85,7 +86,8 @@ public class BrokerServiceCrawlerTaskHelper implements IStartupHook {
         final Set<RawProxy> ret = new HashSet<RawProxy>();
         List<RawProxyEntity> rawProxyEnts;
         do {
-            rawProxyEnts = rawProxyDao.findAll(new QueryConfig().setMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK));
+            rawProxyEnts = rawProxyDao
+                    .findAll(new QueryConfig().setMaxResults(BrokerContractProperties.MAX_PROXIES_PER_TASK));
             for (final RawProxyEntity rawProxyEnt : rawProxyEnts) {
                 if (ret.size() >= BrokerContractProperties.MAX_PROXIES_PER_TASK) {
                     break;

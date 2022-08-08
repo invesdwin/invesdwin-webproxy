@@ -8,11 +8,10 @@ import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.google.common.collect.Iterables;
-
 import de.invesdwin.context.log.Log;
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.Iterables;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
 import de.invesdwin.webproxy.broker.contract.IBrokerService;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.AddToBeVerifiedProxiesRequest;

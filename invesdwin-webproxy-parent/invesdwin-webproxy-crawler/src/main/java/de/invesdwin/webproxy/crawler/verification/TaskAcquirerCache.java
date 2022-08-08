@@ -2,7 +2,6 @@ package de.invesdwin.webproxy.crawler.verification;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,9 +12,9 @@ import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.google.common.collect.Iterables;
-
 import de.invesdwin.context.log.Log;
+import de.invesdwin.util.collections.Collections;
+import de.invesdwin.util.collections.Iterables;
 import de.invesdwin.util.collections.list.Lists;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;

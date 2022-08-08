@@ -1,6 +1,5 @@
 package de.invesdwin.webproxy.broker.contract;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -8,13 +7,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Named;
 
-import com.google.common.collect.Iterables;
-
 import de.invesdwin.context.beans.init.locations.PositionedResource;
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
 import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.Collections;
+import de.invesdwin.util.collections.Iterables;
 import de.invesdwin.webproxy.broker.contract.internal.BrokerContextLocation;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.AddToBeVerifiedProxiesRequest;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.ProcessResultFromCrawlerRequest;

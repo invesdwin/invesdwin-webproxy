@@ -2,7 +2,6 @@ package de.invesdwin.webproxy.portscan.internal.pcap.syn;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 
+import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.portscan.internal.PortscanProperties;

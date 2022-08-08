@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.crawler.verification;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -11,6 +10,7 @@ import javax.inject.Named;
 
 import de.invesdwin.context.beans.hook.IStartupHook;
 import de.invesdwin.context.log.Log;
+import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.concurrent.Threads;
 import de.invesdwin.util.concurrent.WrappedExecutorService;

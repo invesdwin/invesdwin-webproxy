@@ -2,17 +2,16 @@ package de.invesdwin.webproxy.portscan.internal;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.commons.math3.random.RandomData;
-import org.apache.commons.math3.random.RandomDataImpl;
-
+import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.lang.uri.Addresses;
+import de.invesdwin.util.math.random.IRandomGenerator;
+import de.invesdwin.util.math.random.PseudoRandomGenerators;
 import de.invesdwin.webproxy.portscan.contract.IPortscanClient;
 import de.invesdwin.webproxy.portscan.contract.IPortscanService;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.PingRequest;
@@ -65,7 +64,7 @@ public class PortscanService implements IPortscanService, ISynListener, IPingLis
             quellPorts = new ArrayList<Integer>(Addresses.ALL_PORTS);
         }
         final List<Integer> randomizedPorts = new ArrayList<Integer>();
-        final RandomData randomData = new RandomDataImpl();
+        final IRandomGenerator randomData = PseudoRandomGenerators.getThreadLocalPseudoRandom();
         while (quellPorts.size() > 0) {
             final int index;
             if (quellPorts.size() - 1 > 0) {

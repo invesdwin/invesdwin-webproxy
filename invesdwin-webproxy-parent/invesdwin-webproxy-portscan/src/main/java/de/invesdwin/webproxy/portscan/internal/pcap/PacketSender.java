@@ -8,11 +8,10 @@ import javax.annotation.concurrent.ThreadSafe;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.commons.math3.random.RandomData;
-import org.apache.commons.math3.random.RandomDataImpl;
-
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.util.lang.uri.Addresses;
+import de.invesdwin.util.math.random.IRandomGenerator;
+import de.invesdwin.util.math.random.PseudoRandomGenerators;
 import de.invesdwin.webproxy.portscan.internal.PortscanBootstrap;
 import de.invesdwin.webproxy.portscan.internal.PortscanProperties;
 import jpcap.JpcapSender;
@@ -49,7 +48,7 @@ public class PacketSender {
 
     public void send(final IPPacket packet, final InetAddress dst) throws InterruptedException {
         packet.datalink = datalink;
-        final RandomData randomData = new RandomDataImpl();
+        final IRandomGenerator randomData = PseudoRandomGenerators.getThreadLocalPseudoRandom();
         final int ident = randomData.nextInt(0, Addresses.PORT_MAX); //muss random sein per spec
         final int ttl = randomData.nextInt(MIN_TTL, 222); //zum verschleiern der identität
         packet.setIPv4Parameter(PRIORITY, D_FLAG, T_FLAG, R_FLAG, RSV_TOS, RSV_FRAG, DONT_FRAG, MORE_FRAG, OFFSET,

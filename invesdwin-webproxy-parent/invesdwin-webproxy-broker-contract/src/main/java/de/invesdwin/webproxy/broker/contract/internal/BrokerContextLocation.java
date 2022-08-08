@@ -1,6 +1,5 @@
 package de.invesdwin.webproxy.broker.contract.internal;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.concurrent.ThreadSafe;
@@ -12,6 +11,7 @@ import de.invesdwin.context.ContextProperties;
 import de.invesdwin.context.beans.init.locations.ABeanDependantContextLocation;
 import de.invesdwin.context.beans.init.locations.PositionedResource;
 import de.invesdwin.context.beans.init.locations.position.ResourcePosition;
+import de.invesdwin.util.collections.Arrays;
 import de.invesdwin.webproxy.broker.contract.BrokerServiceStub;
 import de.invesdwin.webproxy.broker.contract.IBrokerService;
 

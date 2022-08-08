@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.portscan.internal.pcap;
 
 import java.net.InetAddress;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -10,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.Arrays;
 import de.invesdwin.webproxy.portscan.internal.PortscanProperties;
 import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IPingListener;
 import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IcmpCaptor;

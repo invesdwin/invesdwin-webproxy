@@ -3,7 +3,6 @@ package de.invesdwin.webproxy.portscan.internal;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
-import java.util.Arrays;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
@@ -16,6 +15,7 @@ import de.invesdwin.context.log.Log;
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.context.system.NativeLibrary;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.Arrays;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.shutdown.IShutdownHook;

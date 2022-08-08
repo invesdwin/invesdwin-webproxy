@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.broker.internal;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import de.invesdwin.util.collections.Arrays;
 import de.invesdwin.util.lang.Strings;
 import de.invesdwin.webproxy.broker.contract.CheckClient;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
