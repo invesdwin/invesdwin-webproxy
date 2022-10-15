@@ -18,7 +18,7 @@ import de.invesdwin.context.persistence.jpa.ConnectionDialect;
 import de.invesdwin.context.persistence.jpa.PersistenceProperties;
 import de.invesdwin.context.persistence.jpa.api.dao.ADao;
 import de.invesdwin.util.assertions.Assertions;
-import de.invesdwin.util.lang.Strings;
+import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.webproxy.geolocation.internal.GeolocationProperties;
 
 @ThreadSafe

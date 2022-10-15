@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import de.invesdwin.util.collections.Arrays;
-import de.invesdwin.util.lang.Strings;
+import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.webproxy.broker.contract.CheckClient;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 

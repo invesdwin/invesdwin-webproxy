@@ -10,7 +10,7 @@ import javax.inject.Named;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.concurrent.Threads;
 import de.invesdwin.util.error.Throwables;
-import de.invesdwin.util.lang.Strings;
+import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.webproxy.broker.contract.CheckClient;
 import de.invesdwin.webproxy.broker.contract.IBrokerService;
 import de.invesdwin.webproxy.broker.contract.ProxyUtil;

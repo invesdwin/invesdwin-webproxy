@@ -6,7 +6,7 @@ import javax.annotation.concurrent.Immutable;
 
 import com.gargoylesoftware.htmlunit.Page;
 
-import de.invesdwin.util.lang.Strings;
+import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.HtmlPages;
 

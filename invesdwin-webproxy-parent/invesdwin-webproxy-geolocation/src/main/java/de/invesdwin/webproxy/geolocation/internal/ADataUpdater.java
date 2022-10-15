@@ -16,7 +16,7 @@ import de.invesdwin.context.integration.compression.ADecompressingInputStream;
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.lang.Closeables;
 import de.invesdwin.util.lang.Files;
-import de.invesdwin.util.lang.description.TextDescription;
+import de.invesdwin.util.lang.string.description.TextDescription;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.date.FDate;
