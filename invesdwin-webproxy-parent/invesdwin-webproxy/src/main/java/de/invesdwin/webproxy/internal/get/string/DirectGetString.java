@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.internal.get.string;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import de.invesdwin.webproxy.internal.proxypool.DummyProxyPool;
 

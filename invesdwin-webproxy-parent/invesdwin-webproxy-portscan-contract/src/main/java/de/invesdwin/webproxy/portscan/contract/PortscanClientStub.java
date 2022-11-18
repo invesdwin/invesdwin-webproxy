@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.portscan.contract;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;

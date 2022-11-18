@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.crawler.sources;
 import java.net.URI;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import de.invesdwin.util.lang.uri.URIs;
 

@@ -2,8 +2,8 @@ package de.invesdwin.webproxy.geolocation.internal.geonames.persistence.redundan
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.springframework.beans.factory.InitializingBean;
 

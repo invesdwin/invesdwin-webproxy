@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.broker.contract.internal.service;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.util.assertions.Assertions;
@@ -14,6 +13,7 @@ import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.ProcessResultF
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetTaskForCrawlerResponse;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetWorkingProxiesResponse;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class RemoteBrokerService implements IBrokerService {

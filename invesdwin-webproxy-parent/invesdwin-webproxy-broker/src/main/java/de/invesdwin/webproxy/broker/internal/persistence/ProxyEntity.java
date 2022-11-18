@@ -4,14 +4,6 @@ import java.net.InetSocketAddress;
 import java.util.Date;
 
 import javax.annotation.concurrent.NotThreadSafe;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 import de.invesdwin.context.persistence.jpa.api.dao.entity.identity.AEntityWithIdentity;
 import de.invesdwin.util.lang.uri.Addresses;
@@ -21,6 +13,14 @@ import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 @NotThreadSafe
 @Entity

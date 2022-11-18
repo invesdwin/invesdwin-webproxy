@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.geolocation.contract.internal.service;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.springframework.integration.annotation.ServiceActivator;
 

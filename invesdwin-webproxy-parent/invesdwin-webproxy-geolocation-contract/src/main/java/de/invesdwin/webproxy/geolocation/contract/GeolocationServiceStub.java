@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.test.ATest;

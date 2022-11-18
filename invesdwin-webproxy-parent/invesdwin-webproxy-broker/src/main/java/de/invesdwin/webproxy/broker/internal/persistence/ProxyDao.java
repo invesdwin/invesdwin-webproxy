@@ -3,9 +3,7 @@ package de.invesdwin.webproxy.broker.internal.persistence;
 import java.util.List;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
-import javax.persistence.Query;
-import javax.persistence.TemporalType;
+import jakarta.inject.Named;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +11,8 @@ import de.invesdwin.context.persistence.jpa.api.dao.ADao;
 import de.invesdwin.util.time.date.FDate;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
 import de.invesdwin.webproxy.broker.internal.BrokerProperties;
+import jakarta.persistence.Query;
+import jakarta.persistence.TemporalType;
 
 @Named
 @ThreadSafe
@@ -23,9 +23,10 @@ public class ProxyDao extends ADao<ProxyEntity> {
      */
     @SuppressWarnings("unchecked")
     public List<Integer> readUsedPortsSorted(final int maxResults) {
-        return getEntityManager().createQuery(
-                "SELECT " + ProxyEntity_.port.getName() + " FROM " + ProxyEntity.class.getName() + " GROUP BY "
-                        + ProxyEntity_.port.getName() + " ORDER BY COUNT(" + ProxyEntity_.port.getName() + ") DESC")
+        return getEntityManager()
+                .createQuery("SELECT " + ProxyEntity_.port.getName() + " FROM " + ProxyEntity.class.getName()
+                        + " GROUP BY " + ProxyEntity_.port.getName() + " ORDER BY COUNT(" + ProxyEntity_.port.getName()
+                        + ") DESC")
                 .setMaxResults(maxResults)
                 .getResultList();
     }

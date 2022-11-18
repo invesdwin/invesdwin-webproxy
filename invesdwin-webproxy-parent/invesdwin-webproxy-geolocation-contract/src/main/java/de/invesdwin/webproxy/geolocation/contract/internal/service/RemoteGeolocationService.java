@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.geolocation.contract.internal.service;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.webproxy.geolocation.contract.schema.GeolocationRequest;

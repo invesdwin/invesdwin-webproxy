@@ -60,7 +60,7 @@ public abstract class AProxyCrawlerSource implements IProxyCrawlerSource {
     private String pageToString(final Page page) {
         if (page instanceof HtmlPage) {
             final HtmlPage p = (HtmlPage) page;
-            return p.asText();
+            return p.asNormalizedText();
         } else if (page instanceof TextPage) {
             final TextPage p = (TextPage) page;
             return p.getContent();

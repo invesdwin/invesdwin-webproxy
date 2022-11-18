@@ -2,8 +2,8 @@ package de.invesdwin.webproxy.portscan.internal.pcap.syn;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.math.random.IRandomGenerator;

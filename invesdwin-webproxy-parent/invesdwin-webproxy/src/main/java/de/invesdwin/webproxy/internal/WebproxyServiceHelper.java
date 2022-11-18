@@ -1,8 +1,8 @@
 package de.invesdwin.webproxy.internal;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 

@@ -1,14 +1,14 @@
 package de.invesdwin.webproxy.geolocation.internal.geonames.persistence;
 
 import javax.annotation.concurrent.NotThreadSafe;
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
 
 import org.hibernate.validator.constraints.Length;
 
 import de.invesdwin.context.persistence.jpa.api.dao.entity.identity.AEntityWithIdentity;
 import de.invesdwin.context.persistence.jpa.api.index.Index;
 import de.invesdwin.context.persistence.jpa.api.index.Indexes;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 
 @NotThreadSafe
 @MappedSuperclass

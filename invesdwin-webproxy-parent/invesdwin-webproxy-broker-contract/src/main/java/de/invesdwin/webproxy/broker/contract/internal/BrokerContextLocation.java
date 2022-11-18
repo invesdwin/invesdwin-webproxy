@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.broker.contract.internal;
 import java.util.List;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import org.springframework.core.io.ClassPathResource;
 

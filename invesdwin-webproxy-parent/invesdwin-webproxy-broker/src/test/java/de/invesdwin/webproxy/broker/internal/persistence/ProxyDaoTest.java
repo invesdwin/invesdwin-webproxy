@@ -5,8 +5,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
-import javax.validation.ConstraintViolationException;
+import jakarta.inject.Inject;
 
 import org.assertj.core.api.Fail;
 import org.junit.jupiter.api.Test;
@@ -20,6 +19,7 @@ import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
 import de.invesdwin.webproxy.broker.internal.BrokerProperties;
+import jakarta.validation.ConstraintViolationException;
 
 @ThreadSafe
 public class ProxyDaoTest extends APersistenceTest {

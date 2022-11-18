@@ -29,8 +29,7 @@ public final class WebClientFactory {
         BackgroundJavaScriptFactory.setFactory(new HackedBackgroundJavaScriptFactory());
     }
 
-    private WebClientFactory() {
-    }
+    private WebClientFactory() {}
 
     /**
      * Webclients are not thread safe, thus each download needs to have its own.
@@ -63,8 +62,8 @@ public final class WebClientFactory {
         client.getOptions().setTimeout(ContextProperties.DEFAULT_NETWORK_TIMEOUT.intValue(FTimeUnit.MILLISECONDS));
         if (proxy != null) {
             client.getOptions()
-                    .setProxyConfig(
-                            new ProxyConfig(proxy.getHost(), proxy.getPort(), proxy.getType() == ProxyType.SOCKS));
+                    .setProxyConfig(new ProxyConfig(proxy.getHost(), proxy.getPort(), "http",
+                            proxy.getType() == ProxyType.SOCKS));
         } else {
             client.getOptions().setProxyConfig(new ProxyConfig());
         }

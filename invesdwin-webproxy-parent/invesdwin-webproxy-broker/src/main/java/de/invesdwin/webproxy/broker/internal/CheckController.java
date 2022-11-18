@@ -6,8 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.concurrent.Immutable;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +15,8 @@ import de.invesdwin.util.collections.Arrays;
 import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.webproxy.broker.contract.CheckClient;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Immutable
 @Controller

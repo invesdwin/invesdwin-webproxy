@@ -24,7 +24,7 @@ public final class HtmlPages {
             return null;
         } else if (page instanceof HtmlPage) {
             final HtmlPage htmlPage = (HtmlPage) page;
-            return htmlPage.asText();
+            return htmlPage.asNormalizedText();
         } else {
             return page.getWebResponse().getContentAsString();
         }
@@ -54,7 +54,7 @@ public final class HtmlPages {
         final StringBuilder tabellen = new StringBuilder();
         for (final DomElement table : page.getElementsByTagName("table")) {
             normalizeTableHeaders(table);
-            final String tabelle = table.asText();
+            final String tabelle = table.asNormalizedText();
             if (csvVerification == null || csvVerification.isCsv(tabelle)) {
                 tabellen.append(tabelle);
                 tabellen.append("\n");
@@ -67,7 +67,7 @@ public final class HtmlPages {
         final StringBuilder tabellen = new StringBuilder();
         for (final DomElement table : page.getElementsByTagName("table")) {
             normalizeTableHeaders(table);
-            final String tabelle = table.asText();
+            final String tabelle = table.asNormalizedText();
             if (csvVerification == null) {
                 tabellen.append(tabelle);
                 tabellen.append("\n");
@@ -86,7 +86,7 @@ public final class HtmlPages {
     private static void normalizeTableHeaders(final DomElement table) {
         for (final HtmlElement thElement : table.getElementsByTagName("th")) {
             final HtmlTableHeaderCell th = (HtmlTableHeaderCell) thElement;
-            final String textContent = th.asText();
+            final String textContent = th.asNormalizedText();
             th.setTextContent(textContent);
         }
     }

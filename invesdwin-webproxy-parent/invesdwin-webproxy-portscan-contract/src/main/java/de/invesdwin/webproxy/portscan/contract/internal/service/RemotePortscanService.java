@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.portscan.contract.internal.service;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import de.invesdwin.webproxy.portscan.contract.IPortscanService;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest;

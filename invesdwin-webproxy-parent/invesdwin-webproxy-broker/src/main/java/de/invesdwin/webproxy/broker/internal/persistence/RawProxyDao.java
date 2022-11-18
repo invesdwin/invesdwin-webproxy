@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.broker.internal.persistence;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import org.springframework.transaction.annotation.Transactional;
 

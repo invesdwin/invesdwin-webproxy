@@ -1,9 +1,9 @@
 package de.invesdwin.webproxy.geolocation.internal.geonames.persistence.redundance;
 
 import javax.annotation.concurrent.NotThreadSafe;
-import javax.persistence.Entity;
 
 import de.invesdwin.webproxy.geolocation.internal.geonames.persistence.AToponymEntity;
+import jakarta.persistence.Entity;
 
 @Entity
 @NotThreadSafe

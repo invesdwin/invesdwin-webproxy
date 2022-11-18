@@ -1,8 +1,8 @@
 package de.invesdwin.webproxy.geolocation.internal.geonames;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.springframework.scheduling.annotation.Scheduled;
 

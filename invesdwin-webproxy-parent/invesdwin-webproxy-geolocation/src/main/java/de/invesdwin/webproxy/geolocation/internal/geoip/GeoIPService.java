@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import org.springframework.scheduling.annotation.Scheduled;
 

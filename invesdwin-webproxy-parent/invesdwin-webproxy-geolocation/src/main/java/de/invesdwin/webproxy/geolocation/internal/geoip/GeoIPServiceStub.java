@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.geolocation.internal.geoip;
 import java.util.Locale;
 
 import javax.annotation.concurrent.Immutable;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import com.maxmind.geoip.Location;
 

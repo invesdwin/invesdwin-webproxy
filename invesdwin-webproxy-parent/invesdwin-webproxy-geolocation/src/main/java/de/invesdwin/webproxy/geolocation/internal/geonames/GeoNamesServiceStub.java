@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.geolocation.internal.geonames;
 
 import javax.annotation.concurrent.Immutable;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;

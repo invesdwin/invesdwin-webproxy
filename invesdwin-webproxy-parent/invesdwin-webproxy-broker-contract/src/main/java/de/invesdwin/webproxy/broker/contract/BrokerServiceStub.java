@@ -5,7 +5,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
 
 import de.invesdwin.context.beans.init.locations.PositionedResource;
 import de.invesdwin.context.test.ATest;
@@ -21,6 +20,7 @@ import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetTaskForCra
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetWorkingProxiesResponse;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
+import jakarta.inject.Named;
 
 @Named
 @ThreadSafe

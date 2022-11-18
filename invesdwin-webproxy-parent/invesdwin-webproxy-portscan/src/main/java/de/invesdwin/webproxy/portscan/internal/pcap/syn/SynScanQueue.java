@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.portscan.internal.pcap.syn;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import de.invesdwin.webproxy.portscan.internal.PortscanProperties;
 

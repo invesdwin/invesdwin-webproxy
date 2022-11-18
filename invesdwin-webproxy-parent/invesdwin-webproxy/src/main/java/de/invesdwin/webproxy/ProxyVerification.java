@@ -4,8 +4,8 @@ import java.net.URI;
 import java.util.concurrent.ExecutionException;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.concurrent.Threads;

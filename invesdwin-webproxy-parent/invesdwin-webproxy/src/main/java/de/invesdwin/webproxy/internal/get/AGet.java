@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import de.invesdwin.context.integration.network.NetworkUtil;
 import de.invesdwin.context.log.Log;

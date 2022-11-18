@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.broker.contract.internal.service;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
 
 import org.springframework.integration.annotation.ServiceActivator;
 
@@ -12,6 +11,7 @@ import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.AddToBeVerifiedProxiesResponse;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.ProcessResultFromCrawlerResponse;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.RetryLaterExceptionResponse;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class BrokerServiceActivator implements IBrokerServiceEndpoint {

@@ -1,7 +1,7 @@
 package de.invesdwin.webproxy.portscan.contract.internal.client;
 
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.springframework.integration.annotation.ServiceActivator;
 

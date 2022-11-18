@@ -1,15 +1,15 @@
 package de.invesdwin.webproxy.broker.internal.persistence;
 
 import javax.annotation.concurrent.NotThreadSafe;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
 import de.invesdwin.context.persistence.jpa.api.dao.entity.identity.AEntityWithIdentity;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 @NotThreadSafe
 @Entity

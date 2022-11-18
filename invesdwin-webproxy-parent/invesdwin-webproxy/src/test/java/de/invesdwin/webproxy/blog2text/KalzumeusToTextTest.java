@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.concurrent.NotThreadSafe;
-import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +25,7 @@ import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.GetPageConfig;
 import de.invesdwin.webproxy.IWebproxyService;
 import de.invesdwin.webproxy.broker.contract.BrokerServiceStub;
+import jakarta.inject.Inject;
 
 @NotThreadSafe
 public class KalzumeusToTextTest extends ATest {
@@ -57,7 +57,7 @@ public class KalzumeusToTextTest extends ATest {
             final Iterable<DomNode> children = elementById.getChildren();
             if (children != null) {
                 for (final DomNode post : children) {
-                    final String text = post.asText();
+                    final String text = post.asNormalizedText();
                     if (Strings.isNotBlank(text)) {
                         list.add(0, text);
                     }
@@ -68,7 +68,7 @@ public class KalzumeusToTextTest extends ATest {
                     curPost++;
                 }
             } else {
-                log.warn(request + ": " + elementById.asText());
+                log.warn(request + ": " + elementById.asNormalizedText());
             }
 
             index--;

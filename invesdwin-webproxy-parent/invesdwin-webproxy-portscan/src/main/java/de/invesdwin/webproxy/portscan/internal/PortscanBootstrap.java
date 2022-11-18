@@ -6,8 +6,8 @@ import java.net.InetAddress;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import de.invesdwin.context.beans.hook.IStartupHook;
 import de.invesdwin.context.integration.network.NetworkUtil;
