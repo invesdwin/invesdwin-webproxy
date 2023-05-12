@@ -5,8 +5,6 @@ import java.util.Queue;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import de.invesdwin.context.integration.retry.Retry;
 import de.invesdwin.context.integration.retry.RetryLaterException;
@@ -18,6 +16,8 @@ import de.invesdwin.webproxy.broker.contract.IBrokerService;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetWorkingProxiesResponse;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -92,6 +92,8 @@ public final class BrokerProxyPoolableObjectFactory implements ICommonsPoolableO
     public void activateObject(final PooledProxy obj) {}
 
     @Override
-    public void passivateObject(final PooledProxy obj) {}
+    public boolean passivateObject(final PooledProxy obj) {
+        return true;
+    }
 
 }
