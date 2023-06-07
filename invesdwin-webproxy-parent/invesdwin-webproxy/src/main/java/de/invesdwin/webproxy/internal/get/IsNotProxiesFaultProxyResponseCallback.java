@@ -23,10 +23,8 @@ final class IsNotProxiesFaultProxyResponseCallback extends AProxyResponseCallbac
     /**
      * Ain't the most pretty way to implement this, but this way it is easy to debug.
      */
-    //CHECKSTYLE:OFF cyclomatic complexity
     @Override
     public boolean isValidResponse(final URI uri, final String response, final Object originalResponse) {
-        //CHECKSTYLE:ON
         if (!super.isValidResponse(uri, response, originalResponse)) {
             return false;
         }

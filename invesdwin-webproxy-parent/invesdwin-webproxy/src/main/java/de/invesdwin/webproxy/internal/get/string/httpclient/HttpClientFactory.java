@@ -13,10 +13,8 @@ import de.invesdwin.webproxy.WebproxyProperties;
 import de.invesdwin.webproxy.internal.get.string.httpclient.socketfactory.PlainSocksProxySocketFactory;
 import de.invesdwin.webproxy.internal.get.string.httpclient.socketfactory.SslSocksProxySocketFactory;
 
-// CHECKSTYLE:OFF
 @Immutable
 public final class HttpClientFactory {
-    //CHECKSTYLE:ON
 
     private HttpClientFactory() {}
 

@@ -24,9 +24,7 @@ public abstract class AProxyResponseCallback {
      * 
      * originalResponse may be a String, Page or Exception
      */
-    //CHECKSTYLE:OFF Cyclomatic Complexity
     public boolean isValidResponse(final URI uri, final String stringResponse, final Object originalResponse) {
-        //CHECKSTYLE:ON
         if (Strings.isBlank(stringResponse)) {
             return false;
         }
