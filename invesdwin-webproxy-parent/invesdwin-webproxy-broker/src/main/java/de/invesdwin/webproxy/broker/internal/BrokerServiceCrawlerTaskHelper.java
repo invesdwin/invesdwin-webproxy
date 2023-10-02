@@ -9,8 +9,6 @@ import java.util.Set;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -27,6 +25,8 @@ import de.invesdwin.webproxy.broker.internal.persistence.ProxyDao;
 import de.invesdwin.webproxy.broker.internal.persistence.ProxyEntity;
 import de.invesdwin.webproxy.broker.internal.persistence.RawProxyDao;
 import de.invesdwin.webproxy.broker.internal.persistence.RawProxyEntity;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 @ThreadSafe
@@ -68,7 +68,7 @@ public class BrokerServiceCrawlerTaskHelper implements IStartupHook {
 
     private Collection<Integer> enhanceWithRandomPorts(final Set<Integer> ports) {
         //negation of the to be scanned ports so that the random ports can be picked from that
-        final List<Integer> randomScannablePorts = new ArrayList<Integer>(Addresses.ALL_PORTS);
+        final List<Integer> randomScannablePorts = new ArrayList<Integer>(Addresses.getAllPorts());
         Assertions.assertThat(randomScannablePorts.removeAll(ports)).isTrue();
         //random ports are being calculated before hand, this saves time by preventing unneeded iterations
         int randomPorts = BrokerProperties.calculateAdditionalRandomToBeScannedPorts(ports.size());

@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.lang.uri.Addresses;
@@ -27,6 +25,8 @@ import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IcmpScanTracker;
 import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IcmpSender;
 import de.invesdwin.webproxy.portscan.internal.pcap.syn.ISynListener;
 import de.invesdwin.webproxy.portscan.internal.scanner.PortScanner;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 @ThreadSafe
@@ -61,7 +61,7 @@ public class PortscanService implements IPortscanService, ISynListener, IPingLis
         if (requestPorts.size() > 0) {
             quellPorts = new ArrayList<Integer>(requestPorts);
         } else {
-            quellPorts = new ArrayList<Integer>(Addresses.ALL_PORTS);
+            quellPorts = new ArrayList<Integer>(Addresses.getAllPorts());
         }
         final List<Integer> randomizedPorts = new ArrayList<Integer>();
         final IRandomGenerator randomData = PseudoRandomGenerators.getThreadLocalPseudoRandom();

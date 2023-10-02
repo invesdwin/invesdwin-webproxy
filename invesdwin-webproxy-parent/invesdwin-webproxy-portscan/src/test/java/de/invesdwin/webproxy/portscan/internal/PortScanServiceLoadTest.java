@@ -3,7 +3,6 @@ package de.invesdwin.webproxy.portscan.internal;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +12,7 @@ import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.webproxy.portscan.contract.IPortscanService;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.RandomScanRequest;
 import de.invesdwin.webproxy.portscan.contract.schema.RandomScan;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class PortScanServiceLoadTest extends ATest {
@@ -24,7 +24,7 @@ public class PortScanServiceLoadTest extends ATest {
     public void lastTest() throws InterruptedException {
         final RandomScanRequest request = new RandomScanRequest();
         request.setStartOrStop(RandomScan.START);
-        request.getToBeScannedPorts().addAll(Addresses.ALL_PORTS);
+        request.getToBeScannedPorts().addAll(Addresses.getAllPorts());
         service.randomScan(request);
         while (true) {
             TimeUnit.MILLISECONDS.sleep(100);

@@ -4,7 +4,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Named;
 
 import de.invesdwin.context.test.ATest;
 import de.invesdwin.context.test.TestContext;
@@ -18,6 +17,7 @@ import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncResponse.Ping
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncResponse.ScanResponse;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanSyncResponse.StatusResponse;
 import de.invesdwin.webproxy.portscan.contract.schema.RandomScan;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -48,7 +48,7 @@ public class PortscanServiceStub extends StubSupport implements IPortscanService
         if (request.getToBeScannedPorts().size() > 0) {
             respondingPorts.addAll(request.getToBeScannedPorts());
         } else {
-            respondingPorts.addAll(Addresses.ALL_PORTS);
+            respondingPorts.addAll(Addresses.getAllPorts());
         }
         for (final Integer port : Iterables.limit(respondingPorts, 10)) {
             final ScanResponse response = new ScanResponse();
