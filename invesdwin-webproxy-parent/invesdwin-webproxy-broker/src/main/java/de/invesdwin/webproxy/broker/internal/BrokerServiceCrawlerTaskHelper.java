@@ -74,7 +74,7 @@ public class BrokerServiceCrawlerTaskHelper implements IStartupHook {
         int randomPorts = BrokerProperties.calculateAdditionalRandomToBeScannedPorts(ports.size());
         final IRandomGenerator randomData = PseudoRandomGenerators.getThreadLocalPseudoRandom();
         while (randomPorts > 0 && randomScannablePorts.size() > 0) {
-            final int randomIndex = randomData.nextInt(0, randomScannablePorts.size() - 1);
+            final int randomIndex = randomData.nextInt(0, randomScannablePorts.size());
             final int selectedPort = randomScannablePorts.remove(randomIndex);
             ports.add(selectedPort);
             randomPorts--;

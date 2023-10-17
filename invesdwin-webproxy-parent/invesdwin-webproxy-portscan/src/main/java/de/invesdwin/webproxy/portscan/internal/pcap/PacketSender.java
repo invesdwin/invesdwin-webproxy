@@ -5,8 +5,6 @@ import java.net.InetAddress;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.util.lang.uri.Addresses;
@@ -14,6 +12,8 @@ import de.invesdwin.util.math.random.IRandomGenerator;
 import de.invesdwin.util.math.random.PseudoRandomGenerators;
 import de.invesdwin.webproxy.portscan.internal.PortscanBootstrap;
 import de.invesdwin.webproxy.portscan.internal.PortscanProperties;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jpcap.JpcapSender;
 import jpcap.packet.DatalinkPacket;
 import jpcap.packet.IPPacket;
@@ -49,8 +49,8 @@ public class PacketSender {
     public void send(final IPPacket packet, final InetAddress dst) throws InterruptedException {
         packet.datalink = datalink;
         final IRandomGenerator randomData = PseudoRandomGenerators.getThreadLocalPseudoRandom();
-        final int ident = randomData.nextInt(0, Addresses.PORT_MAX); //muss random sein per spec
-        final int ttl = randomData.nextInt(MIN_TTL, 222); //zum verschleiern der identität
+        final int ident = randomData.nextInt(0, Addresses.PORT_MAX + 1); //needs to be random per spec
+        final int ttl = randomData.nextInt(MIN_TTL, 223); //to hide identity
         packet.setIPv4Parameter(PRIORITY, D_FLAG, T_FLAG, R_FLAG, RSV_TOS, RSV_FRAG, DONT_FRAG, MORE_FRAG, OFFSET,
                 ident, ttl, PROTOCOL, src, dst);
         send(packet);

@@ -63,7 +63,7 @@ public class PcapConfigurationChecker implements IPingListener, ISynListener {
             synAckReceived.set(false);
             final SynScanTracker tracker = synAckCaptor.startTracking(this, PortscanProperties.CHECK_HOST,
                     Arrays.asList(PortscanProperties.CHECK_PORT), false);
-            synSender.sendeSyn(tracker, PortscanProperties.CHECK_PORT);
+            synSender.sendSyn(tracker, PortscanProperties.CHECK_PORT);
             return waitForResponse(tracker, synAckReceived);
         } finally {
             synAckReceived.set(false);

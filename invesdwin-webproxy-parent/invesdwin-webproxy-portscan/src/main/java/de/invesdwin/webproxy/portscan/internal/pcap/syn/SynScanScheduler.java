@@ -46,7 +46,7 @@ public class SynScanScheduler implements Runnable {
                     if (scan.isReadyForNewRequest()) {
                         final Integer port = scan.nextPort();
                         if (port != null) {
-                            synSender.sendeSyn(scan, port);
+                            synSender.sendSyn(scan, port);
                             gesendetePakete++;
                             if (gesendetePakete >= PortscanProperties.MAX_PACKETS_PER_SECOND) {
                                 /*

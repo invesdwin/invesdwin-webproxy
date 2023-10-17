@@ -57,22 +57,22 @@ public class PortscanService implements IPortscanService, ISynListener, IPingLis
     }
 
     private List<Integer> randomizePorts(final List<Integer> requestPorts) {
-        final List<Integer> quellPorts;
+        final List<Integer> sourcePorts;
         if (requestPorts.size() > 0) {
-            quellPorts = new ArrayList<Integer>(requestPorts);
+            sourcePorts = new ArrayList<Integer>(requestPorts);
         } else {
-            quellPorts = new ArrayList<Integer>(Addresses.getAllPorts());
+            sourcePorts = new ArrayList<Integer>(Addresses.getAllPorts());
         }
         final List<Integer> randomizedPorts = new ArrayList<Integer>();
         final IRandomGenerator randomData = PseudoRandomGenerators.getThreadLocalPseudoRandom();
-        while (quellPorts.size() > 0) {
+        while (sourcePorts.size() > 0) {
             final int index;
-            if (quellPorts.size() - 1 > 0) {
-                index = randomData.nextInt(0, quellPorts.size() - 1);
+            if (sourcePorts.size() - 1 > 0) {
+                index = randomData.nextInt(0, sourcePorts.size());
             } else {
                 index = 0;
             }
-            randomizedPorts.add(quellPorts.remove(index));
+            randomizedPorts.add(sourcePorts.remove(index));
         }
         return Collections.unmodifiableList(randomizedPorts);
     }
