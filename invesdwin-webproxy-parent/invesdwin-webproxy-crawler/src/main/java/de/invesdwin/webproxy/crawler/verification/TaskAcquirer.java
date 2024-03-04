@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import de.invesdwin.context.beans.hook.IStartupHook;
 import de.invesdwin.context.log.Log;
@@ -29,6 +27,8 @@ import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.PingR
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.RandomScanRequest;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncResponse.ScanResponse;
 import de.invesdwin.webproxy.portscan.contract.schema.RandomScan;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -61,7 +61,7 @@ public class TaskAcquirer implements IStartupHook, IShutdownHook {
         portscan.randomScan(request);
     }
 
-    private class TaskCollector implements Runnable {
+    private final class TaskCollector implements Runnable {
         @Override
         public void run() {
             try {

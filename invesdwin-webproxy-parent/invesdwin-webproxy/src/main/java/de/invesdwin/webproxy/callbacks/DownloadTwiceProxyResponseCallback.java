@@ -72,7 +72,7 @@ public class DownloadTwiceProxyResponseCallback extends AProxyResponseCallback {
         return maxLastResponsesToConsider;
     }
 
-    private class LastResponses extends ADelegateCollection<String> {
+    private final class LastResponses extends ADelegateCollection<String> {
 
         @Override
         protected Collection<String> newDelegate() {

@@ -9,8 +9,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import org.springframework.beans.factory.InitializingBean;
 
@@ -20,6 +18,8 @@ import de.invesdwin.util.concurrent.Threads;
 import de.invesdwin.util.concurrent.WrappedExecutorService;
 import de.invesdwin.util.concurrent.pool.commons.ACommonsObjectPool;
 import de.invesdwin.webproxy.WebproxyProperties;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -94,7 +94,7 @@ public class BrokerProxyObjectPool extends ACommonsObjectPool<PooledProxy> imple
         proxyRotation.remove(obj);
     }
 
-    private class ProxyCooldownMonitor implements Runnable {
+    private final class ProxyCooldownMonitor implements Runnable {
         @Override
         public void run() {
             try {

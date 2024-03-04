@@ -23,8 +23,7 @@ public final class SingleJavaScriptExecutorHandler {
     @GuardedBy("SingleJavaScriptExecutorHandler.class")
     private static WrappedExecutorService executor;
 
-    private SingleJavaScriptExecutorHandler() {
-    }
+    private SingleJavaScriptExecutorHandler() {}
 
     public static synchronized void register(final SingleJavaScriptExecutor job) {
         try {
@@ -56,7 +55,7 @@ public final class SingleJavaScriptExecutorHandler {
         }
     }
 
-    private static class JobRunner implements Runnable {
+    private static final class JobRunner implements Runnable {
         @Override
         public void run() {
             while (!Threads.isInterrupted()) {
