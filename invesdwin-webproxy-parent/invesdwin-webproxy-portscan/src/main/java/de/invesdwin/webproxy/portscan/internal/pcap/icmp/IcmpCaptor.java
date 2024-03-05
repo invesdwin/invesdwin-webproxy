@@ -8,7 +8,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Named;
 
 import org.springframework.beans.factory.InitializingBean;
 
@@ -16,6 +15,7 @@ import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.portscan.internal.pcap.APacketCaptor;
 import de.invesdwin.webproxy.portscan.internal.pcap.AScanTracker.ScanStatus;
+import jakarta.inject.Named;
 import jpcap.PacketReceiver;
 import jpcap.packet.ICMPPacket;
 import jpcap.packet.Packet;
@@ -95,7 +95,7 @@ public class IcmpCaptor extends APacketCaptor implements InitializingBean {
     }
 
     @ThreadSafe
-    private class TimeoutChecker implements Runnable {
+    private final class TimeoutChecker implements Runnable {
 
         @Override
         public void run() {

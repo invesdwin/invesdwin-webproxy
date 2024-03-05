@@ -12,8 +12,6 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import org.springframework.beans.factory.InitializingBean;
 
@@ -24,6 +22,8 @@ import de.invesdwin.webproxy.portscan.internal.PortscanProperties;
 import de.invesdwin.webproxy.portscan.internal.pcap.APacketCaptor;
 import de.invesdwin.webproxy.portscan.internal.pcap.AScanTracker.ScanStatus;
 import de.invesdwin.webproxy.portscan.internal.scanner.PortScanner;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jpcap.PacketReceiver;
 import jpcap.packet.Packet;
 import jpcap.packet.TCPPacket;
@@ -128,7 +128,7 @@ public class SynAckCaptor extends APacketCaptor implements InitializingBean {
         return pr;
     }
 
-    private class ScanMonitor implements Runnable {
+    private final class ScanMonitor implements Runnable {
         @Override
         public void run() {
             final Map<InetAddress, SynScanTracker> copy = new HashMap<InetAddress, SynScanTracker>(host_tracker);
