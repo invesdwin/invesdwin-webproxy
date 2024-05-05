@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.assertj.core.api.Fail;
 import org.junit.jupiter.api.Test;
@@ -24,11 +23,12 @@ import de.invesdwin.util.error.Throwables;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.callbacks.statistics.ConsoleReportStatisticsCallback;
 import de.invesdwin.webproxy.internal.WebproxyService;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class WebproxyServiceTest extends ATest {
 
-    private static final String DOWNLOAD_URL = "http://google.com";
+    private static final String DOWNLOAD_URL = "https://www.wikipedia.org";
 
     @Inject
     private WebproxyService service;
