@@ -26,7 +26,7 @@ import jakarta.inject.Named;
 @ThreadSafe
 public class BrokerServiceStub extends StubSupport implements IBrokerService {
 
-    private static boolean enabled = true;
+    private static volatile boolean enabled = true;
 
     private static volatile boolean crawlForProxies;
 
