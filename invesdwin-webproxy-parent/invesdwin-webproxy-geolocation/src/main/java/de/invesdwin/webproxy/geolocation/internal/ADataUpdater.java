@@ -12,7 +12,7 @@ import javax.annotation.concurrent.Immutable;
 
 import org.apache.commons.io.IOUtils;
 
-import de.invesdwin.context.integration.compression.ADecompressingInputStream;
+import de.invesdwin.context.integration.compression.CommonsDecompressingInputStream;
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.lang.Closeables;
 import de.invesdwin.util.lang.Files;
@@ -88,17 +88,9 @@ public abstract class ADataUpdater {
         InputStream in = null;
         OutputStream out = null;
         try {
-            in = new ADecompressingInputStream(new TextDescription("%s: downloadNewFile(%s, %s)",
-                    ADataUpdater.class.getSimpleName(), sourceUrl, targetFile)) {
-                @Override
-                protected InputStream innerNewDelegate() {
-                    try {
-                        return URIs.connect(sourceUrl).downloadInputStream();
-                    } catch (final IOException e) {
-                        throw new TransparentRuntimeIOExeption(e);
-                    }
-                }
-            };
+            final InputStream download = URIs.connect(sourceUrl).downloadInputStream();
+            in = new CommonsDecompressingInputStream(new TextDescription("%s: downloadNewFile(%s, %s)",
+                    ADataUpdater.class.getSimpleName(), sourceUrl, targetFile), download);
             out = new FileOutputStream(targetFile, false);
             IOUtils.copy(in, out);
         } catch (final Throwable t) {
