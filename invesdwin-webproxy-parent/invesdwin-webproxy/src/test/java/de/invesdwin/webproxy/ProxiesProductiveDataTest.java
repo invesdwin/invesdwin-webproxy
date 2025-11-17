@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +24,7 @@ import de.invesdwin.webproxy.broker.contract.IBrokerService;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetWorkingProxiesResponse;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.callbacks.statistics.ConsoleReportStatisticsCallback;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class ProxiesProductiveDataTest extends ATest {
@@ -72,7 +72,7 @@ public class ProxiesProductiveDataTest extends ATest {
                         notWorkingProxies.incrementAndGet();
                     } else {
                         if (NetworkUtil.getExternalAddress().getHostAddress().equals(ret.trim())
-                                || !Addresses.isIp(ret.trim())) {
+                                || !Addresses.isIpV4(ret.trim())) {
                             //log.warn("Invalid response from %s: %s", p, ret);
                             notWorkingProxies.incrementAndGet();
                         } else {

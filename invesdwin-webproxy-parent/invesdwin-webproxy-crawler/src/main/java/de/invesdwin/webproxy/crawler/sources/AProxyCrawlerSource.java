@@ -31,13 +31,13 @@ public abstract class AProxyCrawlerSource implements IProxyCrawlerSource {
                 final String textFragment = Strings.substringBefore(textFragments[i], "@");
                 if (Strings.isBlank(textFragment)) {
                     continue;
-                } else if (Addresses.isIpWithPort(textFragment)) {
+                } else if (Addresses.isIpV4WithPort(textFragment)) {
                     final String[] splitAddr = textFragment.split(":");
                     curHost = splitAddr[0];
                     final String port = splitAddr[1];
                     proxies.add(extractRawProxy(curHost, port));
                     curHost = null;
-                } else if (Addresses.isIp(textFragment)) {
+                } else if (Addresses.isIpV4(textFragment)) {
                     if (curHost != null) {
                         proxies.add(extractRawProxy(curHost, null));
                         curHost = null;
@@ -70,7 +70,7 @@ public abstract class AProxyCrawlerSource implements IProxyCrawlerSource {
     }
 
     protected RawProxy extractRawProxy(final String host, final String port) {
-        if (!Addresses.isIp(host)) {
+        if (!Addresses.isIpV4(host)) {
             return null;
         }
         final InetAddress hostAddr = Addresses.asAddress(host);
