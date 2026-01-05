@@ -4,19 +4,19 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
 import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.webproxy.broker.contract.BrokerServiceStub;
 import de.invesdwin.webproxy.broker.contract.ProxyUtil;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class ProxyVerificationTest extends ATest {
@@ -25,7 +25,7 @@ public class ProxyVerificationTest extends ATest {
     private ProxyVerification proxyVeri;
 
     @Override
-    public void setUpContext(final TestContext ctx) throws Exception {
+    public void setUpContext(final ITestContextSetup ctx) throws Exception {
         super.setUpContext(ctx);
         ctx.deactivateBean(RegistryServiceStub.class);
         ctx.deactivateBean(BrokerServiceStub.class);

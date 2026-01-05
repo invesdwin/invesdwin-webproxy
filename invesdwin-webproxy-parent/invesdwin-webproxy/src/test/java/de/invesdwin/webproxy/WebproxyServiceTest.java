@@ -16,7 +16,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.concurrent.future.Futures;
 import de.invesdwin.util.error.Throwables;
@@ -34,7 +34,7 @@ public class WebproxyServiceTest extends ATest {
     private WebproxyService service;
 
     @Override
-    public void setUpContext(final TestContext ctx) throws Exception {
+    public void setUpContext(final ITestContextSetup ctx) throws Exception {
         super.setUpContext(ctx);
         //        ctx.deactivate(RegistryServiceMock.class);
         //        ctx.deactivate(BrokerServiceMock.class);

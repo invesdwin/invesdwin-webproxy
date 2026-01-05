@@ -4,22 +4,22 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Named;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.webproxy.geolocation.contract.schema.GeolocationRequest.GetGeolocationByCoordinatesRequest;
 import de.invesdwin.webproxy.geolocation.contract.schema.GeolocationRequest.GetGeolocationByHostRequest;
 import de.invesdwin.webproxy.geolocation.contract.schema.GeolocationResponse.GetGeolocationResponse;
+import jakarta.inject.Named;
 
 @Named
 @ThreadSafe
 public class GeolocationServiceStub extends StubSupport implements IGeolocationService {
 
     @Override
-    public void setUpContext(final ATest test, final TestContext ctx) throws Exception {
+    public void setUpContext(final ATest test, final ITestContextSetup ctx) throws Exception {
         super.setUpContext(test, ctx);
         ctx.replaceBean(IGeolocationService.class, this.getClass());
     }

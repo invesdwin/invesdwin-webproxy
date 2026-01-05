@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.geolocation.internal.geoip;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,9 +8,10 @@ import com.maxmind.geoip.Location;
 
 import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.persistence.jpa.test.APersistenceTest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.lang.uri.Addresses;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class GeoIPServiceTest extends APersistenceTest {
@@ -20,7 +20,7 @@ public class GeoIPServiceTest extends APersistenceTest {
     private IGeoIPService geoip;
 
     @Override
-    public void setUpContext(final TestContext ctx) throws Exception {
+    public void setUpContext(final ITestContextSetup ctx) throws Exception {
         super.setUpContext(ctx);
         ctx.deactivateBean(GeoIPServiceStub.class);
     }

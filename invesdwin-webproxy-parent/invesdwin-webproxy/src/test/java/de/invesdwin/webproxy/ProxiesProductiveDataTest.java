@@ -14,7 +14,7 @@ import de.invesdwin.context.integration.retry.RetryLaterException;
 import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.concurrent.WrappedExecutorService;
@@ -42,7 +42,7 @@ public class ProxiesProductiveDataTest extends ATest {
     private ProxyVerification proxyVeri;
 
     @Override
-    public void setUpContext(final TestContext ctx) throws Exception {
+    public void setUpContext(final ITestContextSetup ctx) throws Exception {
         super.setUpContext(ctx);
         ctx.deactivateBean(RegistryServiceStub.class);
         ctx.deactivateBean(BrokerServiceStub.class);

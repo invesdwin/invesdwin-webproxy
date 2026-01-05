@@ -1,20 +1,20 @@
 package de.invesdwin.webproxy.geolocation.internal.geonames;
 
 import javax.annotation.concurrent.Immutable;
-import jakarta.inject.Named;
 
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.webproxy.geolocation.internal.geonames.persistence.AToponymEntity;
 import de.invesdwin.webproxy.geolocation.internal.geonames.persistence.redundance.ToponymEntity;
+import jakarta.inject.Named;
 
 @Immutable
 @Named
 public class GeoNamesServiceStub extends StubSupport implements IGeoNamesService {
 
     @Override
-    public void setUpContext(final ATest test, final TestContext ctx) {
+    public void setUpContext(final ATest test, final ITestContextSetup ctx) {
         ctx.replaceBean(IGeoNamesService.class, this.getClass());
     }
 

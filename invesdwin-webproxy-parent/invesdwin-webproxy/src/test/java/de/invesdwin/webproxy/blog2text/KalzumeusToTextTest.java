@@ -17,7 +17,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import de.invesdwin.context.ContextProperties;
 import de.invesdwin.context.integration.ws.registry.RegistryServiceStub;
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.util.concurrent.future.Futures;
 import de.invesdwin.util.lang.Files;
 import de.invesdwin.util.lang.string.Strings;
@@ -34,7 +34,7 @@ public class KalzumeusToTextTest extends ATest {
     private IWebproxyService webproxy;
 
     @Override
-    public void setUpContext(final TestContext ctx) throws Exception {
+    public void setUpContext(final ITestContextSetup ctx) throws Exception {
         super.setUpContext(ctx);
         ctx.deactivateBean(RegistryServiceStub.class);
         ctx.deactivateBean(BrokerServiceStub.class);

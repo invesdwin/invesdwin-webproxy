@@ -6,7 +6,8 @@ import java.util.Set;
 import javax.annotation.concurrent.ThreadSafe;
 
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.util.collections.Iterables;
 import de.invesdwin.util.lang.uri.Addresses;
@@ -28,13 +29,13 @@ public class PortscanServiceStub extends StubSupport implements IPortscanService
     private volatile boolean randomScan;
 
     @Override
-    public void setUpContext(final ATest test, final TestContext ctx) throws Exception {
+    public void setUpContext(final ATest test, final ITestContextSetup ctx) throws Exception {
         super.setUpContext(test, ctx);
         ctx.replaceBean(IPortscanService.class, this.getClass());
     }
 
     @Override
-    public void setUpOnce(final ATest test, final TestContext ctx) throws Exception {
+    public void setUpOnce(final ATest test, final ITestContext ctx) throws Exception {
         super.setUpOnce(test, ctx);
         client = ctx.getBean(IPortscanClient.class);
     }

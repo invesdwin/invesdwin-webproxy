@@ -3,20 +3,20 @@ package de.invesdwin.webproxy.geolocation.internal.geoip;
 import java.util.Locale;
 
 import javax.annotation.concurrent.Immutable;
-import jakarta.inject.Named;
 
 import com.maxmind.geoip.Location;
 
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
+import jakarta.inject.Named;
 
 @Immutable
 @Named
 public class GeoIPServiceStub extends StubSupport implements IGeoIPService {
 
     @Override
-    public void setUpContext(final ATest test, final TestContext ctx) {
+    public void setUpContext(final ATest test, final ITestContextSetup ctx) {
         ctx.replaceBean(IGeoIPService.class, this.getClass());
     }
 

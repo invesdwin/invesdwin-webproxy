@@ -3,7 +3,7 @@ package de.invesdwin.webproxy.crawler.verification;
 import javax.annotation.concurrent.Immutable;
 
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
 import jakarta.inject.Named;
 
@@ -12,7 +12,7 @@ import jakarta.inject.Named;
 public class TaskAcquirerStub extends StubSupport {
 
     @Override
-    public void setUpContext(final ATest test, final TestContext ctx) throws Exception {
+    public void setUpContext(final ATest test, final ITestContextSetup ctx) throws Exception {
         ctx.deactivateBean(TaskAcquirer.class);
     }
 

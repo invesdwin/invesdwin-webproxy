@@ -8,7 +8,7 @@ import javax.annotation.concurrent.ThreadSafe;
 
 import de.invesdwin.context.beans.init.locations.PositionedResource;
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.collections.Collections;
@@ -48,7 +48,7 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
     }
 
     @Override
-    public void setUpContext(final ATest test, final TestContext ctx) {
+    public void setUpContext(final ATest test, final ITestContextSetup ctx) {
         if (enabled) {
             ctx.replaceBean(IBrokerService.class, this.getClass());
         } else {

@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.portscan.contract.internal;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -9,7 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import de.invesdwin.context.test.ATest;
-import de.invesdwin.context.test.TestContext;
+import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.assertions.Executable;
 import de.invesdwin.util.lang.uri.Addresses;
@@ -25,6 +24,7 @@ import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.ScanR
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncResponse.PingResponse;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncResponse.ScanResponse;
 import de.invesdwin.webproxy.portscan.contract.schema.RandomScan;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 public class RemotePortscanServiceTest extends ATest {
@@ -40,7 +40,7 @@ public class RemotePortscanServiceTest extends ATest {
     private PortscanClientActivator activatorNeedsMock;
 
     @Override
-    public void setUpContext(final TestContext ctx) throws Exception {
+    public void setUpContext(final ITestContextSetup ctx) throws Exception {
         super.setUpContext(ctx);
         ctx.deactivateBean(PortscanServiceStub.class);
     }
