@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.concurrent.ThreadSafe;
 
+import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.collections.Iterables;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
@@ -18,9 +19,11 @@ import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetTaskForCra
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetWorkingProxiesResponse;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
+import jakarta.inject.Named;
 
+@Named
 @ThreadSafe
-public class InMemoryBrokerService implements IBrokerService {
+public class InMemoryBrokerServiceStub extends StubSupport implements IBrokerService {
 
     private final Map<RawProxy, Proxy> proxies = new ConcurrentHashMap<RawProxy, Proxy>();
     private final Set<RawProxy> rawProxies = Collections.newSetFromMap(new ConcurrentHashMap<RawProxy, Boolean>());
