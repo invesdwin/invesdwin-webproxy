@@ -9,11 +9,13 @@ import javax.annotation.concurrent.ThreadSafe;
 
 import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.collections.Iterables;
+import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
+import de.invesdwin.webproxy.broker.contract.BrokerServiceStub;
+import de.invesdwin.webproxy.broker.contract.IBrokerService;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.AddToBeVerifiedProxiesRequest;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.ProcessResultFromCrawlerRequest;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetTaskForCrawlerResponse;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerResponse.GetWorkingProxiesResponse;
-import de.invesdwin.webproxy.broker.contract.IBrokerService;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
 
