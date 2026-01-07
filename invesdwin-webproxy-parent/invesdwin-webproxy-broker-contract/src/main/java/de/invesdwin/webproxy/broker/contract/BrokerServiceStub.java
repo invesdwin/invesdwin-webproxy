@@ -53,7 +53,8 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
         if (enabled) {
             ctx.replaceBean(IBrokerService.class, this.getClass());
         } else {
-            ctx.deactivateBean(this.getClass());
+            //don't record the change so that contexts can be actually reused (since this stub gets removed)
+            ctx.deactivateBean(this.getClass(), false);
         }
     }
 
