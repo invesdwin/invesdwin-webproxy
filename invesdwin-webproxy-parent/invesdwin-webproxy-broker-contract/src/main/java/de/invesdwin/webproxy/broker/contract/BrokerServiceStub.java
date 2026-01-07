@@ -10,7 +10,7 @@ import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.webproxy.broker.contract.internal.BrokerContextLocation;
-import de.invesdwin.webproxy.broker.contract.internal.InMemoryBrokerServiceStub;
+import de.invesdwin.webproxy.broker.contract.internal.InMemoryBrokerService;
 import jakarta.inject.Named;
 
 @Named
@@ -34,9 +34,7 @@ public class BrokerServiceStub extends StubSupport {
     @Override
     public void setUpContext(final ATest test, final ITestContextSetup ctx) {
         if (BrokerServiceStub.isEnabled()) {
-            ctx.replaceBean(IBrokerService.class, InMemoryBrokerServiceStub.class);
-        } else {
-            ctx.deactivateBean(InMemoryBrokerServiceStub.class);
+            ctx.replaceBean(IBrokerService.class, InMemoryBrokerService.class);
         }
     }
 
