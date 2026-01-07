@@ -1,6 +1,7 @@
 package de.invesdwin.webproxy.broker.contract;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,7 +31,7 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
 
     private static volatile boolean crawlForProxies;
 
-    private final Set<Proxy> proxies = Collections.newSetFromMap(new ConcurrentHashMap<Proxy, Boolean>());
+    private final Map<RawProxy, Proxy> proxies = new ConcurrentHashMap<RawProxy, Proxy>();
     private final Set<RawProxy> rawProxies = Collections.newSetFromMap(new ConcurrentHashMap<RawProxy, Boolean>());
 
     public static void setCrawlForProxies(final boolean value) {
@@ -59,7 +60,7 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
     @Override
     public GetWorkingProxiesResponse getWorkingProxies() {
         final GetWorkingProxiesResponse response = new GetWorkingProxiesResponse();
-        response.getWorkingProxies().addAll(proxies);
+        response.getWorkingProxies().addAll(proxies.values());
         return response;
     }
 
@@ -88,8 +89,23 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
 
     @Override
     public void processResultFromCrawler(final ProcessResultFromCrawlerRequest request) {
-        proxies.addAll(request.getSuccessfullyVerifiedProxies());
-        proxies.removeAll(request.getUnsuccessfullyVerifiedProxies());
+        addProxies(request.getSuccessfullyVerifiedProxies());
+        removeProxies(request.getUnsuccessfullyVerifiedProxies());
+    }
+
+    private void addProxies(final List<Proxy> add) {
+        for (final Proxy proxy : add) {
+            final RawProxy raw = new RawProxy();
+            raw.setHost(proxy.getHost());
+            raw.setPort(proxy.getPort());
+            proxies.put(raw, proxy);
+        }
+    }
+
+    private void removeProxies(final List<RawProxy> remove) {
+        for (final RawProxy rawProxy : remove) {
+            proxies.remove(rawProxy);
+        }
     }
 
     public static void setEnabled(final boolean enabled) {
