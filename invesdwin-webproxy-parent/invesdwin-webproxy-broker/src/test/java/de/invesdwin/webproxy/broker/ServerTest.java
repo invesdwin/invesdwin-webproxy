@@ -13,6 +13,7 @@ import de.invesdwin.context.persistence.jpa.test.APersistenceTest;
 import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.webserver.test.WebserverTest;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.lang.Objects;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.broker.contract.BrokerServiceStub;
 import de.invesdwin.webproxy.broker.contract.CheckClient;
@@ -40,7 +41,7 @@ public class ServerTest extends APersistenceTest {
     public void testCheckClientIp() {
         final CheckClient checkClient = newCheckClient();
         final String dl = URIs.connect(checkClient.getCheckClientIpUri()).download();
-        Assertions.assertThat(dl).isEqualTo("127.0.0.1");
+        Assertions.checkTrue(Objects.equalsAny(dl, "127.0.0.1", "[0:0:0:0:0:0:0:1]"));
     }
 
     private CheckClient newCheckClient() {
