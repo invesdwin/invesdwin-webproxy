@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.portscan.internal.pcap.icmp;
 
 import java.net.InetAddress;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ScheduledExecutorService;
@@ -10,6 +9,7 @@ import javax.annotation.concurrent.ThreadSafe;
 
 import org.springframework.beans.factory.InitializingBean;
 
+import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.time.duration.Duration;
@@ -100,8 +100,12 @@ public class IcmpCaptor extends APacketCaptor implements InitializingBean {
 
         @Override
         public void run() {
-            final Map<InetAddress, IcmpScanTracker> copy = new HashMap<InetAddress, IcmpScanTracker>(host_tracker); //against concurrentmodificationerror
-            for (final Entry<InetAddress, IcmpScanTracker> e : copy.entrySet()) {
+            //against concurrentmodificationerror
+            @SuppressWarnings("unchecked")
+            final Entry<InetAddress, IcmpScanTracker>[] copy = host_tracker.entrySet()
+                    .toArray(Collections.EMPTY_ENTRY_ARRAY);
+            for (int i = 0; i < copy.length; i++) {
+                final Entry<InetAddress, IcmpScanTracker> e = copy[i];
                 if (e.getValue().isResponseTimeoutExpired()) {
                     host_tracker.remove(e.getKey());
                 }

@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.portscan.internal.pcap.syn;
 
 import java.net.InetAddress;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,6 +12,7 @@ import javax.annotation.concurrent.ThreadSafe;
 
 import org.springframework.beans.factory.InitializingBean;
 
+import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.time.Instant;
@@ -131,8 +131,12 @@ public class SynAckCaptor extends APacketCaptor implements InitializingBean {
     private final class ScanMonitor implements Runnable {
         @Override
         public void run() {
-            final Map<InetAddress, SynScanTracker> copy = new HashMap<InetAddress, SynScanTracker>(host_tracker);
-            for (final Entry<InetAddress, SynScanTracker> e : copy.entrySet()) {
+            //against concurrentmodificationerror
+            @SuppressWarnings("unchecked")
+            final Entry<InetAddress, SynScanTracker>[] copy = host_tracker.entrySet()
+                    .toArray(Collections.EMPTY_ENTRY_ARRAY);
+            for (int i = 0; i < copy.length; i++) {
+                final Entry<InetAddress, SynScanTracker> e = copy[i];
                 //remove RandomScans if randomscan stopped
                 if (!portScanner.isRandomScanRunning()) {
                     e.getValue().stopOnRandomScan();
