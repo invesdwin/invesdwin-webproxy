@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.annotation.Nonnull;
@@ -15,6 +13,7 @@ import javax.annotation.concurrent.ThreadSafe;
 
 import org.springframework.beans.factory.InitializingBean;
 
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.duration.Duration;
@@ -34,7 +33,8 @@ public class SynAckCaptor extends APacketCaptor implements InitializingBean {
 
     private final ScheduledExecutorService executor = Executors
             .newScheduledThreadPool(this.getClass().getSimpleName() + "_CLEANUP", 1);
-    private final ConcurrentMap<InetAddress, SynScanTracker> host_tracker = new ConcurrentHashMap<InetAddress, SynScanTracker>();
+    private final Map<InetAddress, SynScanTracker> host_tracker = ILockCollectionFactory.getInstance(true)
+            .newConcurrentMap();
 
     @Inject
     private PortScanner portScanner;

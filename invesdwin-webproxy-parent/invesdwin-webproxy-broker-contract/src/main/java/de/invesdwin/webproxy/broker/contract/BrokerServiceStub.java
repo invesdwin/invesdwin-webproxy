@@ -3,7 +3,6 @@ package de.invesdwin.webproxy.broker.contract;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.concurrent.ThreadSafe;
 
@@ -14,6 +13,7 @@ import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.collections.Iterables;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.webproxy.broker.contract.internal.BrokerContextLocation;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.AddToBeVerifiedProxiesRequest;
 import de.invesdwin.webproxy.broker.contract.schema.BrokerRequest.ProcessResultFromCrawlerRequest;
@@ -31,8 +31,9 @@ public class BrokerServiceStub extends StubSupport implements IBrokerService {
 
     private static volatile boolean crawlForProxies;
 
-    private final Map<RawProxy, Proxy> proxies = new ConcurrentHashMap<RawProxy, Proxy>();
-    private final Set<RawProxy> rawProxies = Collections.newSetFromMap(new ConcurrentHashMap<RawProxy, Boolean>());
+    private final Map<RawProxy, Proxy> proxies = ILockCollectionFactory.getInstance(true).newConcurrentMap();
+    private final Set<RawProxy> rawProxies = Collections
+            .newSetFromMap(ILockCollectionFactory.getInstance(true).newConcurrentMap());
 
     public static void setCrawlForProxies(final boolean value) {
         crawlForProxies = value;

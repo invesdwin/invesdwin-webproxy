@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.internal.get.page.htmlunit.js;
 
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.concurrent.GuardedBy;
@@ -10,6 +9,7 @@ import javax.annotation.concurrent.ThreadSafe;
 import de.invesdwin.context.log.error.Err;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.collections.Collections;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.concurrent.Threads;
 import de.invesdwin.util.concurrent.WrappedExecutorService;
@@ -18,7 +18,7 @@ import de.invesdwin.util.concurrent.WrappedExecutorService;
 public final class SingleJavaScriptExecutorHandler {
 
     private static final Set<SingleJavaScriptExecutor> JOBS = Collections
-            .newSetFromMap(new ConcurrentHashMap<SingleJavaScriptExecutor, Boolean>());
+            .newSetFromMap(ILockCollectionFactory.getInstance(true).newConcurrentMap());
 
     @GuardedBy("SingleJavaScriptExecutorHandler.class")
     private static WrappedExecutorService executor;

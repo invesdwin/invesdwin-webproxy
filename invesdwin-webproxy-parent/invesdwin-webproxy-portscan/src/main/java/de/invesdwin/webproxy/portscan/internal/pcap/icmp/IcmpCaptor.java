@@ -4,13 +4,13 @@ import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.annotation.concurrent.ThreadSafe;
 
 import org.springframework.beans.factory.InitializingBean;
 
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.concurrent.Executors;
 import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.portscan.internal.pcap.APacketCaptor;
@@ -34,7 +34,8 @@ public class IcmpCaptor extends APacketCaptor implements InitializingBean {
 
     private final ScheduledExecutorService executor = Executors
             .newScheduledThreadPool(this.getClass().getSimpleName() + "_CLEANUP", 1);
-    private final ConcurrentHashMap<InetAddress, IcmpScanTracker> host_tracker = new ConcurrentHashMap<InetAddress, IcmpScanTracker>();
+    private final Map<InetAddress, IcmpScanTracker> host_tracker = ILockCollectionFactory.getInstance(true)
+            .newConcurrentMap();
 
     private final PacketReceiver pr = new PacketReceiver() {
         @Override

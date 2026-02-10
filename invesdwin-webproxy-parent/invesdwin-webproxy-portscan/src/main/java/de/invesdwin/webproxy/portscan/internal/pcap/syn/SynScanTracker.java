@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,6 +13,7 @@ import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 
 import de.invesdwin.util.collections.Collections;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.portscan.internal.PortscanProperties;
@@ -33,7 +33,8 @@ public class SynScanTracker extends AScanTracker {
     private static final Duration REMOVAL_TIMEOUT = RESPONSE_TIMEOUT.multiply(2);
     private static final AtomicInteger OPEN_REQUESTS_COUNTER = new AtomicInteger();
 
-    private final Map<ISynListener, Set<Integer>> listener_interestedPorts = new ConcurrentHashMap<ISynListener, Set<Integer>>();
+    private final Map<ISynListener, Set<Integer>> listener_interestedPorts = ILockCollectionFactory.getInstance(true)
+            .newConcurrentMap();
     private final boolean randomScan;
     @GuardedBy("this")
     private final List<Integer> toBeScannedPorts;
