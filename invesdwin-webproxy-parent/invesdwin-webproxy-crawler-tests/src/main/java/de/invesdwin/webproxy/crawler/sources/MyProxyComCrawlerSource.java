@@ -1,18 +1,18 @@
 package de.invesdwin.webproxy.crawler.sources;
 
 import java.net.URI;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Named;
 
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.GetPageConfig;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -28,7 +28,7 @@ public class MyProxyComCrawlerSource extends AUrisProxyCrawlerSourceTemplate {
         final GetPageConfig config = getInternalPageConfig();
         final HtmlPage page = (HtmlPage) webproxy.getPage(config, URIs.asUri(URL_START)).get();
 
-        final Set<URI> proxyLinks = new HashSet<URI>();
+        final Set<URI> proxyLinks = ILockCollectionFactory.getInstance(false).newSet();
         for (final HtmlAnchor l : page.getAnchors()) {
             final String href = l.getHrefAttribute();
             if (href.startsWith(HREF_BASIS_ABSOLUTE)) {

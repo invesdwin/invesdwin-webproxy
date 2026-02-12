@@ -2,8 +2,6 @@ package de.invesdwin.webproxy.broker.internal;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -15,6 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import de.invesdwin.context.beans.hook.IStartupHook;
 import de.invesdwin.context.persistence.jpa.api.query.QueryConfig;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.util.math.random.IRandomGenerator;
 import de.invesdwin.util.math.random.PseudoRandomGenerators;
@@ -55,7 +54,7 @@ public class BrokerServiceCrawlerTaskHelper implements IStartupHook {
     }
 
     private Collection<Integer> getToBeScannedPortsSorted() {
-        final Set<Integer> ports = new LinkedHashSet<Integer>();
+        final Set<Integer> ports = ILockCollectionFactory.getInstance(false).newLinkedSet();
         //the enum ports have the highest priority
         for (final OftenUsedProxyPorts p : OftenUsedProxyPorts.values()) {
             ports.add(p.toPort());
@@ -83,7 +82,7 @@ public class BrokerServiceCrawlerTaskHelper implements IStartupHook {
     }
 
     private Collection<RawProxy> getZuPruefendeProxies() {
-        final Set<RawProxy> ret = new HashSet<RawProxy>();
+        final Set<RawProxy> ret = ILockCollectionFactory.getInstance(false).newSet();
         List<RawProxyEntity> rawProxyEnts;
         do {
             rawProxyEnts = rawProxyDao

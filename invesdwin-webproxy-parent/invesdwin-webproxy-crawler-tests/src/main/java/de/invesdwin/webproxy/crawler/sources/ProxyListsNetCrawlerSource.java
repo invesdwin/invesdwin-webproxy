@@ -1,13 +1,13 @@
 package de.invesdwin.webproxy.crawler.sources;
 
 import java.net.URI;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Named;
 
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.lang.uri.URIs;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -17,7 +17,7 @@ public class ProxyListsNetCrawlerSource extends AUrisProxyCrawlerSourceTemplate 
 
     @Override
     protected Set<URI> getUris() {
-        final Set<URI> uris = new HashSet<URI>();
+        final Set<URI> uris = ILockCollectionFactory.getInstance(false).newSet();
         for (final TxtList list : TxtList.values()) {
             uris.add(list.getUri());
         }

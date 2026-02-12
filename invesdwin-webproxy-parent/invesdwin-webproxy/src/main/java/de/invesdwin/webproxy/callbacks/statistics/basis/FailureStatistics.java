@@ -1,7 +1,5 @@
 package de.invesdwin.webproxy.callbacks.statistics.basis;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -12,11 +10,13 @@ import javax.annotation.concurrent.ThreadSafe;
 import com.google.common.base.Functions;
 import com.google.common.collect.Ordering;
 
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
+
 @ThreadSafe
 public class FailureStatistics {
 
     @GuardedBy("this")
-    private final Map<String, Long> failure_count = new HashMap<String, Long>();
+    private final Map<String, Long> failure_count = ILockCollectionFactory.getInstance(false).newMap();
 
     public synchronized void addFailure(final Throwable failure) {
         final String censoredFailure = censorFailure(failure.toString());
@@ -41,15 +41,15 @@ public class FailureStatistics {
     /**
      * Returns the failures in descending order by count.
      * 
-     * @see <a
-     *      href="http://stackoverflow.com/questions/109383/how-to-sort-a-mapkey-value-on-the-values-in-java">Source</a>
+     * @see <a href=
+     *      "http://stackoverflow.com/questions/109383/how-to-sort-a-mapkey-value-on-the-values-in-java">Source</a>
      */
     public synchronized Map<String, Long> getFailuresSortedByCount() {
         final List<String> sortedKeys = Ordering.natural()
                 .reverse()
                 .onResultOf(Functions.forMap(failure_count))
                 .immutableSortedCopy(failure_count.keySet());
-        final Map<String, Long> sortedMap = new LinkedHashMap<String, Long>();
+        final Map<String, Long> sortedMap = ILockCollectionFactory.getInstance(false).newLinkedMap();
         for (final String key : sortedKeys) {
             sortedMap.put(key, failure_count.get(key));
         }

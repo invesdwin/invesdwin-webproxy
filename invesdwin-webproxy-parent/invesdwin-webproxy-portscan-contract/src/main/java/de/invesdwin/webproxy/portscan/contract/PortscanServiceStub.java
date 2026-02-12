@@ -1,8 +1,5 @@
 package de.invesdwin.webproxy.portscan.contract;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import javax.annotation.concurrent.ThreadSafe;
 
 import de.invesdwin.context.test.ATest;
@@ -10,6 +7,8 @@ import de.invesdwin.context.test.ITestContext;
 import de.invesdwin.context.test.ITestContextSetup;
 import de.invesdwin.context.test.stub.StubSupport;
 import de.invesdwin.util.collections.Iterables;
+import de.invesdwin.util.collections.factory.pool.set.ICloseableSet;
+import de.invesdwin.util.collections.factory.pool.set.linked.PooledLinkedSet;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.PingRequest;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncRequest.RandomScanRequest;
@@ -45,17 +44,18 @@ public class PortscanServiceStub extends StubSupport implements IPortscanService
      */
     @Override
     public void scan(final ScanRequest request) {
-        final Set<Integer> respondingPorts = new LinkedHashSet<Integer>();
-        if (request.getToBeScannedPorts().size() > 0) {
-            respondingPorts.addAll(request.getToBeScannedPorts());
-        } else {
-            respondingPorts.addAll(Addresses.getAllPorts());
-        }
-        for (final Integer port : Iterables.limit(respondingPorts, 10)) {
-            final ScanResponse response = new ScanResponse();
-            response.setScannedHost(request.getToBeScannedHost());
-            response.setRespondingPort(port);
-            client.portIsReachable(response);
+        try (ICloseableSet<Integer> respondingPorts = PooledLinkedSet.getInstance()) {
+            if (request.getToBeScannedPorts().size() > 0) {
+                respondingPorts.addAll(request.getToBeScannedPorts());
+            } else {
+                respondingPorts.addAll(Addresses.getAllPorts());
+            }
+            for (final Integer port : Iterables.limit(respondingPorts, 10)) {
+                final ScanResponse response = new ScanResponse();
+                response.setScannedHost(request.getToBeScannedHost());
+                response.setRespondingPort(port);
+                client.portIsReachable(response);
+            }
         }
     }
 

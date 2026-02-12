@@ -2,19 +2,17 @@ package de.invesdwin.webproxy.crawler.verification;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import de.invesdwin.context.log.Log;
 import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.collections.Iterables;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.collections.list.Lists;
 import de.invesdwin.util.lang.uri.Addresses;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
@@ -29,15 +27,17 @@ import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncResponse.Ping
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanAsyncResponse.ScanResponse;
 import de.invesdwin.webproxy.portscan.contract.schema.PortscanSyncResponse.StatusResponse;
 import de.invesdwin.webproxy.portscan.contract.schema.RandomScan;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 @ThreadSafe
 public class TaskAcquirerCache implements IPortscanClient {
 
     @GuardedBy("this")
-    private final Set<RawProxy> cachedVerifications = new HashSet<RawProxy>();
+    private final Set<RawProxy> cachedVerifications = ILockCollectionFactory.getInstance(false).newSet();
     @GuardedBy("this")
-    private final Set<InetAddress> cachedPortscans = new HashSet<InetAddress>();
+    private final Set<InetAddress> cachedPortscans = ILockCollectionFactory.getInstance(false).newSet();
     private final Log log = new Log(this);
     private volatile List<Integer> toBeScannedPorts = Collections.unmodifiableList(new ArrayList<Integer>());
 
@@ -109,10 +109,11 @@ public class TaskAcquirerCache implements IPortscanClient {
             final Set<InetAddress> portscans;
 
             synchronized (this) {
-                verifications = new HashSet<RawProxy>(Lists.newArrayList(
-                        Iterables.limit(cachedVerifications, BrokerContractProperties.MAX_PROXIES_PER_TASK)));
+                verifications = ILockCollectionFactory.getInstance(false)
+                        .newSet(Lists.newArrayList(
+                                Iterables.limit(cachedVerifications, BrokerContractProperties.MAX_PROXIES_PER_TASK)));
                 cachedVerifications.removeAll(verifications);
-                portscans = new HashSet<InetAddress>(cachedPortscans);
+                portscans = ILockCollectionFactory.getInstance(false).newSet(cachedPortscans);
                 cachedPortscans.clear();
             }
 

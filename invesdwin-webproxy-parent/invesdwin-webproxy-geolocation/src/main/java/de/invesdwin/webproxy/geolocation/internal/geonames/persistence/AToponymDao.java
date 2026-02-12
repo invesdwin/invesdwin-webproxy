@@ -1,6 +1,5 @@
 package de.invesdwin.webproxy.geolocation.internal.geonames.persistence;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +17,7 @@ import de.invesdwin.context.persistence.jpa.ConnectionDialect;
 import de.invesdwin.context.persistence.jpa.PersistenceProperties;
 import de.invesdwin.context.persistence.jpa.api.dao.ADao;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.webproxy.geolocation.internal.GeolocationProperties;
 
@@ -84,7 +84,7 @@ public abstract class AToponymDao<E extends AToponymEntity> extends ADao<E> impl
          * Cache results so that lookups are faster, the cache can have a maximum of the size of number of
          * classification, thus no possible memory leak
          */
-        final Map<Integer, E> classifications_nearestNeighbour = new HashMap<Integer, E>();
+        final Map<Integer, E> classifications_nearestNeighbour = ILockCollectionFactory.getInstance(false).newMap();
         int countCacheHits = 0;
         int countDbHits = 0;
         for (final E incompleteItem : incompleteItems) {

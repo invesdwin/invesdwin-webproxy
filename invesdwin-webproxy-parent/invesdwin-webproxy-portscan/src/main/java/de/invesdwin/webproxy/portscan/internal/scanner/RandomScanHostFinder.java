@@ -1,19 +1,18 @@
 package de.invesdwin.webproxy.portscan.internal.scanner;
 
 import java.net.InetAddress;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Configurable;
 
 import de.invesdwin.context.integration.network.RandomIpGenerator;
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IPingListener;
 import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IcmpCaptor;
 import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IcmpScanTracker;
@@ -21,6 +20,7 @@ import de.invesdwin.webproxy.portscan.internal.pcap.icmp.IcmpSender;
 import de.invesdwin.webproxy.portscan.internal.pcap.syn.ISynListener;
 import de.invesdwin.webproxy.portscan.internal.pcap.syn.SynAckCaptor;
 import de.invesdwin.webproxy.portscan.internal.pcap.syn.SynScanTracker;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 @Configurable
@@ -42,7 +42,7 @@ class RandomScanHostFinder implements Runnable, IPingListener {
     RandomScanHostFinder(final ISynListener listener, final BlockingQueue<SynScanTracker> consumerQueue,
             final List<Integer> toBeScannedPorts) {
         this.listener = listener;
-        this.pingReceived = new LinkedHashSet<InetAddress>();
+        this.pingReceived = ILockCollectionFactory.getInstance(false).newLinkedSet();
         this.consumerQueue = consumerQueue;
         this.toBeScannedPorts = toBeScannedPorts;
     }

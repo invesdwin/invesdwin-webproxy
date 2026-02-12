@@ -2,7 +2,6 @@ package de.invesdwin.webproxy.portscan.internal.pcap.syn;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.concurrent.GuardedBy;
 import javax.annotation.concurrent.ThreadSafe;
 
-import de.invesdwin.util.collections.Collections;
 import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.util.time.duration.Duration;
@@ -52,7 +50,7 @@ public class SynScanTracker extends AScanTracker {
             final boolean randomScan) {
         super(host, LOCK, OPEN_REQUESTS_COUNTER, PortscanProperties.MAX_OPEN_SYN_REQUESTS, RESPONSE_TIMEOUT);
         this.listener_interestedPorts.put(listener,
-                Collections.unmodifiableSet(new HashSet<Integer>(toBeScannedPorts)));
+                ILockCollectionFactory.getInstance(false).newImmutableSet(toBeScannedPorts));
         this.toBeScannedPorts = new ArrayList<Integer>(toBeScannedPorts);
         this.randomScan = randomScan;
     }
@@ -63,7 +61,7 @@ public class SynScanTracker extends AScanTracker {
 
     synchronized boolean addListener(final ISynListener listener, final List<Integer> toBeScannedPorts) {
         final boolean changed = listener_interestedPorts.put(listener,
-                Collections.unmodifiableSet(new HashSet<Integer>(toBeScannedPorts))) == null;
+                ILockCollectionFactory.getInstance(false).newImmutableSet(toBeScannedPorts)) == null;
         for (final Integer port : toBeScannedPorts) {
             if (this.toBeScannedPorts.contains(port)) {
                 //notify about already scanned ports that interest him

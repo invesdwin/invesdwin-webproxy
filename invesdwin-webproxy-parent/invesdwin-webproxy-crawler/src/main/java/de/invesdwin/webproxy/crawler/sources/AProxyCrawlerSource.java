@@ -1,7 +1,6 @@
 package de.invesdwin.webproxy.crawler.sources;
 
 import java.net.InetAddress;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.concurrent.ThreadSafe;
@@ -10,6 +9,7 @@ import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.TextPage;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.error.UnknownArgumentException;
 import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.util.lang.uri.Addresses;
@@ -20,7 +20,7 @@ import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
 public abstract class AProxyCrawlerSource implements IProxyCrawlerSource {
 
     protected Set<RawProxy> extractRawProxies(final Page page) {
-        final Set<RawProxy> proxies = new HashSet<RawProxy>();
+        final Set<RawProxy> proxies = ILockCollectionFactory.getInstance(false).newSet();
         if (page != null) {
             String pageContent = pageToString(page);
             pageContent = Strings.replaceNewlines(pageContent, getNewlineReplacement());

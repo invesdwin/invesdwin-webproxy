@@ -1,14 +1,11 @@
 package de.invesdwin.webproxy.crawler.sources;
 
 import java.net.URI;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -16,12 +13,15 @@ import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 import de.invesdwin.context.integration.csv.CsvVerification;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.lang.string.Strings;
 import de.invesdwin.util.lang.uri.URIs;
 import de.invesdwin.webproxy.GetPageConfig;
 import de.invesdwin.webproxy.HtmlPages;
 import de.invesdwin.webproxy.IWebproxyService;
 import de.invesdwin.webproxy.callbacks.JavascriptWaitCallback;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -60,7 +60,7 @@ public class FreeProxyListsComCrawlerSource extends AUrisProxyCrawlerSourceTempl
     @Override
     protected Set<URI> getUris() throws InterruptedException, ExecutionException {
         final GetPageConfig config = getInternalPageConfig();
-        final Set<URI> proxyUris = new HashSet<URI>();
+        final Set<URI> proxyUris = ILockCollectionFactory.getInstance(false).newSet();
         for (final SubPage subPage : SubPage.values()) {
             final HtmlPage page = (HtmlPage) webproxy.getPage(config, subPage.getIndex()).get();
             for (final HtmlAnchor l : page.getAnchors()) {

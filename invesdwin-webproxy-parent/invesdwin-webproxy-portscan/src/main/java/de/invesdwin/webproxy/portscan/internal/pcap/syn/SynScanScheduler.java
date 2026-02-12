@@ -1,16 +1,16 @@
 package de.invesdwin.webproxy.portscan.internal.pcap.syn;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 import de.invesdwin.util.assertions.Assertions;
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.util.time.Instant;
 import de.invesdwin.webproxy.portscan.internal.PortscanProperties;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @ThreadSafe
 @Named
@@ -40,7 +40,7 @@ public class SynScanScheduler implements Runnable {
                 //collect tasks
                 collectTasksOrWait();
                 //process this iteration of scans
-                final Set<SynScanTracker> copy = new HashSet<SynScanTracker>(scans);
+                final Set<SynScanTracker> copy = ILockCollectionFactory.getInstance(false).newSet(scans);
                 int gesendetePakete = 0;
                 for (final SynScanTracker scan : copy) {
                     if (scan.isReadyForNewRequest()) {

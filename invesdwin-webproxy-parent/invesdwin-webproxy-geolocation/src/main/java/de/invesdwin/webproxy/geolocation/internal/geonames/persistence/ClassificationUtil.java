@@ -1,10 +1,10 @@
 package de.invesdwin.webproxy.geolocation.internal.geonames.persistence;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.annotation.concurrent.Immutable;
 
+import de.invesdwin.util.collections.factory.ILockCollectionFactory;
 import de.invesdwin.webproxy.geolocation.internal.GeolocationProperties;
 
 @Immutable
@@ -30,8 +30,9 @@ public final class ClassificationUtil {
     /**
      * Calculates an empty square with classifications around the start classification.
      */
-    public static Set<Integer> calculateSurroundingClassifications(final int startClassification, final int stepsOutside) {
-        final Set<Integer> classifications = new HashSet<Integer>();
+    public static Set<Integer> calculateSurroundingClassifications(final int startClassification,
+            final int stepsOutside) {
+        final Set<Integer> classifications = ILockCollectionFactory.getInstance(false).newSet();
         if (stepsOutside == 0) {
             classifications.add(startClassification);
         } else {
@@ -61,7 +62,7 @@ public final class ClassificationUtil {
     }
 
     private static Set<Integer> calculateHorizontalClassificationsBetween(final int left, final int right) {
-        final Set<Integer> classificationsBetween = new HashSet<Integer>();
+        final Set<Integer> classificationsBetween = ILockCollectionFactory.getInstance(false).newSet();
         for (int k = left; k <= right; k++) {
             classificationsBetween.add(k);
         }
@@ -69,7 +70,7 @@ public final class ClassificationUtil {
     }
 
     private static Set<Integer> calculateVerticalClassificationsBetween(final int top, final int bottom) {
-        final Set<Integer> classificationsBetween = new HashSet<Integer>();
+        final Set<Integer> classificationsBetween = ILockCollectionFactory.getInstance(false).newSet();
         for (int k = top; k <= bottom; k += GeolocationProperties.CLASSIFICATIONS_PER_AXIS) {
             classificationsBetween.add(k);
         }
