@@ -5,13 +5,14 @@ import java.util.Set;
 import javax.annotation.concurrent.Immutable;
 
 import de.invesdwin.util.collections.factory.ILockCollectionFactory;
+import de.invesdwin.util.math.Integers;
 import de.invesdwin.webproxy.geolocation.internal.GeolocationProperties;
 
 @Immutable
 public final class ClassificationUtil {
 
     public static final int MIN_CLASSIFICATIONS = 1;
-    public static final int MAX_CLASSIFICATIONS = (int) Math.pow(GeolocationProperties.CLASSIFICATIONS_PER_AXIS, 2);
+    public static final int MAX_CLASSIFICATIONS = Integers.pow(GeolocationProperties.CLASSIFICATIONS_PER_AXIS, 2);
     private static final float LONGITUDE_PER_CLASSIFICATION = 360 / GeolocationProperties.CLASSIFICATIONS_PER_AXIS;
     private static final float LATITUDE_PER_CLASSIFICATION = 180 / GeolocationProperties.CLASSIFICATIONS_PER_AXIS;
 

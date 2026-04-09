@@ -7,6 +7,7 @@ import javax.annotation.concurrent.Immutable;
 import de.invesdwin.context.system.properties.SystemProperties;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.lang.uri.Addresses;
+import de.invesdwin.util.math.Integers;
 import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
 
@@ -73,9 +74,9 @@ public final class PortscanProperties {
         if (pause == 0) {
             return maxLimit;
         } else {
-            final long sekunde = new Duration(1, FTimeUnit.SECONDS).intValue(FTimeUnit.NANOSECONDS);
-            final long maxPaketeProSekunde = sekunde / pause;
-            return Math.min((int) maxPaketeProSekunde, maxLimit);
+            final long seconds = new Duration(1, FTimeUnit.SECONDS).intValue(FTimeUnit.NANOSECONDS);
+            final long maxPacketsPerSecond = seconds / pause;
+            return Integers.min((int) maxPacketsPerSecond, maxLimit);
         }
     }
 }
