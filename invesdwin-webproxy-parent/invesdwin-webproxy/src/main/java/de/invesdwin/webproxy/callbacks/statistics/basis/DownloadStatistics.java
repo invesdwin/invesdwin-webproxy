@@ -5,7 +5,6 @@ import javax.annotation.concurrent.Immutable;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.bean.AValueObject;
 import de.invesdwin.util.time.Instant;
-import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
 
 @Immutable
@@ -23,8 +22,7 @@ public class DownloadStatistics extends AValueObject {
     public DownloadStatistics(final String uri, final boolean proxyUsed, final int countDownloadsInSession,
             final Instant downloadTryStart, final Instant downloadTryEnd, final int neededRetries) {
         super();
-        Assertions.assertThat(new Duration(downloadTryStart, downloadTryEnd).isGreaterThan(1, FTimeUnit.NANOSECONDS))
-                .isTrue();
+        Assertions.assertThat(new Duration(downloadTryStart, downloadTryEnd).isGreaterThanNanos(1)).isTrue();
         this.uri = uri;
         this.proxyUsed = proxyUsed;
         this.countDownloadsInSession = countDownloadsInSession;
