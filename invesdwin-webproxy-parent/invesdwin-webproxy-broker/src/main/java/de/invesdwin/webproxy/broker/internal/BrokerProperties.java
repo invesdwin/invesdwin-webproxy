@@ -4,7 +4,6 @@ import javax.annotation.concurrent.Immutable;
 
 import de.invesdwin.context.system.properties.SystemProperties;
 import de.invesdwin.util.time.date.FDate;
-import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
 
 @Immutable
@@ -31,8 +30,7 @@ public final class BrokerProperties {
     }
 
     public static FDate calculateDowntimeToleranceExceededDate() {
-        final FDate expired = new FDate()
-                .addMilliseconds(-BrokerProperties.PROXY_DOWNTIME_TOLERANCE.intValue(FTimeUnit.MILLISECONDS));
+        final FDate expired = new FDate().subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE);
         return expired;
     }
 
