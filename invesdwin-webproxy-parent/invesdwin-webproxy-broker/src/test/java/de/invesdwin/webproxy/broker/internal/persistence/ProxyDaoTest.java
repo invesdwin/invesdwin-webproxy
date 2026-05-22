@@ -14,7 +14,6 @@ import de.invesdwin.context.persistence.jpa.test.APersistenceTest;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.error.Throwables;
 import de.invesdwin.util.time.date.FDate;
-import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
 import de.invesdwin.webproxy.broker.internal.BrokerProperties;
@@ -108,8 +107,8 @@ public class ProxyDaoTest extends APersistenceTest {
                     Locale.getDefault().getCountry(), TimeZone.getDefault().getID());
             if (i % 2 == 0) {
                 p.setLastSuccessful(FDate.now()
-                        .addMilliseconds(
-                                -BrokerProperties.PROXY_DOWNTIME_TOLERANCE.intValue(FTimeUnit.MILLISECONDS) * 2));
+                        .subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE)
+                        .subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE));
             } else {
                 p.setLastSuccessful(FDate.now());
             }
