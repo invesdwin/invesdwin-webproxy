@@ -30,7 +30,7 @@ public final class BrokerProperties {
     }
 
     public static FDate calculateDowntimeToleranceExceededDate() {
-        final FDate expired = new FDate().subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE);
+        final FDate expired = FDate.now().subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE);
         return expired;
     }
 

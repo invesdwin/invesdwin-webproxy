@@ -51,9 +51,9 @@ public class BrokerServiceTestPreparer extends APersistenceTestPreparer {
             final ProxyEntity p = ProxyEntity.valueOf(host, port, type, ProxyQuality.TRANSPARENT,
                     Locale.getDefault().getCountry(), TimeZone.getDefault().getID());
             if (i < COUNT_PROXIES_DOWNTIME_TOLERANCE_EXCEEDED) {
-                p.setLastSuccessful(new FDate().subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE.multiply(2)));
+                p.setLastSuccessful(FDate.now().subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE.multiply(2)));
             } else {
-                p.setLastSuccessful(new FDate());
+                p.setLastSuccessful(FDate.now());
             }
 
             if (!proxyDao.writeOrUpdate(p)) {

@@ -5,7 +5,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.assertj.core.api.Fail;
 import org.junit.jupiter.api.Test;
@@ -19,6 +18,7 @@ import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
 import de.invesdwin.webproxy.broker.internal.BrokerProperties;
+import jakarta.inject.Inject;
 import jakarta.validation.ConstraintViolationException;
 
 @ThreadSafe
@@ -38,7 +38,7 @@ public class ProxyDaoTest extends APersistenceTest {
         p.setHost("asd");
         p.setPort(-1);
         p.setType(ProxyType.HTTP);
-        p.setLastSuccessful(new FDate());
+        p.setLastSuccessful(FDate.now());
         try {
             dao.save(p);
             Fail.fail("Exception expected");
@@ -75,13 +75,13 @@ public class ProxyDaoTest extends APersistenceTest {
             for (int j = 0; j < i; j++) {
                 final ProxyEntity p = ProxyEntity.valueOf("127.0.0.1" + i + "" + j, i, ProxyType.HTTP,
                         ProxyQuality.TRANSPARENT, Locale.getDefault().getCountry(), TimeZone.getDefault().getID());
-                p.setLastSuccessful(new FDate());
+                p.setLastSuccessful(FDate.now());
                 dao.save(p);
             }
         }
         final ProxyEntity p = ProxyEntity.valueOf("127.0.0.1" + 7 + "" + 7, 7, ProxyType.HTTP, ProxyQuality.TRANSPARENT,
                 Locale.getDefault().getCountry(), TimeZone.getDefault().getID());
-        p.setLastSuccessful(new FDate());
+        p.setLastSuccessful(FDate.now());
         dao.save(p);
 
         final List<Integer> l = dao.readUsedPortsSorted(Integer.MAX_VALUE);
@@ -107,10 +107,11 @@ public class ProxyDaoTest extends APersistenceTest {
             final ProxyEntity p = ProxyEntity.valueOf(host, i, type, ProxyQuality.TRANSPARENT,
                     Locale.getDefault().getCountry(), TimeZone.getDefault().getID());
             if (i % 2 == 0) {
-                p.setLastSuccessful(new FDate().addMilliseconds(
-                        -BrokerProperties.PROXY_DOWNTIME_TOLERANCE.intValue(FTimeUnit.MILLISECONDS) * 2));
+                p.setLastSuccessful(FDate.now()
+                        .addMilliseconds(
+                                -BrokerProperties.PROXY_DOWNTIME_TOLERANCE.intValue(FTimeUnit.MILLISECONDS) * 2));
             } else {
-                p.setLastSuccessful(new FDate());
+                p.setLastSuccessful(FDate.now());
             }
 
             if (!dao.writeOrUpdate(p)) {

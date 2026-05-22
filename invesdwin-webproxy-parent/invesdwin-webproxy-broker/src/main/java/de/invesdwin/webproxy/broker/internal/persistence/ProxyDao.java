@@ -3,7 +3,6 @@ package de.invesdwin.webproxy.broker.internal.persistence;
 import java.util.List;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Named;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +10,7 @@ import de.invesdwin.context.persistence.jpa.api.dao.ADao;
 import de.invesdwin.util.time.date.FDate;
 import de.invesdwin.webproxy.broker.contract.schema.RawProxy;
 import de.invesdwin.webproxy.broker.internal.BrokerProperties;
+import jakarta.inject.Named;
 import jakarta.persistence.Query;
 import jakarta.persistence.TemporalType;
 
@@ -43,13 +43,13 @@ public class ProxyDao extends ADao<ProxyEntity> {
         final ProxyEntity alreadyExists = findOne(example);
         if (alreadyExists == null) {
             if (proxy.getLastSuccessful() == null) {
-                proxy.setLastSuccessful(new FDate());
+                proxy.setLastSuccessful(FDate.now());
             }
             save(proxy);
             return true;
         } else {
             alreadyExists.mergeFrom(proxy);
-            alreadyExists.setLastSuccessful(new FDate());
+            alreadyExists.setLastSuccessful(FDate.now());
             save(alreadyExists);
             return false;
         }
