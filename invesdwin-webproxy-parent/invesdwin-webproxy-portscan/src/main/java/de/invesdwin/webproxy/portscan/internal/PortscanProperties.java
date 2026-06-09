@@ -70,11 +70,11 @@ public final class PortscanProperties {
 
     private static int calculateMaxPacketsPerSecond() {
         final int maxLimit = 500;
-        final long pause = PortscanProperties.UPLOAD_PAUSE_BETWEEN_PACKETS.intValue(FTimeUnit.NANOSECONDS);
+        final long pause = PortscanProperties.UPLOAD_PAUSE_BETWEEN_PACKETS.longValue(FTimeUnit.NANOSECONDS);
         if (pause == 0) {
             return maxLimit;
         } else {
-            final long seconds = new Duration(1, FTimeUnit.SECONDS).intValue(FTimeUnit.NANOSECONDS);
+            final long seconds = new Duration(1, FTimeUnit.SECONDS).longValue(FTimeUnit.NANOSECONDS);
             final long maxPacketsPerSecond = seconds / pause;
             return Integers.min((int) maxPacketsPerSecond, maxLimit);
         }

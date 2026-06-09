@@ -56,7 +56,7 @@ public final class WebClientFactory {
             client.setJavaScriptTimeout(
                     config.getJavascriptWaitCallback().getMaxDelay().longValue(FTimeUnit.MILLISECONDS));
         } else {
-            client.setJavaScriptTimeout(ContextProperties.DEFAULT_NETWORK_TIMEOUT.intValue(FTimeUnit.MILLISECONDS));
+            client.setJavaScriptTimeout(ContextProperties.DEFAULT_NETWORK_TIMEOUT.longValue(FTimeUnit.MILLISECONDS));
         }
         client.getOptions().setCssEnabled(config.isCssEnabled());
         client.getOptions().setTimeout(ContextProperties.DEFAULT_NETWORK_TIMEOUT.intValue(FTimeUnit.MILLISECONDS));

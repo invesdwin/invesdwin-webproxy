@@ -5,7 +5,6 @@ import javax.annotation.concurrent.Immutable;
 import de.invesdwin.util.assertions.Assertions;
 import de.invesdwin.util.bean.AValueObject;
 import de.invesdwin.util.time.Instant;
-import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.util.time.duration.Duration;
 import de.invesdwin.webproxy.broker.contract.schema.Proxy;
 
@@ -25,7 +24,7 @@ public class ProxyStatistics extends AValueObject {
     public ProxyStatistics(final Proxy proxy, final int downloadTriesCountSuccessful, final int downloadTriesCount,
             final Instant useStart, final Instant useEnd, final Throwable failureReason, final int proxiesInPool) {
         super();
-        Assertions.assertThat(new Duration(useStart, useEnd).isGreaterThan(1, FTimeUnit.NANOSECONDS)).isTrue();
+        Assertions.assertThat(new Duration(useStart, useEnd).isGreaterThanNanos(1)).isTrue();
         this.proxy = proxy;
         this.downloadTriesCountSuccessful = downloadTriesCountSuccessful;
         this.downloadTriesCount = downloadTriesCount;

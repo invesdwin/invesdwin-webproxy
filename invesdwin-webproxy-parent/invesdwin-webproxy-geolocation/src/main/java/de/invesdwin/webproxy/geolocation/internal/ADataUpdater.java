@@ -78,7 +78,7 @@ public abstract class ADataUpdater {
         final long sourceLastModified = URIs.connect(sourceUrl).lastModified();
         final boolean thereIsANewSourceFile = Files.isFileOlder(targetFile, sourceLastModified);
         final boolean currentFileIsFromLastMonth = !FDates.isSameMonth(new FDate(targetFile.lastModified()),
-                new FDate());
+                FDate.now());
         return thereIsANewSourceFile && currentFileIsFromLastMonth;
     }
 

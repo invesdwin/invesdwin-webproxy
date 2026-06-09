@@ -4,7 +4,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.annotation.concurrent.ThreadSafe;
-import jakarta.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import de.invesdwin.context.integration.network.RandomIpGenerator;
 import de.invesdwin.context.persistence.jpa.test.APersistenceTestPreparer;
 import de.invesdwin.util.time.date.FDate;
-import de.invesdwin.util.time.date.FTimeUnit;
 import de.invesdwin.webproxy.broker.contract.BrokerContractProperties;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyQuality;
 import de.invesdwin.webproxy.broker.contract.schema.ProxyType;
@@ -20,6 +18,7 @@ import de.invesdwin.webproxy.broker.internal.persistence.ProxyDao;
 import de.invesdwin.webproxy.broker.internal.persistence.ProxyEntity;
 import de.invesdwin.webproxy.broker.internal.persistence.RawProxyDao;
 import de.invesdwin.webproxy.broker.internal.persistence.RawProxyEntity;
+import jakarta.inject.Inject;
 
 @ThreadSafe
 @Configurable
@@ -52,10 +51,11 @@ public class BrokerServiceTestPreparer extends APersistenceTestPreparer {
             final ProxyEntity p = ProxyEntity.valueOf(host, port, type, ProxyQuality.TRANSPARENT,
                     Locale.getDefault().getCountry(), TimeZone.getDefault().getID());
             if (i < COUNT_PROXIES_DOWNTIME_TOLERANCE_EXCEEDED) {
-                p.setLastSuccessful(new FDate().addMilliseconds(
-                        -BrokerProperties.PROXY_DOWNTIME_TOLERANCE.intValue(FTimeUnit.MILLISECONDS) * 2));
+                p.setLastSuccessful(FDate.now()
+                        .subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE)
+                        .subtract(BrokerProperties.PROXY_DOWNTIME_TOLERANCE));
             } else {
-                p.setLastSuccessful(new FDate());
+                p.setLastSuccessful(FDate.now());
             }
 
             if (!proxyDao.writeOrUpdate(p)) {
