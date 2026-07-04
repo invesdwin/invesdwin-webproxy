@@ -121,10 +121,6 @@
 				<version>${version.htmlunit}</version>
 				<exclusions>
 					<exclusion>
-						<artifactId>commons-logging</artifactId>
-						<groupId>commons-logging</groupId>
-					</exclusion>
-					<exclusion>
 						<groupId>org.eclipse.jetty.websocket</groupId>
 						<artifactId>websocket-client</artifactId>
 					</exclusion>
