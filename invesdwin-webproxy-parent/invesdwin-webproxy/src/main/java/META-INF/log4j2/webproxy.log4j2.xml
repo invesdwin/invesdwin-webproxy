@@ -1,0 +1,16 @@
+<Configuration>
+
+    <Loggers>
+        <Logger name="org.apache.http" additivity="false" level="ERROR">
+            <AppenderRef ref="stdout" />
+            <AppenderRef ref="stderr" />
+            <AppenderRef ref="common" />
+            <AppenderRef ref="error" />
+        </Logger>
+
+        <Logger name="com.gargoylesoftware.htmlunit" additivity="false" level="OFF">
+            <AppenderRef ref="error" />
+        </Logger>
+    </Loggers>
+
+</Configuration>
