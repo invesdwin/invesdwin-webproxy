@@ -30,7 +30,7 @@
 		</dependency>
 		<dependency>
 			<groupId>de.invesdwin</groupId>
-			<artifactId>invesdwin-context-integration-jms</artifactId>
+			<artifactId>invesdwin-context-integration-channel-jms</artifactId>
 		</dependency>
 	</dependencies>
 

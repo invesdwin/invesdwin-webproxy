@@ -30,7 +30,7 @@
 		</dependency>
 		<dependency>
 			<groupId>de.invesdwin</groupId>
-			<artifactId>invesdwin-context-integration-amqp</artifactId>
+			<artifactId>invesdwin-context-integration-channel-amqp</artifactId>
 		</dependency>
 	</dependencies>
 
