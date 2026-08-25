@@ -43,6 +43,6 @@
 		class="de.invesdwin.webproxy.broker.contract.internal.service.BrokerServiceActivator" />
 
 	<!-- disable basic authentication for proxy check uris -->
-	<security:http pattern="/spring-web/check/**" security="none" />
+	<security:http request-matcher="ant" pattern="/spring-web/check/**" security="none" />
 
 </beans>
