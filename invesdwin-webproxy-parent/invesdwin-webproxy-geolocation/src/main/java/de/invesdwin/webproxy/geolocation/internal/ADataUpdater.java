@@ -93,32 +93,10 @@ public abstract class ADataUpdater {
                     ADataUpdater.class.getSimpleName(), sourceUrl, targetFile), download);
             out = new FileOutputStream(targetFile, false);
             IOUtils.copy(in, out);
-        } catch (final Throwable t) {
-            if (t instanceof TransparentRuntimeIOExeption) {
-                final TransparentRuntimeIOExeption rio = (TransparentRuntimeIOExeption) t;
-                throw rio.getCause();
-            } else {
-                throw t;
-            }
         } finally {
             Closeables.closeQuietly(in);
             Closeables.closeQuietly(out);
         }
-    }
-
-    private static class TransparentRuntimeIOExeption extends RuntimeException {
-
-        private static final long serialVersionUID = 1L;
-
-        TransparentRuntimeIOExeption(final IOException cause) {
-            super(cause);
-        }
-
-        @Override
-        public synchronized IOException getCause() {
-            return (IOException) super.getCause();
-        }
-
     }
 
 }
