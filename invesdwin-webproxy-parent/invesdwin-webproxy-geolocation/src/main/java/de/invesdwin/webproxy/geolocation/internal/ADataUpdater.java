@@ -69,7 +69,6 @@ public abstract class ADataUpdater {
 
     protected void replaceFile(final File targetFile, final File tempTargetFile) throws IOException {
         log.info("%s successfully downloaded, now replacing %s with the new version", tempTargetFile, targetFile);
-        Files.deleteQuietly(targetFile);
         Files.moveFile(tempTargetFile, targetFile);
 
     }
